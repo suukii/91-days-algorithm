@@ -265,4 +265,178 @@ CustomStack.prototype.increment = function (k, val) {
  */
 ```
 
+_Originally posted by @suukii in https://github.com/leetcode-pp/91alg-1/issues/18#issuecomment-637977959_
+
 # 参考回答
+
+## increment 时间复杂度为 $O(k)$ 的方法
+
+
+
+### 思路
+
+首先我们来看一种非常符合直觉的方法，然而这种方法并不好，increment操作需要的时间复杂度为 $O(k)$。
+
+`push`和 `pop` 就是普通的栈操作。 唯一要注意的是边界条件，这个已经在题目中指明了，具体来说就是：
+
+- push 的时候要判断是否满了
+- pop 的时候要判断是否空了
+
+而做到上面两点，只需要一个 cnt 变量记录栈的当前长度，一个 size 变量记录最大容量，并在pop和push的时候更新cnt即可。
+
+
+### 代码
+
+
+```py
+class CustomStack:
+
+    def __init__(self, size: int):
+        self.st = []
+        self.cnt = 0
+        self.size = size
+
+    def push(self, x: int) -> None:
+        if self.cnt < self.size:
+            self.st.append(x)
+            self.cnt += 1
+
+
+    def pop(self) -> int:
+        if self.cnt == 0: return -1
+        self.cnt -= 1
+        return self.st.pop()
+
+
+    def increment(self, k: int, val: int) -> None:
+        for i in range(0, min(self.cnt, k)):
+            self.st[i] += val
+
+```
+
+***复杂度分析***
+- 时间复杂度：push 和 pop 操作的时间复杂度为 $O(1)$（讲义有提到），而increment操作的时间复杂度为 $O(min(k, cnt))$
+- 空间复杂度：$O(1)$
+
+## increment 时间复杂度为 $O(1)$ 的方法
+
+### 思路
+
+和上面的思路类似，不过我们采用空间换时间的方式。采用一个额外的数组 incrementals 来记录每次 incremental 操作。
+
+具体算法如下：
+
+- 初始化一个大小为 maxSize 的数组， 并全部填充0
+- push 操作不变，和上面一样
+- increment 的时候，我们将incremental 信息，如何记录呢？我这里画了一个图
+
+![image](https://user-images.githubusercontent.com/12479470/83656933-c096d300-a5f2-11ea-8f50-64ced5aa62f2.png)
+
+如图黄色部分是我们需要执行增加操作，我这里画了一个挡板分割，实际上这个挡板不存在。那么如何记录黄色部分的信息呢？我举个例子来说
+
+比如：
+- 调用了 increment(3, 2)，就把 increment[3] 增加 2。
+- 继续调用 increment(2, 5)，就把 increment[2] 增加 5。
+
+![image](https://user-images.githubusercontent.com/12479470/83640207-6855d600-a5de-11ea-809e-bba303927707.png)
+
+
+而当我们 pop 的时候：
+
+- 只需要将栈顶元素**加上 increment[cnt - 1]** 即可， 其中 cnt 为栈当前的大小。
+- 另外，我们需要将 increment[cnt - 1] 更新到 increment[cnt - 2]，并将 increment[cnt - 1] 重置为 0。
+
+![image](https://user-images.githubusercontent.com/12479470/83640238-7146a780-a5de-11ea-8b81-81439353068f.png)
+
+
+### 代码
+
+```py
+class CustomStack:
+
+    def __init__(self, size: int):
+        self.st = []
+        self.cnt = 0
+        self.size = size
+        self.incrementals = [0] * size
+
+    def push(self, x: int) -> None:
+        if self.cnt < self.size:
+            self.st.append(x)
+            self.cnt += 1
+
+
+    def pop(self) -> int:
+        if self.cnt == 0: return -1
+        if self.cnt >= 2:
+            self.incrementals[self.cnt - 2] += self.incrementals[self.cnt - 1]
+        ans = self.st.pop() + self.incrementals[self.cnt - 1]
+        self.incrementals[self.cnt - 1] = 0
+        self.cnt -= 1
+        return ans
+
+
+    def increment(self, k: int, val: int) -> None:
+            if self.cnt:
+                self.incrementals[min(self.cnt, k) - 1] += val
+```
+
+***复杂度分析***
+- 时间复杂度：全部都是 $O(1)$
+- 空间复杂度：我们维护了一个大小为 maxSize 的数组，因此平均到每次的空间复杂度为 $O(maxSize / N)$，其中 N 为操作数。
+
+## 优化的 increment 时间复杂度为 $O(1)$ 的方法
+
+### 思路
+
+上面的思路无论如何，我们都需要维护一个大小为 $O(maxSize)$ 的数组 incremental 。而这实际上可以稍微优化一点。
+
+### 代码
+
+```py
+class CustomStack:
+
+    def __init__(self, size: int):
+        self.st = []
+        self.cnt = 0
+        self.size = size
+        self.incrementals = []
+
+    def push(self, x: int) -> None:
+        if self.cnt < self.size:
+            self.st.append(x)
+            self.incrementals.append(0)
+            self.cnt += 1
+
+
+    def pop(self) -> int:
+        if self.cnt == 0: return -1
+        self.cnt -= 1
+        if self.cnt >= 1:
+            self.incrementals[-2] += self.incrementals[-1]
+        return self.st.pop() + self.incrementals.pop()
+
+
+    def increment(self, k: int, val: int) -> None:
+        if self.incrementals:
+            self.incrementals[min(self.cnt, k) - 1] += val
+```
+
+***复杂度分析***
+- 时间复杂度：全部都是O(1)
+- 空间复杂度：我们维护了一个大小为 cnt 的数组，因此平均到每次的空间复杂度为 $O(cnt / N)$，其中 N 为操作数，cnt 为操作过程中的栈的最大长度（小于等于maxSize）。
+
+可以看出优化的解法在 maxSize 非常大的时候是很有意义的。
+
+## 相关题目
+
+- [155. 最小栈](https://leetcode-cn.com/problems/min-stack/solution/chai-zhi-fa-155-zui-xiao-zhan-by-fe-lucifer/)
+
+
+更多题解可以访问我的LeetCode题解仓库：https://github.com/azl397985856/leetcode  。 目前已经30K star啦。
+
+大家也可以关注我的公众号《力扣加加》获取更多更新鲜的LeetCode题解
+
+![](https://tva1.sinaimg.cn/large/007S8ZIlly1gfcuzagjalj30p00dwabs.jpg)
+
+_Originally posted by @azl397985856 in https://github.com/leetcode-pp/91alg-1/issues/18#issuecomment-638268279_
