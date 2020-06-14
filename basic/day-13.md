@@ -108,7 +108,7 @@ class Solution(object):
 ### 复杂度分析
 
 - 时间复杂度：O(N)，因为每个节点都分别入列出列一次，入列和出列操作的时间复杂度都是 O(1)，所以总的时间复杂度是 O(2N)，也就是 O(N)。
-- 空间复杂度：O(logN)，队列的最大长度，最坏的情况就是二叉树是完全二叉树，遍历到最后一层的时候，节点数是 (2^N)。
+- 空间复杂度：O(h)，h 为树的高度，最坏的情况下树是完全二叉树。
 
 ### 伪代码
 
@@ -121,6 +121,7 @@ class Solution(object):
   记录当前层级的节点数 nodeCount (即队列中的节点数)
 
   if nodeCount === 0: return height // 二叉树遍历结束
+  height++
 
   // 遍历当前层级的每个节点
   while nodeCount > 0:
@@ -199,3 +200,60 @@ _Originally posted by @suukii in https://github.com/leetcode-pp/91alg-1/issues/3
 
 
 # 参考回答
+
+## 前置知识
+
+- 递归
+
+## 思路
+
+树的题目很适合用来递归来做。 基本上和树的搜索有关的，都可以用递归来做，为什么？
+
+因为树是一种递归的数据结构。而穷举搜索一棵树必然需要遍历其所有节点，而搜索的逻辑对所有的子树都是一样的。因此这就很适合用递归来解决了。
+
+这里给大家介绍一种写递归的小方法 **产品经理法**。
+
+
+1. 定义函数功能，不用管其具体实现。
+
+从高层次的角度来定义函数功能。 你可以把自己想象成**产品经理**。只需要知道要做什么事情就行了，而怎么实现我不管，那是码农的事情。
+
+具体来说，我需要的功能是**给定一个二叉树的节点，返回以这个节点为根节点的子树的最大深度**。假设这个函数为 f。那么问题转化为 f(root)。
+
+2. 确定大问题和小问题的关系。
+
+要解决 f(root) 这个问题。可以先解决f(root.right) 和  f(root.left)，当然我们仍然不关心 f 怎么实现。
+
+f(root) 与 f(root.right) 和  f(root.left) 有什么关系呢？ 不难看出 `1 + max(f(root.right), f(root.left))`。
+
+到这里我们还不知道 f 怎么实现的，但是我们已经完成了产品经理的需求。 
+
+> 实际上我们知道了，我们怎么知道的？
+
+
+3. 补充递归终止条件。
+
+如果递归到叶子节点的时候，返回 0 即可。
+
+## 代码（Python）
+
+
+```py
+# Definition for a binary tree node.
+class Solution:
+    def maxDepth(self, root: TreeNode) -> int:
+        if not root: return 0
+        return 1 + max(self.maxDepth(root.left), self.maxDepth(root.right)) 
+```
+
+***复杂度分析***
+- 时间复杂度：$O(N)$，其中 N 为节点数。
+- 空间复杂度：$O(h)$，其中 $h$ 为树的深度，最坏的情况 $h$ 等于 $N$，其中 N 为节点数，此时树退化到链表。
+
+更多题解可以访问我的LeetCode题解仓库：https://github.com/azl397985856/leetcode  。 目前已经30K star啦。
+
+大家也可以关注我的公众号《力扣加加》获取更多更新鲜的LeetCode题解
+
+![](https://tva1.sinaimg.cn/large/007S8ZIlly1gfcuzagjalj30p00dwabs.jpg)
+
+_Originally posted by @azl397985856 in https://github.com/leetcode-pp/91alg-1/issues/32#issuecomment-643620727_
