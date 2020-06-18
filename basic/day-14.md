@@ -189,3 +189,125 @@ var isSameTree = function(p, q) {
 ```
 
 # 参考回答
+
+### 前置知识
+
+- 递归
+- 层序遍历
+- 前中序确定一棵树
+
+### 思路
+
+#### 递归
+
+最简单的想法是递归，这里先介绍下递归三要素
+
+- 递归出口，问题最简单的情况
+- 递归调用总是去尝试解决更小的问题，这样问题才会被收敛到最简单的情况
+- 递归调用的父问题和子问题没有交集
+
+尝试用递归去解决相同的树
+
+1.  分解为子问题，相同的树分解为左子是否相同，右子是否相同
+2.  递归出口: 当树高度为 1 时，判断递归出口
+
+```js
+var isSameTree = function (p, q) {
+  if (!p || !q) {
+    return !p && !q;
+  }
+  return (
+    p.val === q.val &&
+    isSameTree(p.left, q.left) &&
+    isSameTree(p.right, q.right)
+  );
+};
+```
+
+#### 层序遍历
+
+判断两棵树是否相同，只需要判断树的整个结构相同, 判断树的结构是否相同，只需要判断树的每层内容是否相同。
+
+```js
+var isSameTree = function (p, q) {
+  let curLevelA = [p];
+  let curLevelB = [q];
+
+  while (curLevelA.length && curLevelB.length) {
+    let nextLevelA = [];
+    let nextLevelB = [];
+    const isOK = isSameCurLevel(curLevelA, curLevelB, nextLevelA, nextLevelB);
+    if (isOK) {
+      curLevelA = nextLevelA;
+      curLevelB = nextLevelB;
+    } else {
+      return false;
+    }
+  }
+
+  return true;
+};
+
+function isSameCurLevel(curLevelA, curLevelB, nextLevelA, nextLevelB) {
+  if (curLevelA.length !== curLevelB.length) {
+    return false;
+  }
+  for (let i = 0; i < curLevelA.length; i++) {
+    if (!isSameNode(curLevelA[i], curLevelB[i])) {
+      return false;
+    }
+    curLevelA[i] && nextLevelA.push(curLevelA[i].left, curLevelA[i].right);
+    curLevelB[i] && nextLevelB.push(curLevelB[i].left, curLevelB[i].right);
+  }
+  return true;
+}
+
+function isSameNode(nodeA, nodeB) {
+  if (!nodeA || !nodeB) {
+    return nodeA === nodeB;
+  }
+  return nodeA.val === nodeB.val;
+  // return nodeA === nodeB || (nodeA && nodeB && nodeA.val === nodeB.val);
+}
+```
+
+#### 前中序确定一棵树
+
+前序和中序的遍历结果确定一棵树，那么当两棵树前序遍历和中序遍历结果都相同，那是否说明两棵树也相同
+
+```js
+var isSameTree = function (p, q) {
+  const preorderP = preorder(p, []);
+  const preorderQ = preorder(q, []);
+  const inorderP = inorder(p, []);
+  const inorderQ = inorder(q, []);
+  return (
+    preorderP.join('') === preorderQ.join('') &&
+    inorderP.join('') === inorderQ.join('')
+  );
+};
+
+function preorder(root, arr) {
+  if (root === null) {
+    arr.push(' ');
+    return arr;
+  }
+  arr.push(root.val);
+  preorder(root.left, arr);
+  preorder(root.right, arr);
+  return arr;
+}
+
+function inorder(root, arr) {
+  if (root === null) {
+    arr.push(' ');
+    return arr;
+  }
+  inorder(root.left, arr);
+  arr.push(root.val);
+  inorder(root.right, arr);
+  return arr;
+}
+```
+
+_Originally posted by @feikerwu in https://github.com/leetcode-pp/91alg-1/issues/34#issuecomment-643746888_
