@@ -1,0 +1,256 @@
+# 62.不同路径
+
+## 题目描述
+
+```
+一个机器人位于一个 m x n 网格的左上角 （起始点在下图中标记为“Start” ）。
+
+机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为“Finish”）。
+
+问总共有多少条不同的路径？
+
+例如，上图是一个7 x 3 的网格。有多少可能的路径？
+
+
+示例 1:
+
+输入: m = 3, n = 2
+输出: 3
+解释:
+从左上角开始，总共有 3 条路径可以到达右下角。
+
+向右 -> 向右 -> 向下
+向右 -> 向下 -> 向右
+向下 -> 向右 -> 向右
+示例 2:
+输入: m = 7, n = 3
+输出: 28
+
+
+提示：
+
+1 <= m, n <= 100
+题目数据保证答案小于等于 2 * 10 ^ 9
+
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/unique-paths
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+# 我的回答
+
+## 递归(超时)
+
+### 思路
+
+首先是直觉的递归法。
+
+- 在每个格子我们都有两个选择：`向右走`、`向下走`
+- 如果走到了网格最右侧的那一列，我们就只剩下 `向下走` 这个选项
+- 如果走到了网格最底下的那一行，我们就只剩下 `向右走` 这个选项
+- 所以在每个格子做选择之前，先要判断能不能向右/向下走
+- 等走到最后一个格子，在这个格子我们既不能向右也不能向下，就在记录上加一
+
+JavaScript Code
+
+```js
+/**
+ * @param {number} m
+ * @param {number} n
+ * @return {number}
+ */
+var uniquePaths = function (m, n) {
+  let total = 0
+  const dfs = (m, n, row, col) => {
+    if (row === n - 1 && col === m - 1) {
+      total++
+      return
+    }
+    row < n - 1 && dfs(m, n, row + 1, col)
+    col < m - 1 && dfs(m, n, row, col + 1)
+  }
+  dfs(m, n, 0, 0)
+  return total
+}
+```
+
+更简洁的递归版：
+
+JavaScript Code
+
+```js
+/**
+ * @param {number} m
+ * @param {number} n
+ * @return {number}
+ */
+var uniquePaths = function (m, n) {
+  if (m === 1 || n === 1) return 1
+  return uniquePaths(m - 1, n) + uniquePaths(m, n - 1)
+}
+```
+
+### 复杂度分析
+
+- 时间复杂度：O(2 ^ max(m, n))，2 是递归树的最大分支数，因为在每个函数中都有两次递归调用，指数部分是树的最大深度。
+- 空间复杂度：O(max(m, n))，递归树的最大深度。
+
+## 动态规划
+
+### 思路
+
+我们的目标是走到网格右下角的格子，不妨假设我们已经走到了这个格子，那往前推一步，走到这个格子之前我们在哪呢？只能是它**左边**或者**上方**的格子。
+
+- 假设我们已经知道了有多少条路径可以走到它**左边**的格子，用 `F(left)` 来表示；
+- 假设我们也已知道了有多少条路径可以走到它**上方**的格子，用 `F(top)` 来表示；
+
+那我们很容易就能算出，要走到右下角的格子，一共有 `F(bottomRight) = F(left) + F(top)` 条路径。
+
+我们可以从右下角的格子一直往前推，计算每个格子的状态 `F(cell) = F(left) + F(top)`。直到，退到起点，因为我们已经站在起点了，也就是说只有一条路，所以 `F(topLeft) = 1`。
+
+现在我们再把这个过程反过来，从起点开始，一直往右下角的格子前进，一路算出走到每个格子有多少条路径 `F(cell)`，最终就可以得到我们想要的结果 `F(bottomRight)` 了。
+
+> 因为要记录每个格子的状态，所以需要一个二维数组
+
+### 代码
+
+TypeScript Code
+
+```ts
+function uniquePaths(m: number, n: number): number {
+  const dp: number[][] = Array(n + 1)
+    .fill(0)
+    .map(() => Array(m + 1).fill(0))
+  dp[1][1] = 1
+  for (let i = 1; i <= n; i++) {
+    for (let j = 1; j <= m; j++) {
+      dp[i][j] = dp[i][j] + dp[i - 1][j] + dp[i][j - 1]
+    }
+  }
+  return dp[n][m]
+}
+```
+
+Python Code
+
+```py
+class Solution(object):
+    def uniquePaths(self, m, n):
+        """
+        :type m: int
+        :type n: int
+        :rtype: int
+        """
+        dp = [[0] * (m) for _ in range(n)]
+        for i in range(n):
+            dp[i][0] = 1
+        for j in range(m):
+            dp[0][j] = 1
+
+        for i in range(1, n ):
+            for j in range(1, m):
+                dp[i][j] = dp[i - 1][j] + dp[i][j - 1]
+        return dp[n - 1][m - 1]
+```
+
+### 复杂度分析
+
+- 时间复杂度：O(m \* n)。
+- 空间复杂度：O(m \* n)。
+
+## 动态规划(空间优化版)
+
+### 思路
+
+因为每个格子只依赖它**左边**和**上边**的格子的状态，所以我们没必要用二维数组来存储整个网格的状态，只需要两个一维数组：一个存上一行格子的状态，一个存当前行格子的状态，然后在遍历的过程中更新这两个数组就好了。
+
+### 代码
+
+TypeScript Code
+
+```ts
+function uniquePaths(m: number, n: number): number {
+  let last: number[] = Array(m + 1).fill(0)
+  last[1] = 1
+  for (let i = 1; i <= n; i++) {
+    const cur = Array(m + 1).fill(0)
+    for (let j = 1; j <= m; j++) {
+      cur[j] = cur[j - 1] + last[j]
+    }
+    last = cur
+  }
+  return last[m]
+}
+```
+
+### 复杂度分析
+
+- 时间复杂度：O(m \* n)。
+- 空间复杂度：O(n)。
+
+## 63. 不同路径 II - 动态规划
+
+https://leetcode-cn.com/problems/unique-paths-ii/
+
+跟 62 题差不多，只是如果当前格子有障碍的话，就把 `dp[i][j]` 重置为 0，说明此路不通。
+
+JavaScript Code
+
+```js
+/**
+ * @param {number[][]} obstacleGrid
+ * @return {number}
+ */
+var uniquePathsWithObstacles = function (obstacleGrid) {
+  const rows = obstacleGrid.length
+  const cols = obstacleGrid[0].length
+  const dp = Array(rows + 1)
+    .fill(0)
+    .map(() => Array(cols + 1).fill(0))
+  dp[1][1] = 1
+
+  for (let i = 1; i <= rows; i++) {
+    for (let j = 1; j <= cols; j++) {
+      if (obstacleGrid[i - 1][j - 1] === 1) {
+        dp[i][j] = 0
+      } else {
+        dp[i][j] = dp[i][j] + dp[i - 1][j] + dp[i][j - 1]
+      }
+    }
+  }
+  return dp[rows][cols]
+}
+```
+
+## 63. 不同路径 II - 动态规划(空间优化)
+
+JavaScript Code
+
+```js
+/**
+ * @param {number[][]} obstacleGrid
+ * @return {number}
+ */
+var uniquePathsWithObstacles = function (obstacleGrid) {
+  const rows = obstacleGrid.length
+  const cols = obstacleGrid[0].length
+
+  let prev = Array(cols + 1).fill(0)
+  prev[1] = obstacleGrid[0][0] === 1 ? 0 : 1
+  let cur = Array(cols + 1).fill(0)
+
+  for (let i = 1; i <= rows; i++) {
+    for (let j = 1; j <= cols; j++) {
+      if (obstacleGrid[i - 1][j - 1] === 1) {
+        cur[j] = 0
+      } else {
+        cur[j] = cur[j - 1] + prev[j]
+      }
+    }
+    ;[prev, cur] = [cur, prev]
+  }
+  return prev[cols]
+}
+```
+
+顺便贴一下我刚写的关于计算复杂度的简单[笔记](https://github.com/suukii/Articles/blob/master/articles/big_O_complexity.md)

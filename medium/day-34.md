@@ -92,3 +92,75 @@ var findUnsortedSubarray = function (nums) {
 ```
 
 # 参考回答
+
+## 题目地址
+
+[https://leetcode-cn.com/problems/shortest-unsorted-continuous-subarray/](https://leetcode-cn.com/problems/shortest-unsorted-continuous-subarray/)
+
+给定一个整数数组，你需要寻找一个连续的子数组，如果对这个子数组进行升序排序，那么整个数组都会变为升序排序。
+
+你找到的子数组应是最短的，请输出它的长度。
+
+**示例:**
+  
+输入: [2, 6, 4, 8, 10, 9, 15]
+输出: 5
+解释: 你只需要对 [6, 4, 8, 10, 9] 进行升序排序，那么整个表都会变为升序排序。
+
+**说明 :**
+
+输入的数组长度范围在 [1, 10,000]。
+输入的数组可能包含重复元素 ，所以升序的意思是 <=。
+
+## 前置知识
+
+- 数组排序
+- 数组拷贝
+
+## 思路
+
+这道题问的是最长的无序连续子数组 ---> 那最简单的方法就是先排序，将排序过的数组与原数组做一个对比，从最左边的第一个元素开始对比，第一个不相同的元素的下标就是我们需要查找的最长无序连续子数组的初始位置。类似的，我们从最右侧开始向左进行对比，第一个不相同的元素的下标就是我们需要查找的最长无序连续子数组的结束位置。
+
+## 解法
+
+- 将数组复制到一个新的数组并且将新数组进行排序
+- 从左到右遍历并对比新旧两个数组，得到第一个不同元素的下标
+- 从右到左遍历并对比新旧两个数组，得到第一个不同元素的下标
+- 计算两个下标的差值（记得要+1）
+
+这种思路的时间复杂度：$O(nlogn)$，因为最耗时的其实是排序方法。
+
+```javascript
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var findUnsortedSubarray = function (nums) {
+  var arr = nums.slice()
+  arr.sort((a, b) => a - b)
+  var len = arr.length
+  var left, right
+  for (var i = 0; i < len; i++) {
+    if (arr[i] !== nums[i]) {
+      left = i
+      break
+    }
+  }
+  for (var i = len - 1; i > -1; i--) {
+    if (arr[i] !== nums[i]) {
+      right = i
+      break
+    }
+  }
+
+  return left === undefined ? 0 : right - left + 1
+}
+```
+
+更多题解可以访问我的 LeetCode 题解仓库：https://github.com/azl397985856/leetcode 。 目前已经 30K star 啦。
+
+大家也可以关注我的公众号《力扣加加 sa》获取更多更新鲜的 LeetCode 题解
+
+![](https://tva1.sinaimg.cn/large/007S8ZIlly1gfcuzagjalj30p00dwabs.jpg)
+
+_Originally posted by @jerkjoe in https://github.com/leetcode-pp/91alg-1/issues/59#issuecomment-653835504_
