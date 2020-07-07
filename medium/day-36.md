@@ -112,6 +112,8 @@ var uniquePaths = function (m, n) {
 
 > 因为要记录每个格子的状态，所以需要一个二维数组
 
+![](../assets/do.png)
+
 ### 代码
 
 TypeScript Code
