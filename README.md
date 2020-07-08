@@ -1,8 +1,8 @@
 # 目录
 
-## 基础篇
+## 讲义
 
-### 讲义
+### 基础篇
 
 - [【basic-01】01.数组，栈，队列](https://github.com/leetcode-pp/91alg-1/blob/master/basic-01.md)
 - [【basic-01】02.链表](https://github.com/leetcode-pp/91alg-1/blob/master/basic-02.md)
@@ -10,16 +10,22 @@
 - [【basic-04】04.哈希表](https://github.com/leetcode-pp/91alg-1/blob/master/basic-04.md)
 - [【basic-05】05.双指针](https://lucifer.ren/blog/2020/05/26/91algo-basic-05.two-pointer/)
 
-### 题目
+## 个人笔记
 
-#### 进阶篇
+- [图](https://github.com/suukii/Articles/blob/master/articles/graph_data_structure.md)
+- [Big O 算法复杂度](https://github.com/suukii/Articles/blob/master/articles/big_O_complexity.md)
+
+## 题目
+
+### 进阶篇
 
 - [x] [【day-34】581.最短无序连续子数组](./medium/day-34.md)
 - [x] [【day-35】78.子集](./medium/day-35.md)
 - [x] [【day-36】62.不同路径](./medium/day-36.md)
 - [x] [【day-37】有效括号系列](./medium/day-37.md)
+- [x] [【day-38】反转链表系列](./medium/day-38.md)
 
-#### 基础篇
+### 基础篇
 
 - [x] [【day-01】66.加一](./basic/day-01.md)
 - [x] [【day-02】75.颜色分类](./basic/day-02.md)
