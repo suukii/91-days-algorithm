@@ -25,8 +25,6 @@ https://leetcode-cn.com/problems/number-of-boomerangs
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 ```
 
-# 我的回答
-
 ### 思路
 
 TODO://
@@ -37,6 +35,7 @@ TODO://
 - 空间复杂度：O(N^2)，需要 N 个哈希表来记录 N 个点到其他 N-1 个点的距离，最坏的情况是每个点到其他点的距离都不一样，那哈希表的大小是 N-1。
 
 ### 代码
+
 ```js
 /**
  * @param {number[][]} points
@@ -103,11 +102,11 @@ const __main__ = function () {
 
 _Originally posted by @suukii in https://github.com/leetcode-pp/91alg-1/issues/41#issuecomment-646966574_
 
-# 参考回答
+**官方题解**
 
 # #447 回旋镖的数量
 
-多读两遍题，大概就明白了题意：就是找出所有符合三个点x,y,z，并且dis(x,y)=dis(x,z)这种点的个数。首先要明确两点间距离怎么计算，忘了是小学还是初中的知识了：
+多读两遍题，大概就明白了题意：就是找出所有符合三个点 x,y,z，并且 dis(x,y)=dis(x,z)这种点的个数。首先要明确两点间距离怎么计算，忘了是小学还是初中的知识了：
 
 $$x=(x1,x2)$$
 
@@ -126,7 +125,7 @@ public int numberOfBoomerangs(int[][] points) {
         return 0;
 
     int res = 0;
-    
+
     for (int i = 0; i < points.length; i++) {
 
         for (int j = 0; j < points.length; j++) {
@@ -135,7 +134,7 @@ public int numberOfBoomerangs(int[][] points) {
                 continue;
 
             for (int k = 0; k < points.length; k++) {
-                
+
                 if (k == i || k == j)
                     continue;
 
@@ -145,7 +144,7 @@ public int numberOfBoomerangs(int[][] points) {
         }
     }
 
-    return res;   
+    return res;
 }
 
 private int getDistance(int[] x, int[] y) {
@@ -157,11 +156,11 @@ private int getDistance(int[] x, int[] y) {
 }
 ```
 
-这就相当于把题目翻译了一遍，但是提交就会发现TLE了，也不难发现时间复杂度是$O(N^{3})$，
+这就相当于把题目翻译了一遍，但是提交就会发现 TLE 了，也不难发现时间复杂度是$O(N^{3})$，
 
-也就是我们需要优化代码了。。。首先题目说n个点不同且答案考虑元组顺序，那么我们最外层循环是跑不掉了，因为需要固定每一个点。
+也就是我们需要优化代码了。。。首先题目说 n 个点不同且答案考虑元组顺序，那么我们最外层循环是跑不掉了，因为需要固定每一个点。
 
-里面两层循环可不可以优化一下呢，其实不难想，当我们固定其中一个点A的时候，并且想算距离为3的点的个数，那么我们就找出所有和点A距离为3的点，然后来一个简单的排列组合嘛！比如找到了n个距离为3的点，那么我们选择第二个点有n种方案，选择第三个点有(n - 1)个方案，那么固定点A且距离为3的所有可能就是n*(n-1)，这是说距离为3，还有许多其他距离呢，这不就又回到了我们统计元素频率的问题上了嘛，当然哈希表用起来！上代码：
+里面两层循环可不可以优化一下呢，其实不难想，当我们固定其中一个点 A 的时候，并且想算距离为 3 的点的个数，那么我们就找出所有和点 A 距离为 3 的点，然后来一个简单的排列组合嘛！比如找到了 n 个距离为 3 的点，那么我们选择第二个点有 n 种方案，选择第三个点有(n - 1)个方案，那么固定点 A 且距离为 3 的所有可能就是 n\*(n-1)，这是说距离为 3，还有许多其他距离呢，这不就又回到了我们统计元素频率的问题上了嘛，当然哈希表用起来！上代码：
 
 ```java
 public int numberOfBoomerangs(int[][] points) {
@@ -187,7 +186,7 @@ public int numberOfBoomerangs(int[][] points) {
 
     return res;
 }
-    
+
 private int getDistance(int[] x, int[] y) {
 
     int x1 = y[0] - x[0];

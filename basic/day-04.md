@@ -24,9 +24,6 @@ s = "2[abc]3[cd]ef", 返回 "abcabccdcdcdef".
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 ```
 
-
-# 我的回答
-
 ## 递归
 
 #### 图解
@@ -45,19 +42,22 @@ s = "2[abc]3[cd]ef", 返回 "abcabccdcdcdef".
 
 1. 我们先考虑括号是层层嵌套的情况，比如 `lz3[ab2[c]]`；
 2. 开始遍历解析字符串，用一个变量 `decoded` 来保存模板解码的结果：
-  - 遇到字母，不需要解码，直接拼接到 `decoded`；
-  - 遇到数字，因为数字可能是多位，还需要一个变量 `count` 来记录，把数字拼接起来；
-  - 遇到左括号，说明紧跟着的是一个模板，递归获取这个模板的解析结果 (返回第 2 步，从当前左括号的下一位开始遍历字符串)，把递归结果重复 `count` 次并拼接到 `decoded`；
-  - 遇到右括号，说明当前模板的解析结束了，返回 `decoded`；
+
+- 遇到字母，不需要解码，直接拼接到 `decoded`；
+- 遇到数字，因为数字可能是多位，还需要一个变量 `count` 来记录，把数字拼接起来；
+- 遇到左括号，说明紧跟着的是一个模板，递归获取这个模板的解析结果 (返回第 2 步，从当前左括号的下一位开始遍历字符串)，把递归结果重复 `count` 次并拼接到 `decoded`；
+- 遇到右括号，说明当前模板的解析结束了，返回 `decoded`；
+
 3. 由于字符串中可能存在多个平行的模板，比如 `3[ab]4[cd]`，所以我们还需要在递归外面加一个循环。注意每个模板解析结束后要返回当前的位置，下一次循环就从上一个模板之后开始解析。
 
 #### 代码
+
 ```js
 const type = {
-  num: n => /^[0-9]+$/.test(n),
-  alpha: s => /^[a-zA-Z]+$/.test(s),
-  left: c => c === '[',
-  right: c => c === ']',
+  num: (n) => /^[0-9]+$/.test(n),
+  alpha: (s) => /^[a-zA-Z]+$/.test(s),
+  left: (c) => c === '[',
+  right: (c) => c === ']'
 }
 
 /**
@@ -73,25 +73,25 @@ var decodeString = function (s, start = 0) {
     switch (true) {
       case type.num(token):
         count += token
-        break;
+        break
       case type.alpha(token):
         decoded += token
-        break;
+        break
       case type.left(token):
         const [pattern, k] = decodeString(s, i + 1)
         decoded += pattern.repeat(count)
         i = k
         count = ''
-        break;
+        break
       case type.right(token):
         return [decoded, i]
       default:
-        break;
+        break
     }
     i++
   }
   return decoded
-};
+}
 ```
 
 ## 循环 + 栈
@@ -102,13 +102,14 @@ var decodeString = function (s, start = 0) {
 
 1. 遇到字母块 (`lz`)、数字时，入栈；
 2. 遇到 `[` 时，入栈，用来标识当前进入一个模板解析了；
-3. 遇到 `]` 时，说明当前模板遍历完了，我们可以开始解析了。开始出栈，把出栈的字母块都拼接起来，等出栈到 `[` 时，说明当前模板解析完成了。继续出栈一个元素，这个元素就是当前模板要重复的次数，把"字母块 * 次数"后推入栈中。之所以要推入栈中是因为模板是可以嵌套的，当前模板的外层可以还是一个模板，所以我们要把结果放回去，继续解析外层的模板。
+3. 遇到 `]` 时，说明当前模板遍历完了，我们可以开始解析了。开始出栈，把出栈的字母块都拼接起来，等出栈到 `[` 时，说明当前模板解析完成了。继续出栈一个元素，这个元素就是当前模板要重复的次数，把"字母块 \* 次数"后推入栈中。之所以要推入栈中是因为模板是可以嵌套的，当前模板的外层可以还是一个模板，所以我们要把结果放回去，继续解析外层的模板。
 
 #### 图解过程
 
 ![](../assets/decode_string_stack.png)
 
 #### 代码
+
 ```js
 /**
  * @param {string} s
@@ -118,7 +119,7 @@ var decodeString = function (s) {
   const reg = /[a-zA-Z]+|[0-9]+|\[|\]/g
   const stack = []
   const peek = () => stack[stack.length - 1]
-  
+
   while (reg.lastIndex < s.length) {
     let token = reg.exec(s)[0]
     if (token === ']') {
@@ -140,13 +141,12 @@ var decodeString = function (s) {
     }
   }
   return stack.join('')
-};
+}
 ```
 
 https://github.com/leetcode-pp/91alg-1/issues/20#issuecomment-638766214
 
-
-# 参考回答
+**官方题解**
 
 ## 题目地址
 
@@ -182,21 +182,21 @@ s = "2[abc]3[cd]ef", 返回 "abcabccdcdcdef".
 2. 数字
 3. [
 4. ]
-并且输入的方括号总是满足要求的（成对出现），数字只表示重复次数
+   并且输入的方括号总是满足要求的（成对出现），数字只表示重复次数
 
-那么根据以上条件，我们可以利用stack来实现这个操作
+那么根据以上条件，我们可以利用 stack 来实现这个操作
 
-- 遍历这个字符串s，判断每一个字符的类型
--- 如果是字母 --> 添加到stack当中
--- 如果是数字 --> 先不着急添加到stack中 --> 因为有可能有多位
--- 如果是 [ --> 说明重复字符串开始 --> 将数字入栈 --> 并且将数字清零
--- 如果是 ] --> 说明重复字符串结束 --> 将重复字符串重复前一步储存的数字遍
+- 遍历这个字符串 s，判断每一个字符的类型
+  -- 如果是字母 --> 添加到 stack 当中
+  -- 如果是数字 --> 先不着急添加到 stack 中 --> 因为有可能有多位
+  -- 如果是 [ --> 说明重复字符串开始 --> 将数字入栈 --> 并且将数字清零
+  -- 如果是 ] --> 说明重复字符串结束 --> 将重复字符串重复前一步储存的数字遍
 
 拿题目给的例子`s = "3[a2[c]]"` 来说：
 
 ![](https://tva1.sinaimg.cn/large/007S8ZIlly1gfghoy69l3j30ga03g3yq.jpg)
 
-在遇到 ` 】` 之前，我们不断执行压栈操作：
+在遇到 `】` 之前，我们不断执行压栈操作：
 
 ![image](https://user-images.githubusercontent.com/12479470/83752461-2a6ab780-a69b-11ea-90fa-55da20fc5c35.png)
 
@@ -209,7 +209,6 @@ s = "2[abc]3[cd]ef", 返回 "abcabccdcdcdef".
 ![image](https://user-images.githubusercontent.com/12479470/83752775-aa911d00-a69b-11ea-8217-52931ca0f646.png)
 
 而最终的字符串就是 repeatCount 个 repeatStr 拼接的形式。 **并将其看成一个字母压入栈中**。
-
 
 ![](https://tva1.sinaimg.cn/large/007S8ZIlly1gfghxjk5ejj310g0dt41r.jpg)
 
@@ -224,7 +223,7 @@ s = "2[abc]3[cd]ef", 返回 "abcabccdcdcdef".
 JavaScript：
 
 ```js
-   /**
+/**
 
 * @param {string} s
 
@@ -232,32 +231,32 @@ JavaScript：
 
 */
 
-var decodeString = function(s) {
-    var stack = []
-    var factor = ''  // repeat time
-    for(let i = 0; i < s.length; i++) {
-	    var el = s[i]
-	    if(/[0-9]/.test(el)) {
-		    factor += el
-	    } else  if(el === '[') {
-		    if(factor) {
-				stack.push(factor - 0)
-		    }
-		    factor = ''
-	    } else  if(el === ']') {
-		    var char = stack.pop()
-		    var str = ''
-		    while(typeof char !== 'number') {
-			    str = char + str // note: stack -> LIFO -> the string is reversed
-			    char = stack.pop()
-		    }
-		    stack.push(str.repeat(char))
-	    } else {
-		    stack.push(el)
-	    }
-	}
-    return stack.join('')
-};
+var decodeString = function (s) {
+  var stack = []
+  var factor = '' // repeat time
+  for (let i = 0; i < s.length; i++) {
+    var el = s[i]
+    if (/[0-9]/.test(el)) {
+      factor += el
+    } else if (el === '[') {
+      if (factor) {
+        stack.push(factor - 0)
+      }
+      factor = ''
+    } else if (el === ']') {
+      var char = stack.pop()
+      var str = ''
+      while (typeof char !== 'number') {
+        str = char + str // note: stack -> LIFO -> the string is reversed
+        char = stack.pop()
+      }
+      stack.push(str.repeat(char))
+    } else {
+      stack.push(el)
+    }
+  }
+  return stack.join('')
+}
 ```
 
 Python：
@@ -282,13 +281,14 @@ class Solution:
         return "".join(stack)
 ```
 
-***复杂度分析***
+**_复杂度分析_**
+
 - 时间复杂度：$O(N)$，其中 N 为 s 长度。
 - 空间复杂度：$O(N)$，其中 N 为 s 长度。
 
-更多题解可以访问我的LeetCode题解仓库：https://github.com/azl397985856/leetcode  。 目前已经30K star啦。
+更多题解可以访问我的 LeetCode 题解仓库：https://github.com/azl397985856/leetcode 。 目前已经 30K star 啦。
 
-大家也可以关注我的公众号《力扣加加》获取更多更新鲜的LeetCode题解
+大家也可以关注我的公众号《力扣加加》获取更多更新鲜的 LeetCode 题解
 
 ![](https://tva1.sinaimg.cn/large/007S8ZIlly1gfcuzagjalj30p00dwabs.jpg)
 

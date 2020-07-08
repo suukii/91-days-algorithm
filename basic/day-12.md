@@ -33,8 +33,6 @@ cache.get(4);       // 返回  4
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 ```
 
-# 我的回答
-
 ## 思路
 
 假设我们有一个玩具摊位，可以向顾客展示小玩具，但是摊位大小有限，我们不能把所有的玩具都摆在摊位上，所以我们就把大部分的玩具都放在了仓库里。
@@ -186,6 +184,6 @@ class LRUCache {
  */
 ```
 
-# 参考回答
+**官方题解**
 
 https://leetcode-cn.com/problems/lru-cache/solution/shuang-lian-biao-ha-xi-biao-by-zstar01/

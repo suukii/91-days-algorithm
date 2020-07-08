@@ -34,10 +34,8 @@ https://leetcode-cn.com/problems/binary-tree-maximum-path-sum
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 ```
 
-# 我的回答
-
 ## 思路
 
-# 参考回答
+**官方题解**
 
 https://github.com/azl397985856/leetcode/blob/b1e1f5f55bc4ad3004cfafb6415a3e9de35c131a/problems/124.binary-tree-maximum-path-sum.md

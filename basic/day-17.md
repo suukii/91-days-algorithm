@@ -26,8 +26,6 @@ https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 ```
 
-# 我的回答
-
 ## 思路
 
 前序遍历的顺序是 `root->left->right`，也就是说在前序遍历的结果中，第一个节点就是 `root`，它的后边紧跟着左子树和右子树的前序遍历结果。
@@ -61,12 +59,13 @@ buildTree(preorder, inorder):
 
 ## 复杂度分析
 
-- 时间复杂度：O(N)，N 为节点数（另外每次在中序遍历结果中查找根节点的时间复杂度不会算🥺）
+- 时间复杂度：O(N)，N 为节点数（另外每次在中序遍历结果中查找根节点的时间复杂度不会算 🥺）
 - 空间复杂度：O(N)，返回的二叉树空间复杂度是 O(N)，递归中调用栈的空间复杂度是 O(h)，h 为树的高度，所以总的空间复杂度还是 O(N)。
 
 ## 代码
 
 Python Code
+
 ```py
 # Definition for a binary tree node.
 # class TreeNode(object):
@@ -93,6 +92,7 @@ class Solution(object):
 ```
 
 JavaScript Code
+
 ```js
 /**
  * Definition for a binary tree node.
@@ -106,27 +106,26 @@ JavaScript Code
  * @param {number[]} inorder
  * @return {TreeNode}
  */
-var buildTree = function(preorder, inorder) {
+var buildTree = function (preorder, inorder) {
   if (preorder.length === 0) return null
   if (preorder.length === 1) {
-      return new TreeNode(preorder[0])
+    return new TreeNode(preorder[0])
   }
   const root = preorder[0]
   const rootIndex = inorder.indexOf(root)
-  
+
   const leftPreorder = preorder.slice(1, rootIndex + 1)
   const rightPreorder = preorder.slice(rootIndex + 1)
   const leftInorder = inorder.slice(0, rootIndex)
   const rightInorder = inorder.slice(rootIndex + 1)
-  
+
   const rootNode = new TreeNode(root)
   rootNode.left = buildTree(leftPreorder, leftInorder)
   rootNode.right = buildTree(rightPreorder, rightInorder)
   return rootNode
-};
+}
 ```
 
 _Originally posted by @suukii in https://github.com/leetcode-pp/91alg-1/issues/38#issuecomment-645428003_
 
-
-# 参考回答
+**官方题解**

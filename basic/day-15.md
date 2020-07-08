@@ -43,12 +43,9 @@ https://leetcode-cn.com/problems/sum-root-to-leaf-numbers
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 ```
 
-
-# 我的回答
-
 ### 思路
 
-lucifer 的[递归小技巧](https://github.com/leetcode-pp/91alg-1/issues/32#issuecomment-643620727)练习课堂第二弹😉。
+lucifer 的[递归小技巧](https://github.com/leetcode-pp/91alg-1/issues/32#issuecomment-643620727)练习课堂第二弹 😉。
 
 1. 定义函数功能，先不用管其具体实现。
 
@@ -62,7 +59,7 @@ lucifer 的[递归小技巧](https://github.com/leetcode-pp/91alg-1/issues/32#is
 
 再来看看 `F(root, num)` 和 `F(root.left, num)` 以及 `F(root.right, num)` 的关系，它们的关系就很单纯啦。
 
- `F(root, num) = F(root.left, num) + F(root.right, num)`
+`F(root, num) = F(root.left, num) + F(root.right, num)`
 
 3. 补充递归终止条件
 
@@ -71,6 +68,7 @@ lucifer 的[递归小技巧](https://github.com/leetcode-pp/91alg-1/issues/32#is
 ### 代码
 
 Python Code
+
 ```py
 # Definition for a binary tree node.
 # class TreeNode(object):
@@ -93,16 +91,15 @@ class Solution(object):
 
 _Originally posted by @suukii in https://github.com/leetcode-pp/91alg-1/issues/35#issuecomment-644051658_
 
-
-# 参考回答
+**官方题解**
 
 ### DFS
 
-求从根到叶子的路径之和，那我们只需要把每条根到叶子的路径找出来，并求和即可，这里用DFS去解，DFS也是最容易想到的
+求从根到叶子的路径之和，那我们只需要把每条根到叶子的路径找出来，并求和即可，这里用 DFS 去解，DFS 也是最容易想到的
 
 ```js
 function sumNumbers1(root) {
-  let sum = 0;
+  let sum = 0
   function dfs(root, cur) {
     if (!root) {
       return
@@ -122,7 +119,7 @@ function sumNumbers1(root) {
 
 ### BFS
 
-如果说DFS是孤军独入，取敌将首级，那么BFS就是堂堂正正，车马摆开，层层推进。BFS可能没那么优雅，但是掌握模板之后简直就是神器。
+如果说 DFS 是孤军独入，取敌将首级，那么 BFS 就是堂堂正正，车马摆开，层层推进。BFS 可能没那么优雅，但是掌握模板之后简直就是神器。
 
 要求根到的叶子的路径的和，那我们把中间每一层对应的值都求出来，当前层的节点是叶子节点，把对应值相加即可
 
@@ -133,7 +130,7 @@ function sumNumbers(root) {
   if (root) {
     curLevel.push(root)
   }
-  while(curLevel.length) {
+  while (curLevel.length) {
     let nextLevel = []
     for (let i = 0; i < curLevel.length; i++) {
       let cur = curLevel[i]
@@ -157,7 +154,7 @@ function sumNumbers(root) {
 
 ### 先序遍历
 
-从树根开始先序遍历，用一个变量curSum跟踪到当前节点为止的根到节点组成数字，在当前节点更新curSum
+从树根开始先序遍历，用一个变量 curSum 跟踪到当前节点为止的根到节点组成数字，在当前节点更新 curSum
 
 ```js
 function sumNumbers(root) {

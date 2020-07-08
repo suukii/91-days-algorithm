@@ -16,7 +16,7 @@ empty() -- 返回队列是否为空。
 MyQueue queue = new MyQueue();
 
 queue.push(1);
-queue.push(2);  
+queue.push(2);
 queue.peek();  // 返回 1
 queue.pop();   // 返回 1
 queue.empty(); // 返回 false
@@ -31,9 +31,6 @@ queue.empty(); // 返回 false
 链接：https://leetcode-cn.com/problems/implement-queue-using-stacks
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 ```
-
-
-# 我的回答
 
 ## 方法一
 
@@ -52,32 +49,32 @@ queue.empty(); // 返回 false
 
 ```js
 class MyQueue {
-    constructor() {
-        this.stack = []
+  constructor() {
+    this.stack = []
+  }
+
+  push(x) {
+    const helper = []
+    while (!this.empty()) {
+      helper.push(this.stack.pop())
     }
-    
-    push(x) {
-        const helper = []
-        while (!this.empty()) {
-            helper.push(this.stack.pop())
-        }
-        this.stack.push(x)
-        while (helper.length) {
-            this.stack.push(helper.pop())
-        }
+    this.stack.push(x)
+    while (helper.length) {
+      this.stack.push(helper.pop())
     }
-    
-    peek() {
-        return this.stack[this.stack.length - 1]
-    }
-    
-    pop() {
-        return this.stack.pop()
-    }
-    
-    empty() {
-        return this.stack.length === 0
-    }
+  }
+
+  peek() {
+    return this.stack[this.stack.length - 1]
+  }
+
+  pop() {
+    return this.stack.pop()
+  }
+
+  empty() {
+    return this.stack.length === 0
+  }
 }
 ```
 
@@ -110,59 +107,58 @@ class MyQueue {
 
 ```js
 class MyQueue {
-    constructor() {
-        this.stack = new MyStack()
-        this.helper = new MyStack()
+  constructor() {
+    this.stack = new MyStack()
+    this.helper = new MyStack()
+  }
+
+  push(x) {
+    this.stack.push(x)
+  }
+
+  peek() {
+    if (this.helper.empty()) {
+      while (!this.stack.empty()) {
+        this.helper.push(this.stack.pop())
+      }
     }
-    
-    push(x) {
-        this.stack.push(x)
+    return this.helper.peek()
+  }
+
+  pop() {
+    if (this.helper.empty()) {
+      while (!this.stack.empty()) {
+        this.helper.push(this.stack.pop())
+      }
     }
-    
-    peek() {
-        if (this.helper.empty()) {
-            while (!this.stack.empty()) {
-                this.helper.push(this.stack.pop())
-            }
-        }
-        return this.helper.peek()
-    }
-    
-    pop() {
-        if (this.helper.empty()) {
-            while (!this.stack.empty()) {
-                this.helper.push(this.stack.pop())
-            }
-        }
-        return this.helper.pop()
-    }
-    
-    empty() {
-        return this.stack.empty() && this.helper.empty()
-    }
+    return this.helper.pop()
+  }
+
+  empty() {
+    return this.stack.empty() && this.helper.empty()
+  }
 }
 
 class MyStack {
-    constructor() {
-        this.stack = []
-    }
-    push(x) {
-        this.stack.push(x)
-    }
-    pop() {
-        return this.stack.pop()
-    }
-    peek() {
-        return this.stack[this.stack.length - 1]
-    }
-    empty() {
-        return this.stack.length === 0
-    }
+  constructor() {
+    this.stack = []
+  }
+  push(x) {
+    this.stack.push(x)
+  }
+  pop() {
+    return this.stack.pop()
+  }
+  peek() {
+    return this.stack[this.stack.length - 1]
+  }
+  empty() {
+    return this.stack.length === 0
+  }
 }
 ```
 
-
-# 参考回答
+**官方题解**
 
 ## 题目地址
 
@@ -198,8 +194,8 @@ queue.empty(); // 返回 false
 
 ## 思路
 
-题目要求用栈的原生操作来实现队列，也就是说需要用到pop和push
-但是我们知道pop和push都是在栈顶的操作，而队列的enque和deque则是在队列的两端的操作，这么一看一个stack好像不太能完成。
+题目要求用栈的原生操作来实现队列，也就是说需要用到 pop 和 push
+但是我们知道 pop 和 push 都是在栈顶的操作，而队列的 enque 和 deque 则是在队列的两端的操作，这么一看一个 stack 好像不太能完成。
 
 我们来分析一下过程。
 
@@ -207,7 +203,7 @@ queue.empty(); // 返回 false
 
 ![image](https://user-images.githubusercontent.com/12479470/83890684-abe74600-a77e-11ea-88fc-6c35361b5ba4.png)
 
-如果此时按照题目要求 pop 或者 peek的话， 应该是返回 1 才对，而 1 在栈底我们无法直接操作。如果想要返回 1，我们首先要将 2，3，4 分别出栈才行。
+如果此时按照题目要求 pop 或者 peek 的话， 应该是返回 1 才对，而 1 在栈底我们无法直接操作。如果想要返回 1，我们首先要将 2，3，4 分别出栈才行。
 
 ![image](https://user-images.githubusercontent.com/12479470/83892430-39c43080-a781-11ea-8565-d580bb964ad6.png)
 
@@ -216,27 +212,25 @@ queue.empty(); // 返回 false
 ![image](https://user-images.githubusercontent.com/12479470/83895374-32068b00-a785-11ea-9705-888db2967d9f.png)
 （pop 出来不扔掉，而是存起来）
 
-
 整个过程类似这样：
 
 ![image](https://user-images.githubusercontent.com/12479470/83895434-434f9780-a785-11ea-9720-165231272ff1.png)
 
-
-比如，这个时候，我们想push 一个 5，那么大概就是这样的：
+比如，这个时候，我们想 push 一个 5，那么大概就是这样的：
 
 ![](https://tva1.sinaimg.cn/large/007S8ZIlly1gfhu6exrzyj327g0u0gu9.jpg)
 
+然而这一过程，我们也可以发生在 push 阶段。
 
-然而这一过程，我们也可以发生在push 阶段。
-
-总之，就是我们需要在push 或者 pop 的时候，将数组在两个栈之间倒腾一次。
+总之，就是我们需要在 push 或者 pop 的时候，将数组在两个栈之间倒腾一次。
 
 ## 关键点
 
-- 在push的时候利用辅助栈(双栈)
+- 在 push 的时候利用辅助栈(双栈)
+
 ## 代码
 
-* 语言支持：JS, Python, Java
+- 语言支持：JS, Python, Java
 
 Javascript Code:
 
@@ -249,52 +243,52 @@ Javascript Code:
 /**
  * Initialize your data structure here.
  */
-var MyQueue = function() {
+var MyQueue = function () {
   // tag: queue stack array
-  this.stack = [];
-  this.helperStack = [];
-};
+  this.stack = []
+  this.helperStack = []
+}
 
 /**
  * Push element x to the back of queue.
  * @param {number} x
  * @return {void}
  */
-MyQueue.prototype.push = function(x) {
-  let cur = null;
+MyQueue.prototype.push = function (x) {
+  let cur = null
   while ((cur = this.stack.pop())) {
-    this.helperStack.push(cur);
+    this.helperStack.push(cur)
   }
-  this.helperStack.push(x);
+  this.helperStack.push(x)
 
   while ((cur = this.helperStack.pop())) {
-    this.stack.push(cur);
+    this.stack.push(cur)
   }
-};
+}
 
 /**
  * Removes the element from in front of queue and returns that element.
  * @return {number}
  */
-MyQueue.prototype.pop = function() {
-  return this.stack.pop();
-};
+MyQueue.prototype.pop = function () {
+  return this.stack.pop()
+}
 
 /**
  * Get the front element.
  * @return {number}
  */
-MyQueue.prototype.peek = function() {
-  return this.stack[this.stack.length - 1];
-};
+MyQueue.prototype.peek = function () {
+  return this.stack[this.stack.length - 1]
+}
 
 /**
  * Returns whether the queue is empty.
  * @return {boolean}
  */
-MyQueue.prototype.empty = function() {
-  return this.stack.length === 0;
-};
+MyQueue.prototype.empty = function () {
+  return this.stack.length === 0
+}
 
 /**
  * Your MyQueue object will be instantiated and called as such:
@@ -366,7 +360,7 @@ class MyQueue {
     public MyQueue() {
 
     }
-    
+
     /** Push element x to the back of queue. */
     public void push(int x) {
         while (!popStack.isEmpty()) {
@@ -374,7 +368,7 @@ class MyQueue {
         }
         pushStack.push(x);
     }
-    
+
     /** Removes the element from in front of queue and returns that element. */
     public int pop() {
         while (!pushStack.isEmpty()) {
@@ -382,7 +376,7 @@ class MyQueue {
         }
         return popStack.pop();
     }
-    
+
     /** Get the front element. */
     public int peek() {
         while (!pushStack.isEmpty()) {
@@ -390,7 +384,7 @@ class MyQueue {
         }
         return popStack.peek();
     }
-    
+
     /** Returns whether the queue is empty. */
     public boolean empty() {
         return pushStack.isEmpty() && popStack.isEmpty();
@@ -405,20 +399,21 @@ class MyQueue {
  * int param_3 = obj.peek();
  * boolean param_4 = obj.empty();
  */
-````
+```
 
-***复杂度分析***
+**_复杂度分析_**
+
 - 时间复杂度：$O(N)$，其中 N 为 栈中元素个数，因为每次我们都要倒腾一次。
 - 空间复杂度：$O(N)$，其中 N 为 栈中元素个数，多使用了一个辅助栈，这个辅助栈的大小和原栈的大小一样。
 
-
 ## 扩展
+
 - 类似的题目有用队列实现栈，思路是完全一样的，大家有兴趣可以试一下。
 - 栈混洗也是借助另外一个栈来完成的，从这点来看，两者有相似之处。
- 
+
 ## 延伸阅读
 
-实际上现实中也有使用两个栈来实现队列的情况，那么为什么我们要用两个stack来实现一个queue？
+实际上现实中也有使用两个栈来实现队列的情况，那么为什么我们要用两个 stack 来实现一个 queue？
 
 其实使用两个栈来替代一个队列的实现是为了在多进程中分开对同一个队列对读写操作。一个栈是用来读的，另一个是用来写的。当且仅当读栈满时或者写栈为空时，读写操作才会发生冲突。
 
@@ -428,10 +423,9 @@ class MyQueue {
 
 - [further reading](https://stackoverflow.com/questions/2050120/why-use-two-stacks-to-make-a-queue/2050402#2050402)
 
+更多题解可以访问我的 LeetCode 题解仓库：https://github.com/azl397985856/leetcode 。 目前已经 30K star 啦。
 
-更多题解可以访问我的LeetCode题解仓库：https://github.com/azl397985856/leetcode  。 目前已经30K star啦。
-
-大家也可以关注我的公众号《力扣加加》获取更多更新鲜的LeetCode题解
+大家也可以关注我的公众号《力扣加加》获取更多更新鲜的 LeetCode 题解
 
 ![](https://tva1.sinaimg.cn/large/007S8ZIlly1gfcuzagjalj30p00dwabs.jpg)
 

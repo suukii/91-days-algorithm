@@ -9,7 +9,7 @@ https://leetcode-cn.com/problems/two-sum
 
 你可以假设每种输入只会对应一个答案。但是，数组中同一个元素不能使用两遍。
 
- 
+
 
 示例:
 
@@ -22,8 +22,6 @@ https://leetcode-cn.com/problems/two-sum
 链接：https://leetcode-cn.com/problems/two-sum
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 ```
-
-# 我的回答
 
 ### 思路
 
@@ -54,15 +52,15 @@ class Solution(object):
 
 _Originally posted by @suukii in https://github.com/leetcode-pp/91alg-1/issues/40#issuecomment-646563166_
 
-# 参考回答
+**官方题解**
 
 # 1. 两数之和
- 
- ## 前置知识
- 
- - 哈希表
- 
- ## 思路
+
+## 前置知识
+
+- 哈希表
+
+## 思路
 
 读完这个题，咱们反手先来个暴力题解。
 
@@ -73,24 +71,24 @@ public int[] twoSum(int[] nums, int target) {
     if (nums == null || nums.length == 0)
         return new int[]{};
 
-    
+
     for (int i = 0; i < nums.length - 1; i++)
         for (int j = i + 1; j < nums.length; j++)
             if (nums[i] + nums[j] == target)
                 return new int[]{i, j};
-    
+
     return new int[]{};
 }
 ```
 
-***复杂度分析***
+**_复杂度分析_**
+
 - 时间复杂度：$O(N ^ 2)$
 - 空间复杂度：$O(1)$
 
 这个时间复杂度达到平方了，有啥办法优化呢，其实透过这个专题，大家已经有思路了吧，没错，就是用哈希表。
 
-遍历数组的过程中不断的将元素存入哈希表，如果出现了符合要求的答案，直接返回就好啦。因为题目说了，只有一个答案哦！通过这第一道题大家应该能感受到hash表的神奇了。
-
+遍历数组的过程中不断的将元素存入哈希表，如果出现了符合要求的答案，直接返回就好啦。因为题目说了，只有一个答案哦！通过这第一道题大家应该能感受到 hash 表的神奇了。
 
 ## 代码
 
@@ -98,26 +96,27 @@ public int[] twoSum(int[] nums, int target) {
 
 ```java
 public int[] twoSum(int[] nums, int target) {
-        
+
     // 例行防御编程，养成习惯
     if (nums == null || nums.length == 0)
         return new int[]{};
-		
+
     Map<Integer, Integer> map = new HashMap<>();
-    
+
     for (int i = 0; i < nums.length; i++) {
-        
+
         if (map.containsKey(nums[i]))
             return new int[]{map.get(nums[i]), i};
-        
+
         map.put(target - nums[i], i);
     }
-		    
+
     return new int[]{};
 }
 ```
 
-***复杂度分析***
+**_复杂度分析_**
+
 - 时间复杂度：$O(N)$
 - 空间复杂度：$O(N)$
 
@@ -128,8 +127,10 @@ public int[] twoSum(int[] nums, int target) {
 3 4
 2 1 2
 ```
-下面给个Java样例
-``` java
+
+下面给个 Java 样例
+
+```java
 Scanner scan = new Scanner(System.in);
 String[] firstLine = scan.nextLine().trim().split(" ");
 int n = Integer.parseInt(firstLine[0]), target = Integer.parseInt(firstLine[1]);

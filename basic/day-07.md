@@ -17,24 +17,23 @@
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 ```
 
-
-# 我的回答
-
 ## 循环
 
 ### 思路
 
 1. 初始化一个 `prev` 指针为 null，一个 `cur` 指针为 head；
 2. 开始遍历链表，在每一次循环中：
-  - 先保存 `cur.next`；
-  - 把 `cur.next` 倒转方向指向 `prev`；
-  - `prev` 和 `cur` 都分别往前一步；
+
+- 先保存 `cur.next`；
+- 把 `cur.next` 倒转方向指向 `prev`；
+- `prev` 和 `cur` 都分别往前一步；
 
 ### 图解
 
 ![reverse-a-linked-list-loop](../assets/reverse-a-linked-list-loop.png)
 
 ### 代码
+
 ```py
 # Definition for singly-linked list.
 # class ListNode(object):
@@ -83,7 +82,6 @@ class Solution(object):
 
 ![reverse-a-linked-list-recursive](../assets/reverse-a-linked-list-recursive.png)
 
-
 ### 代码
 
 ```py
@@ -108,7 +106,6 @@ class Solution(object):
 
 _Originally posted by @suukii in https://github.com/leetcode-pp/91alg-1/issues/24#issuecomment-640582158_
 
-
-# 参考回答
+**官方题解**
 
 https://github.com/azl397985856/leetcode/blob/master/problems/206.reverse-linked-list.md

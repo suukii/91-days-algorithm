@@ -25,8 +25,6 @@
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 ```
 
-## 我的回答
-
 https://github.com/leetcode-pp/91alg-1/issues/1#issuecomment-636585991
 
 ### 思路
@@ -34,29 +32,30 @@ https://github.com/leetcode-pp/91alg-1/issues/1#issuecomment-636585991
 数学计算，用 `carry` 来表示进位。如果可以修改原数组的话，那 `carry` 等于 0 的时候就可以停止遍历了，如果需要返回新数组，还需要遍历剩下的元素复制到新数组
 
 ### 代码
+
 ```js
 /**
  * @param {number[]} digits
  * @return {number[]}
  */
-var plusOne = function(digits) {
-    let carry = 1,
-        sum = 0,
-        index = digits.length - 1
-    
-    while (carry > 0 && index > -1) {
-        sum = digits[index] + 1
-        carry = Math.floor(sum / 10)
-        digits[index] = sum % 10
-        index--
-    }
-    carry && digits.unshift(carry)
-    
-    return digits
-};
+var plusOne = function (digits) {
+  let carry = 1,
+    sum = 0,
+    index = digits.length - 1
+
+  while (carry > 0 && index > -1) {
+    sum = digits[index] + 1
+    carry = Math.floor(sum / 10)
+    digits[index] = sum % 10
+    index--
+  }
+  carry && digits.unshift(carry)
+
+  return digits
+}
 ```
 
-# 参考回答
+**官方题解**
 
 ## 前置知识
 
@@ -101,9 +100,9 @@ for(int i = n - 1; i > - 1; i --) {
 =  1000
 ```
 
-第一种情况是最简单的，我们只需将数组的最后一位进行+1操作就好了
+第一种情况是最简单的，我们只需将数组的最后一位进行+1 操作就好了
 
-第二种情况稍微多了一个步骤：我们需要把个位的carry向前进一位并在计算是否有更多的进位
+第二种情况稍微多了一个步骤：我们需要把个位的 carry 向前进一位并在计算是否有更多的进位
 
 第三种其实和第二种是一样的操作，只是由于我们知道数组的长度是固定的，所以当我们遇到情况三的时候需要扩大数组的长度。我们只需要在结果数组前多加上一位就好了。
 
@@ -128,8 +127,9 @@ return arr
 // 当我们完成以后，如果数组第一位时的sum大于0，那么我们就要给数组的首位增添一个1
 result = new array with size of arr.length + 1
 result[0] = 1
-result[1] ...... result[result.length - 1]  = 0 // 
+result[1] ...... result[result.length - 1]  = 0 //
 ```
+
 ## 代码
 
 ```js
@@ -137,20 +137,20 @@ result[1] ...... result[result.length - 1]  = 0 //
  * @param {number[]} digits
  * @return {number[]}
  */
-var plusOne = function(digits) {
-    var carry = 1 // 我们将初始的 +1 也当做是一个在个位的 carry
-    for(var i = digits.length - 1; i > -1; i-- ) {
-        if(carry) {
-            var sum = carry + digits[i]
-            digits[i] = sum % 10
-            carry = sum > 9 ? 1 : 0 // 每次计算都会更新下一步需要用到的 carry
-        }
+var plusOne = function (digits) {
+  var carry = 1 // 我们将初始的 +1 也当做是一个在个位的 carry
+  for (var i = digits.length - 1; i > -1; i--) {
+    if (carry) {
+      var sum = carry + digits[i]
+      digits[i] = sum % 10
+      carry = sum > 9 ? 1 : 0 // 每次计算都会更新下一步需要用到的 carry
     }
-    if(carry === 1) {
-        digits.unshift(1) // 如果carry最后停留在1，说明有需要额外的一个长度 所以我们就在首位增添一个 1
-    }
-    return digits
-};
+  }
+  if (carry === 1) {
+    digits.unshift(1) // 如果carry最后停留在1，说明有需要额外的一个长度 所以我们就在首位增添一个 1
+  }
+  return digits
+}
 ```
 
 _Originally posted by @azl397985856 in https://github.com/leetcode-pp/91alg-1/issues/1#issuecomment-636883697_

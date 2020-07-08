@@ -13,7 +13,7 @@ https://leetcode-cn.com/problems/container-with-most-water
 
 图中垂直线代表输入数组 [1,8,6,2,5,4,8,3,7]。在此情况下，容器能够容纳水（表示为蓝色部分）的最大值为 49。
 
- 
+
 
 示例：
 
@@ -25,11 +25,9 @@ https://leetcode-cn.com/problems/container-with-most-water
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 ```
 
-# 我的回答
-
 ## 思路
 
-# 参考回答
+**官方题解**
 
 ## 题目地址
 
@@ -41,19 +39,14 @@ https://leetcode-cn.com/problems/container-with-most-water/description/
 
 说明：你不能倾斜容器，且 n 的值至少为 2。
 
- 
 ![](https://tva1.sinaimg.cn/large/007S8ZIlly1gg4sko7j0yj30m90anwf1.jpg)
 
-
 图中垂直线代表输入数组 [1,8,6,2,5,4,8,3,7]。在此情况下，容器能够容纳水（表示为蓝色部分）的最大值为 49。
-
- 
 
 示例：
 
 输入：[1,8,6,2,5,4,8,3,7]
 输出：49
-
 
 ## 前置知识
 
@@ -63,23 +56,22 @@ https://leetcode-cn.com/problems/container-with-most-water/description/
 
 题目中说`找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。` ，因此符合直觉的解法就是固定两个端点，计算可以承载的水量， 然后不断更新最大值，最后返回最大值即可。这种算法，需要两层循环，时间复杂度是 $O(n^2)$。
 
-
 代码（JS）:
 
 ```js
-let max = 0;
+let max = 0
 for (let i = 0; i < height.length; i++) {
   for (let j = i + 1; j < height.length; j++) {
-    const currentArea = Math.abs(i - j) * Math.min(height[i], height[j]);
+    const currentArea = Math.abs(i - j) * Math.min(height[i], height[j])
     if (currentArea > max) {
-      max = currentArea;
+      max = currentArea
     }
   }
 }
-return max;
+return max
 ```
 
-虽然解法效率不高，但是可以通过（JS可以通过，Python 不可以，其他语言没有尝试）。那么有没有更优的解法呢？
+虽然解法效率不高，但是可以通过（JS 可以通过，Python 不可以，其他语言没有尝试）。那么有没有更优的解法呢？
 
 我们来换个角度来思考这个问题，上述的解法是通过两两组合，这无疑是完备的。我们换个角度思考，是否可以先计算长度为 n 的面积，然后计算长度为 n-1 的面积，... 计算长度为 1 的面积。 这样去不断更新最大值呢？很显然这种解法也是完备的，但是似乎时间复杂度还是 $O(n ^ 2)$, 不要着急。
 
@@ -110,29 +102,27 @@ JavaScript Code:
  * @return {number}
  */
 var maxArea = function (height) {
-  if (!height || height.length <= 1) return 0;
+  if (!height || height.length <= 1) return 0
 
-  let leftPos = 0;
-  let rightPos = height.length - 1;
-  let max = 0;
+  let leftPos = 0
+  let rightPos = height.length - 1
+  let max = 0
   while (leftPos < rightPos) {
-    const currentArea =
-      Math.abs(leftPos - rightPos) *
-      Math.min(height[leftPos], height[rightPos]);
+    const currentArea = Math.abs(leftPos - rightPos) * Math.min(height[leftPos], height[rightPos])
     if (currentArea > max) {
-      max = currentArea;
+      max = currentArea
     }
     // 更新小的
     if (height[leftPos] < height[rightPos]) {
-      leftPos++;
+      leftPos++
     } else {
       // 如果相等就随便了
-      rightPos--;
+      rightPos--
     }
   }
 
-  return max;
-};
+  return max
+}
 ```
 
 C++ Code:
@@ -174,10 +164,9 @@ class Solution:
 - 时间复杂度：由于左右指针移动的次数加起来正好是 n， 因此时间复杂度为 $O(N)$。
 - 空间复杂度：$O(1)$。
 
-更多题解可以访问我的LeetCode题解仓库：https://github.com/azl397985856/leetcode  。 目前已经30K star啦。
+更多题解可以访问我的 LeetCode 题解仓库：https://github.com/azl397985856/leetcode 。 目前已经 30K star 啦。
 
 关注公众号力扣加加，努力用清晰直白的语言还原解题思路，并且有大量图解，手把手教你识别套路，高效刷题。
-
 
 ![](https://tva1.sinaimg.cn/large/007S8ZIlly1gfcuzagjalj30p00dwabs.jpg)
 

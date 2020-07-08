@@ -8,9 +8,6 @@
 https://leetcode-cn.com/problems/intersection-of-two-linked-lists
 ```
 
-
-# 我的回答
-
 ## 思路
 
 ![intersection_of_linked_lists](../assets/intersection_of_linked_lists.png)
@@ -40,21 +37,21 @@ https://leetcode-cn.com/problems/intersection-of-two-linked-lists
  * @param {ListNode} headB
  * @return {ListNode}
  */
-var getIntersectionNode = function(headA, headB) {
-    if (!headA || !headB) return null
-    
-    let pA = headA, pB = headB
-    while (pA !== pB) {
-        pA = pA === null ? headB : pA.next
-        pB = pB === null ? headA : pB.next
-    }
-    return pA
-};
+var getIntersectionNode = function (headA, headB) {
+  if (!headA || !headB) return null
+
+  let pA = headA,
+    pB = headB
+  while (pA !== pB) {
+    pA = pA === null ? headB : pA.next
+    pB = pB === null ? headA : pB.next
+  }
+  return pA
+}
 ```
 
 _Originally posted by @suukii in https://github.com/leetcode-pp/91alg-1/issues/28#issuecomment-641733401_
 
-
-# 参考回答
+**官方题解**
 
 https://leetcode-cn.com/problems/intersection-of-two-linked-lists/solution/shuang-zhi-zhen-ha-xi-by-zstar01/

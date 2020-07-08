@@ -19,10 +19,7 @@ https://leetcode-cn.com/problems/linked-list-cycle-ii/
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 ```
 
-
-# 我的回答
-
-## 方法1：使用额外空间来标记已遍历过的节点
+## 方法 1：使用额外空间来标记已遍历过的节点
 
 #### 思路
 
@@ -39,6 +36,7 @@ https://leetcode-cn.com/problems/linked-list-cycle-ii/
 #### 代码
 
 JavaScript Code
+
 ```js
 /**
  * Definition for singly-linked list.
@@ -53,19 +51,19 @@ JavaScript Code
  * @return {ListNode}
  */
 var detectCycle = function (head) {
-    const map = new Map()
-    while (head) {
-        map.set(head, head)
-        head = head.next
-        if (map.has(head)) {
-            return head
-        }
+  const map = new Map()
+  while (head) {
+    map.set(head, head)
+    head = head.next
+    if (map.has(head)) {
+      return head
     }
-    return null
-};
+  }
+  return null
+}
 ```
 
-## 方法2
+## 方法 2
 
 #### 思路
 
@@ -79,12 +77,13 @@ var detectCycle = function (head) {
 
 #### 复杂度分析
 
-- 时间复杂度：O(n*p), n 是环外链表的长度，p 是环的长度。
+- 时间复杂度：O(n\*p), n 是环外链表的长度，p 是环的长度。
 - 空间复杂度：O(1)
 
 #### 代码
 
 Python Code
+
 ```py
 # Definition for singly-linked list.
 # class ListNode(object):
@@ -106,7 +105,7 @@ class Solution(object):
             if slow == fast:
                 return self.findConnection(head, slow)
         return None
-    
+
     def findConnection(self, head, loopNode):
         p1 = head
         while True:
@@ -118,7 +117,7 @@ class Solution(object):
             p1 = p1.next
 ```
 
-## 方法3
+## 方法 3
 
 #### 思路
 
@@ -159,10 +158,10 @@ class Solution(object):
 - 时间复杂度：O(n)
 - 空间复杂度：O(1)
 
-
 #### 代码
 
 JavaScript Code
+
 ```js
 /**
  * Definition for singly-linked list.
@@ -177,24 +176,25 @@ JavaScript Code
  * @return {ListNode}
  */
 var detectCycle = function (head) {
-    let fast = head, slow = head
-    while (fast && fast.next) {
-        fast = fast.next.next
-        slow = slow.next
+  let fast = head,
+    slow = head
+  while (fast && fast.next) {
+    fast = fast.next.next
+    slow = slow.next
 
-        if (fast === slow) {
-            slow = head
-            while (slow !== fast) {
-                slow = slow.next
-                fast = fast.next
-            }
-            return slow
-        }
+    if (fast === slow) {
+      slow = head
+      while (slow !== fast) {
+        slow = slow.next
+        fast = fast.next
+      }
+      return slow
     }
-    return null
-};
+  }
+  return null
+}
 ```
 
-# 参考回答
+**官方题解**
 
 https://www.bilibili.com/video/BV11f4y127Se?pop_share=1

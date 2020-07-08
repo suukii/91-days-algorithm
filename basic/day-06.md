@@ -37,8 +37,6 @@ randomSet.insert(2);
 randomSet.getRandom();
 ```
 
-# 我的回答
-
 ## 思路
 
 首先得考虑的是，用数组还是用链表来存，先来复习一下数组和链表常见操作的时间复杂度吧。
@@ -85,7 +83,6 @@ randomSet.getRandom();
 
 ![remove-last](https://user-images.githubusercontent.com/30331289/83971346-863c7700-a90d-11ea-8540-efc31a712086.png)
 
-
 2. 删除非末尾元素，因为删除位置之后的每个元素都要向前移动一步，所以时间复杂度是 O(N)
 
 ![remove-o(n)](https://user-images.githubusercontent.com/30331289/83949462-80d02580-a856-11ea-9260-77be04319d0d.png)
@@ -116,59 +113,56 @@ randomSet.getRandom();
 
 ```js
 class RandomizedSet {
-    constructor() {
-        // store the actual values
-        this.array = []
-        // store the value-> index mapping
-        this.map = {}
+  constructor() {
+    // store the actual values
+    this.array = []
+    // store the value-> index mapping
+    this.map = {}
+  }
+
+  insert(val) {
+    if (val in this.map) return false
+    this.array.push(val)
+    this.map[val] = this._size() - 1
+    return true
+  }
+
+  remove(val) {
+    if (!(val in this.map)) return false
+
+    const index = this.map[val]
+    const lastIndex = this._size() - 1
+    if (index < lastIndex) {
+      this._swap(index, lastIndex)
+      this.map[this.array[index]] = index
     }
-    
-    insert(val) {
-        if (val in this.map) return false
-        this.array.push(val)
-        this.map[val] = this._size() - 1
-        return true
-    }
-    
-    remove(val) {
-        if (!(val in this.map)) return false
-        
-        const index = this.map[val]
-        const lastIndex = this._size() - 1
-        if (index < lastIndex) {
-            this._swap(index, lastIndex)
-            this.map[this.array[index]] = index
-        }
-        this.array.pop()
-        delete this.map[val]
-        return true
-    }
-    
-    
-    
-    getRandom() {
-        const size = this._size()
-        if (size === 0) return false
-        let randomIndex = Math.floor(Math.random() * size)
-        return this.array[randomIndex]
-    }
-    
-    _size() {
-        return this.array.length
-    }
-    
-    _swap(a, b) {
-        const temp = this.array[b]
-        this.array[b] = this.array[a]
-        this.array[a] = temp
-    }
+    this.array.pop()
+    delete this.map[val]
+    return true
+  }
+
+  getRandom() {
+    const size = this._size()
+    if (size === 0) return false
+    let randomIndex = Math.floor(Math.random() * size)
+    return this.array[randomIndex]
+  }
+
+  _size() {
+    return this.array.length
+  }
+
+  _swap(a, b) {
+    const temp = this.array[b]
+    this.array[b] = this.array[a]
+    this.array[a] = temp
+  }
 }
 ```
 
 _Originally posted by @suukii in https://github.com/leetcode-pp/91alg-1/issues/23#issuecomment-640231502_
 
-
-# 参考回答
+**官方题解**
 
 ## 题目地址（380. 常数时间插入、删除和获取随机元素）
 
@@ -218,7 +212,7 @@ https://leetcode-cn.com/problems/insert-delete-getrandom-o1/description/
 
 ![](https://tva1.sinaimg.cn/large/007S8ZIlly1gfjm9sg9olj30pg11wwiu.jpg)
 
-而当要插入一个新的5的时候， 我们只需要分别向数组末尾和哈希表中插入这条记录即可。
+而当要插入一个新的 5 的时候， 我们只需要分别向数组末尾和哈希表中插入这条记录即可。
 
 ![](https://tva1.sinaimg.cn/large/007S8ZIlly1gfjmanhni6j30ka126tdm.jpg)
 
@@ -294,13 +288,14 @@ class RandomizedSet:
 # param_3 = obj.getRandom()
 ```
 
-***复杂度分析***
+**_复杂度分析_**
+
 - 时间复杂度：$O(1)$
 - 空间复杂度：$O(1)$
 
-更多题解可以访问我的LeetCode题解仓库：https://github.com/azl397985856/leetcode  。 目前已经30K star啦。
+更多题解可以访问我的 LeetCode 题解仓库：https://github.com/azl397985856/leetcode 。 目前已经 30K star 啦。
 
-大家也可以关注我的公众号《力扣加加》获取更多更新鲜的LeetCode题解
+大家也可以关注我的公众号《力扣加加》获取更多更新鲜的 LeetCode 题解
 
 ![](https://tva1.sinaimg.cn/large/007S8ZIlly1gfcuzagjalj30p00dwabs.jpg)
 

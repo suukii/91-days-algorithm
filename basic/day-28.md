@@ -24,8 +24,6 @@ https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 ```
 
-# 我的回答
-
 ### 思路
 
 - 使用 `left` 和 `right` 两个指针分别从数组的两端开始遍历数组；因为数组是升序排序的，所以：
@@ -41,27 +39,29 @@ https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted
 ### 代码
 
 JavaScript Code
+
 ```js
 /**
  * @param {number[]} numbers
  * @param {number} target
  * @return {number[]}
  */
-var twoSum = function(numbers, target) {
-    let left = 0,
-        right = numbers.length - 1,
-        sum = 0
-    while (left < right) {
-        sum = numbers[left] + numbers[right]
-        if (sum === target) {
-            return [left + 1, right + 1]
-        }
-        sum < target ? left++ : right--
+var twoSum = function (numbers, target) {
+  let left = 0,
+    right = numbers.length - 1,
+    sum = 0
+  while (left < right) {
+    sum = numbers[left] + numbers[right]
+    if (sum === target) {
+      return [left + 1, right + 1]
     }
-};
+    sum < target ? left++ : right--
+  }
+}
 ```
 
 Python Code
+
 ```py
 class Solution(object):
     def twoSum(self, numbers, target):
@@ -80,6 +80,6 @@ class Solution(object):
 
 _Originally posted by @suukii in https://github.com/leetcode-pp/91alg-1/issues/56#issuecomment-650560949_
 
-# 参考回答
+**官方题解**
 
 https://github.com/azl397985856/leetcode/blob/master/problems/167.two-sum-ii-input-array-is-sorted.md

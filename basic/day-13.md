@@ -26,10 +26,7 @@ https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 ```
 
-
-# 我的回答
-
-## 方法1：递归
+## 方法 1：递归
 
 ### 思路
 
@@ -45,9 +42,9 @@ https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/
 
 2. 如果当前节点有左子树，递归计算左子树的高度 `leftHeight = maxDepth(root.left)`
 
-2. 如果当前节点有右子树，递归计算右子树的高度 `rightHeight = maxDepth(root.right)`
+3. 如果当前节点有右子树，递归计算右子树的高度 `rightHeight = maxDepth(root.right)`
 
-3. 取左右子树最大高度的最大值，加上当前节点返回 `max(leftHeight, rightHeight) + 1`
+4. 取左右子树最大高度的最大值，加上当前节点返回 `max(leftHeight, rightHeight) + 1`
 
 ### 复杂度分析
 
@@ -57,6 +54,7 @@ https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/
 ### 代码
 
 JavaScript Code
+
 ```js
 /**
  * Definition for a binary tree node.
@@ -69,13 +67,14 @@ JavaScript Code
  * @param {TreeNode} root
  * @return {number}
  */
-var maxDepth = function(root) {
-    if (!root) return 0
-    return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1
-};
+var maxDepth = function (root) {
+  if (!root) return 0
+  return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1
+}
 ```
 
 Python Code
+
 ```py
 # Definition for a binary tree node.
 # class TreeNode(object):
@@ -94,7 +93,7 @@ class Solution(object):
         return max(self.maxDepth(root.left), self.maxDepth(root.right)) + 1
 ```
 
-## 方法2：循环+栈
+## 方法 2：循环+栈
 
 ### 思路
 
@@ -133,6 +132,7 @@ class Solution(object):
 ### 代码
 
 JavaScript Code
+
 ```js
 /**
  * Definition for a binary tree node.
@@ -145,27 +145,28 @@ JavaScript Code
  * @param {TreeNode} root
  * @return {number}
  */
-var maxDepth = function(root) {
-    const queue = []
-    root && queue.push(root)
-    let height = 0
+var maxDepth = function (root) {
+  const queue = []
+  root && queue.push(root)
+  let height = 0
 
-    while (true) {
-        let nodeCount = queue.length
-        if (nodeCount === 0) return height
-        height++
+  while (true) {
+    let nodeCount = queue.length
+    if (nodeCount === 0) return height
+    height++
 
-        while (nodeCount > 0) {
-            const node = queue.shift()
-            node.left && queue.push(node.left)
-            node.right && queue.push(node.right)
-            nodeCount--
-        } 
+    while (nodeCount > 0) {
+      const node = queue.shift()
+      node.left && queue.push(node.left)
+      node.right && queue.push(node.right)
+      nodeCount--
     }
-};
+  }
+}
 ```
 
 Python Code
+
 ```py
 # Definition for a binary tree node.
 # class TreeNode(object):
@@ -198,8 +199,7 @@ class Solution(object):
 
 _Originally posted by @suukii in https://github.com/leetcode-pp/91alg-1/issues/32#issuecomment-643574983_
 
-
-# 参考回答
+**官方题解**
 
 ## 前置知识
 
@@ -213,7 +213,6 @@ _Originally posted by @suukii in https://github.com/leetcode-pp/91alg-1/issues/3
 
 这里给大家介绍一种写递归的小方法 **产品经理法**。
 
-
 1. 定义函数功能，不用管其具体实现。
 
 从高层次的角度来定义函数功能。 你可以把自己想象成**产品经理**。只需要知道要做什么事情就行了，而怎么实现我不管，那是码农的事情。
@@ -222,14 +221,13 @@ _Originally posted by @suukii in https://github.com/leetcode-pp/91alg-1/issues/3
 
 2. 确定大问题和小问题的关系。
 
-要解决 f(root) 这个问题。可以先解决f(root.right) 和  f(root.left)，当然我们仍然不关心 f 怎么实现。
+要解决 f(root) 这个问题。可以先解决 f(root.right) 和 f(root.left)，当然我们仍然不关心 f 怎么实现。
 
-f(root) 与 f(root.right) 和  f(root.left) 有什么关系呢？ 不难看出 `1 + max(f(root.right), f(root.left))`。
+f(root) 与 f(root.right) 和 f(root.left) 有什么关系呢？ 不难看出 `1 + max(f(root.right), f(root.left))`。
 
-到这里我们还不知道 f 怎么实现的，但是我们已经完成了产品经理的需求。 
+到这里我们还不知道 f 怎么实现的，但是我们已经完成了产品经理的需求。
 
 > 实际上我们知道了，我们怎么知道的？
-
 
 3. 补充递归终止条件。
 
@@ -237,22 +235,22 @@ f(root) 与 f(root.right) 和  f(root.left) 有什么关系呢？ 不难看出 `
 
 ## 代码（Python）
 
-
 ```py
 # Definition for a binary tree node.
 class Solution:
     def maxDepth(self, root: TreeNode) -> int:
         if not root: return 0
-        return 1 + max(self.maxDepth(root.left), self.maxDepth(root.right)) 
+        return 1 + max(self.maxDepth(root.left), self.maxDepth(root.right))
 ```
 
-***复杂度分析***
+**_复杂度分析_**
+
 - 时间复杂度：$O(N)$，其中 N 为节点数。
 - 空间复杂度：$O(h)$，其中 $h$ 为树的深度，最坏的情况 $h$ 等于 $N$，其中 N 为节点数，此时树退化到链表。
 
-更多题解可以访问我的LeetCode题解仓库：https://github.com/azl397985856/leetcode  。 目前已经30K star啦。
+更多题解可以访问我的 LeetCode 题解仓库：https://github.com/azl397985856/leetcode 。 目前已经 30K star 啦。
 
-大家也可以关注我的公众号《力扣加加》获取更多更新鲜的LeetCode题解
+大家也可以关注我的公众号《力扣加加》获取更多更新鲜的 LeetCode 题解
 
 ![](https://tva1.sinaimg.cn/large/007S8ZIlly1gfcuzagjalj30p00dwabs.jpg)
 

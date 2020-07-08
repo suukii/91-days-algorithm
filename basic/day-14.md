@@ -42,10 +42,7 @@ https://leetcode-cn.com/problems/same-tree/
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 ```
 
-
-# 我的回答
-
-## 方法1：递归
+## 方法 1：递归
 
 #### 思路
 
@@ -89,6 +86,7 @@ https://leetcode-cn.com/problems/same-tree/
 #### 代码
 
 JavaScript Code
+
 ```js
 /**
  * Definition for a binary tree node.
@@ -102,17 +100,17 @@ JavaScript Code
  * @param {TreeNode} q
  * @return {boolean}
  */
-var isSameTree = function(p, q) {
-    if (p && q) {
-        if (p.val === q.val) return isSameTree(p.left, q.left) && isSameTree(p.right, q.right)
-        else return false
-    }
-    else if (!p && !q) return true
+var isSameTree = function (p, q) {
+  if (p && q) {
+    if (p.val === q.val) return isSameTree(p.left, q.left) && isSameTree(p.right, q.right)
     else return false
-};
+  } else if (!p && !q) return true
+  else return false
+}
 ```
 
 Python Code
+
 ```py
 # Definition for a binary tree node.
 # class TreeNode(object):
@@ -137,8 +135,7 @@ class Solution(object):
         else: return False
 ```
 
-
-## 方法2：比较遍历结果
+## 方法 2：比较遍历结果
 
 #### 思路
 
@@ -152,6 +149,7 @@ class Solution(object):
 #### 代码
 
 JavaScript Code
+
 ```js
 /**
  * Definition for a binary tree node.
@@ -165,30 +163,29 @@ JavaScript Code
  * @param {TreeNode} q
  * @return {boolean}
  */
-var isSameTree = function(p, q) {
-    const sp = [],
+var isSameTree = function (p, q) {
+  const sp = [],
     sq = []
-    p && sp.push(p)
-    q && sq.push(q)
+  p && sp.push(p)
+  q && sq.push(q)
 
-    while (sp.length || sq.length) {
-        p = sp.pop()
-        q = sq.pop()
+  while (sp.length || sq.length) {
+    p = sp.pop()
+    q = sq.pop()
 
-        if (p && q) {
-            if (p.val !== q.val) return false
-            sp.push(p.left, p.right)
-            sq.push(q.left, q.right)
-        }
-        else if (p !== q) {
-            return false
-        }
+    if (p && q) {
+      if (p.val !== q.val) return false
+      sp.push(p.left, p.right)
+      sq.push(q.left, q.right)
+    } else if (p !== q) {
+      return false
     }
-    return true
-};
+  }
+  return true
+}
 ```
 
-# 参考回答
+**官方题解**
 
 ### 前置知识
 
@@ -214,14 +211,10 @@ var isSameTree = function(p, q) {
 ```js
 var isSameTree = function (p, q) {
   if (!p || !q) {
-    return !p && !q;
+    return !p && !q
   }
-  return (
-    p.val === q.val &&
-    isSameTree(p.left, q.left) &&
-    isSameTree(p.right, q.right)
-  );
-};
+  return p.val === q.val && isSameTree(p.left, q.left) && isSameTree(p.right, q.right)
+}
 ```
 
 #### 层序遍历
@@ -230,43 +223,43 @@ var isSameTree = function (p, q) {
 
 ```js
 var isSameTree = function (p, q) {
-  let curLevelA = [p];
-  let curLevelB = [q];
+  let curLevelA = [p]
+  let curLevelB = [q]
 
   while (curLevelA.length && curLevelB.length) {
-    let nextLevelA = [];
-    let nextLevelB = [];
-    const isOK = isSameCurLevel(curLevelA, curLevelB, nextLevelA, nextLevelB);
+    let nextLevelA = []
+    let nextLevelB = []
+    const isOK = isSameCurLevel(curLevelA, curLevelB, nextLevelA, nextLevelB)
     if (isOK) {
-      curLevelA = nextLevelA;
-      curLevelB = nextLevelB;
+      curLevelA = nextLevelA
+      curLevelB = nextLevelB
     } else {
-      return false;
+      return false
     }
   }
 
-  return true;
-};
+  return true
+}
 
 function isSameCurLevel(curLevelA, curLevelB, nextLevelA, nextLevelB) {
   if (curLevelA.length !== curLevelB.length) {
-    return false;
+    return false
   }
   for (let i = 0; i < curLevelA.length; i++) {
     if (!isSameNode(curLevelA[i], curLevelB[i])) {
-      return false;
+      return false
     }
-    curLevelA[i] && nextLevelA.push(curLevelA[i].left, curLevelA[i].right);
-    curLevelB[i] && nextLevelB.push(curLevelB[i].left, curLevelB[i].right);
+    curLevelA[i] && nextLevelA.push(curLevelA[i].left, curLevelA[i].right)
+    curLevelB[i] && nextLevelB.push(curLevelB[i].left, curLevelB[i].right)
   }
-  return true;
+  return true
 }
 
 function isSameNode(nodeA, nodeB) {
   if (!nodeA || !nodeB) {
-    return nodeA === nodeB;
+    return nodeA === nodeB
   }
-  return nodeA.val === nodeB.val;
+  return nodeA.val === nodeB.val
   // return nodeA === nodeB || (nodeA && nodeB && nodeA.val === nodeB.val);
 }
 ```
@@ -277,36 +270,33 @@ function isSameNode(nodeA, nodeB) {
 
 ```js
 var isSameTree = function (p, q) {
-  const preorderP = preorder(p, []);
-  const preorderQ = preorder(q, []);
-  const inorderP = inorder(p, []);
-  const inorderQ = inorder(q, []);
-  return (
-    preorderP.join('') === preorderQ.join('') &&
-    inorderP.join('') === inorderQ.join('')
-  );
-};
+  const preorderP = preorder(p, [])
+  const preorderQ = preorder(q, [])
+  const inorderP = inorder(p, [])
+  const inorderQ = inorder(q, [])
+  return preorderP.join('') === preorderQ.join('') && inorderP.join('') === inorderQ.join('')
+}
 
 function preorder(root, arr) {
   if (root === null) {
-    arr.push(' ');
-    return arr;
+    arr.push(' ')
+    return arr
   }
-  arr.push(root.val);
-  preorder(root.left, arr);
-  preorder(root.right, arr);
-  return arr;
+  arr.push(root.val)
+  preorder(root.left, arr)
+  preorder(root.right, arr)
+  return arr
 }
 
 function inorder(root, arr) {
   if (root === null) {
-    arr.push(' ');
-    return arr;
+    arr.push(' ')
+    return arr
   }
-  inorder(root.left, arr);
-  arr.push(root.val);
-  inorder(root.right, arr);
-  return arr;
+  inorder(root.left, arr)
+  arr.push(root.val)
+  inorder(root.right, arr)
+  return arr
 }
 ```
 

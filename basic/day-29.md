@@ -21,9 +21,7 @@ https://leetcode-cn.com/problems/binary-tree-maximum-path-sum
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 ```
 
-# 我的回答
-
-## 方法1
+## 方法 1
 
 ### 思路
 
@@ -39,6 +37,7 @@ https://leetcode-cn.com/problems/binary-tree-maximum-path-sum
 ### 代码
 
 JavaScript Code
+
 ```js
 /**
  * @param {number[]} heights
@@ -52,10 +51,9 @@ var trap = function (heights) {
     }
     return max
   }
-  
+
   let water = 0
   for (let i = 1, len = heights.length; i < len - 1; i++) {
-
     const maxL = findMax(heights, 0, i - 1)
     const maxR = findMax(heights, i + 1, len - 1)
 
@@ -68,11 +66,11 @@ var trap = function (heights) {
 }
 ```
 
-## 方法2
+## 方法 2
 
 ### 思路
 
-方法1中，要找到某根柱子左右两边最高的柱子，每次都要重新遍历一次数组，时间复杂度太高了；可以优化一下，先遍历数组，记录下每根柱子左右最高的柱子分别是哪根。
+方法 1 中，要找到某根柱子左右两边最高的柱子，每次都要重新遍历一次数组，时间复杂度太高了；可以优化一下，先遍历数组，记录下每根柱子左右最高的柱子分别是哪根。
 
 ### 复杂度分析
 
@@ -100,9 +98,9 @@ var trap = function (heights) {
   for (let i = len - 2; i > 0; i--) {
     maxR[i] = Math.max(maxR[i + 1], heights[i])
   }
-  
+
   let water = 0
-  for (let i = 1; i < len - 1; i++) {    
+  for (let i = 1; i < len - 1; i++) {
     const unit = Math.min(maxR[i], maxL[i]) - heights[i]
     unit > 0 && (water += unit)
   }
@@ -110,11 +108,11 @@ var trap = function (heights) {
 }
 ```
 
-## 方法3
+## 方法 3
 
 ### 思路
 
-方法2使用了两个数组来记录左右侧的最高柱子，实际上，我们可以改用两个指针来记录，因为在计算雨水量的时候，我们只关心左右侧最高柱子中较短的那根，具体做法如下。
+方法 2 使用了两个数组来记录左右侧的最高柱子，实际上，我们可以改用两个指针来记录，因为在计算雨水量的时候，我们只关心左右侧最高柱子中较短的那根，具体做法如下。
 
 ### 伪代码
 
@@ -149,6 +147,7 @@ return 雨水量
 ### 代码
 
 JavaScript Code
+
 ```js
 /**
  * @param {number[]} heights
@@ -165,13 +164,11 @@ var trap = function (heights) {
     if (heights[low] < heights[high]) {
       if (heights[low] > maxL) {
         maxL = heights[low]
-      }
-      else {
+      } else {
         water += maxL - heights[low]
       }
       low++
-    }
-    else {
+    } else {
       if (heights[high] > maxR) {
         maxR = heights[high]
       } else {
@@ -185,7 +182,7 @@ var trap = function (heights) {
 }
 ```
 
-# 参考回答
+**官方题解**
 
 ## 题目地址
 
@@ -230,7 +227,7 @@ Output: 6
 
 ```js
 for (let i = 0; i < height.length; i++) {
-  area += (h[i] - height[i]) * 1; // h为下雨之后的水位
+  area += (h[i] - height[i]) * 1 // h为下雨之后的水位
 }
 ```
 
@@ -265,27 +262,27 @@ JavaScript Code:
  * @return {number}
  */
 var trap = function (height) {
-  let max = 0;
-  let volumn = 0;
-  const leftMax = [];
-  const rightMax = [];
+  let max = 0
+  let volumn = 0
+  const leftMax = []
+  const rightMax = []
 
   for (let i = 0; i < height.length; i++) {
-    leftMax[i] = max = Math.max(height[i], max);
+    leftMax[i] = max = Math.max(height[i], max)
   }
 
-  max = 0;
+  max = 0
 
   for (let i = height.length - 1; i >= 0; i--) {
-    rightMax[i] = max = Math.max(height[i], max);
+    rightMax[i] = max = Math.max(height[i], max)
   }
 
   for (let i = 0; i < height.length; i++) {
-    volumn = volumn + Math.min(leftMax[i], rightMax[i]) - height[i];
+    volumn = volumn + Math.min(leftMax[i], rightMax[i]) - height[i]
   }
 
-  return volumn;
-};
+  return volumn
+}
 ```
 
 Python Code:

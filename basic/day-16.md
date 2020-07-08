@@ -42,10 +42,7 @@ https://leetcode-cn.com/problems/find-bottom-left-tree-value/submissions/
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 ```
 
-
-# 我的回答
-
-## 方法1：BFS
+## 方法 1：BFS
 
 ### 思路
 
@@ -76,6 +73,7 @@ https://leetcode-cn.com/problems/find-bottom-left-tree-value/submissions/
 ### 代码
 
 JavaScript Code
+
 ```js
 /**
  * Definition for a binary tree node.
@@ -89,21 +87,23 @@ JavaScript Code
  * @return {number}
  */
 var findBottomLeftValue = function (root) {
-    let curLevel = [root], nextLevel = []
-    while (true) {
-        for (let node of curLevel) {
-            node.left && nextLevel.push(node.left)
-            node.right && nextLevel.push(node.right)
-        }
-
-        if (!nextLevel.length) return curLevel[0].val
-        curLevel = nextLevel
-        nextLevel = []
+  let curLevel = [root],
+    nextLevel = []
+  while (true) {
+    for (let node of curLevel) {
+      node.left && nextLevel.push(node.left)
+      node.right && nextLevel.push(node.right)
     }
-};
+
+    if (!nextLevel.length) return curLevel[0].val
+    curLevel = nextLevel
+    nextLevel = []
+  }
+}
 ```
 
 Python Code
+
 ```py
 # Definition for a binary tree node.
 # class TreeNode(object):
@@ -127,11 +127,12 @@ class Solution(object):
             curLevel, nextLevel = nextLevel, []
 ```
 
-***复杂度分析***
+**_复杂度分析_**
+
 - 时间复杂度：$O(N)$，其中 N 为节点数。
 - 空间复杂度：$O(b)$，其中 $b$ 为树的最大宽度。
 
-## 方法2：DFS
+## 方法 2：DFS
 
 ### 思路
 
@@ -164,6 +165,7 @@ DFS 分别遍历左子树和右子树，定义全局变量来记录当前遍历�
 ### 代码
 
 JavaScript Code
+
 ```js
 /**
  * Definition for a binary tree node.
@@ -177,26 +179,27 @@ JavaScript Code
  * @return {number}
  */
 var findBottomLeftValue = function (root) {
-    let maxDepth = 0
-    let ans = root.val
-    const dfs = (root, depth) => {
-        if (!root) return
-        if (!root.left && !root.right) {
-            if (depth > maxDepth) {
-                ans = root.val
-                maxDepth = Math.max(maxDepth, depth)
-            }
-            return
-        }
-        dfs(root.left, depth + 1)
-        dfs(root.right, depth + 1)     
+  let maxDepth = 0
+  let ans = root.val
+  const dfs = (root, depth) => {
+    if (!root) return
+    if (!root.left && !root.right) {
+      if (depth > maxDepth) {
+        ans = root.val
+        maxDepth = Math.max(maxDepth, depth)
+      }
+      return
     }
-    dfs(root, 0)
-    return ans
-};
+    dfs(root.left, depth + 1)
+    dfs(root.right, depth + 1)
+  }
+  dfs(root, 0)
+  return ans
+}
 ```
 
 Python Code
+
 ```py
 # Definition for a binary tree node.
 # class TreeNode(object):
@@ -228,12 +231,12 @@ class Solution(object):
         return self._ans
 ```
 
-***复杂度分析***
+**_复杂度分析_**
+
 - 时间复杂度：$O(N)$，其中 N 为节点数。
 - 空间复杂度：$O(h)$，其中 $h$ 为树的深度，最坏的情况 $h$ 等于 $N$，其中 N 为节点数，此时树退化到链表。
 
-
-# 参考回答
+**官方题解**
 
 ### BFS
 
@@ -259,19 +262,19 @@ class Solution(object):
 
 ```js
 var findBottomLeftValue = function (root) {
-  let curLevel = [root];
-  let res = root.val;
+  let curLevel = [root]
+  let res = root.val
   while (curLevel.length) {
-    let nextLevel = [];
+    let nextLevel = []
     for (let i = 0; i < curLevel.length; i++) {
-      curLevel[i].left && nextLevel.push(curLevel[i].left);
-      curLevel[i].right && nextLevel.push(curLevel[i].right);
+      curLevel[i].left && nextLevel.push(curLevel[i].left)
+      curLevel[i].right && nextLevel.push(curLevel[i].right)
     }
-    res = curLevel[0].val;
-    curLevel = nextLevel;
+    res = curLevel[0].val
+    curLevel = nextLevel
   }
-  return res;
-};
+  return res
+}
 ```
 
 ### DFS
@@ -281,25 +284,25 @@ var findBottomLeftValue = function (root) {
 
 ```js
 function findBottomLeftValue(root) {
-  let maxDepth = 0;
-  let res = root.val;
+  let maxDepth = 0
+  let res = root.val
 
-  dfs(root.left, 0);
-  dfs(root.right, 0);
+  dfs(root.left, 0)
+  dfs(root.right, 0)
 
-  return res;
+  return res
 
   function dfs(cur, depth) {
     if (!cur) {
-      return;
+      return
     }
-    const curDepth = depth + 1;
+    const curDepth = depth + 1
     if (curDepth > maxDepth) {
-      maxDepth = curDepth;
-      res = cur.val;
+      maxDepth = curDepth
+      res = cur.val
     }
-    dfs(cur.left, curDepth);
-    dfs(cur.right, curDepth);
+    dfs(cur.left, curDepth)
+    dfs(cur.right, curDepth)
   }
 }
 ```
