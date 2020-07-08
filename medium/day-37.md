@@ -10,6 +10,7 @@
 
 - [方法 1：滑动窗口](#方法-1：滑动窗口)
 - [方法 2：动态规划](#方法-2：动态规划)
+- [方法 3：栈](#方法-3：栈)
 
 # 20.有效括号
 
@@ -354,6 +355,57 @@ var longestValidParentheses = function (s) {
     }
   }
   return Math.max(...dp, 0)
+}
+```
+
+### 复杂度分析
+
+- 时间复杂度：O(n)，n 为字符串的长度。
+- 空间复杂度：O(n)，n 为字符串的长度。
+
+## 方法 3：栈
+
+### 思路
+
+用一个栈来检查括号的有效性，用一个数组 `valid` 来记录匹配括号对的位置。
+
+- 栈的用法跟[20.有效括号](#方法-1：栈)里的一样，不过入栈的不是 `(`，而是它们的下标。
+- 在遍历过程中，如果碰到 `)`，就从栈中弹出一个元素，这个元素就是 `)` 对应的 `(` 的下标。
+- 接着我们在 `valid` 中这两个下标对应的位置做个标识 `1`，说明这里找到了一对有效括号。
+- 等遍历结束之后，在 `valid` 中找到连续最长的 `1` 序列。
+
+### 代码
+
+JavaScript Code
+
+```js
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var longestValidParentheses = function (s) {
+  const valid = Array(s.length).fill(0)
+  const stack = []
+
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] === '(') stack.push(i)
+
+    if (s[i] === ')' && stack.length > 0) {
+      // Mark the open and close indices as 1 in valid.
+      valid[i] = 1
+      valid[stack.pop()] = 1
+    }
+  }
+
+  // Find longest sequence of 1s.
+  let count = 0,
+    max = 0
+  for (let v of valid) {
+    v && count++
+    v || (count = 0)
+    count > max && (max = count)
+  }
+  return max
 }
 ```
 
