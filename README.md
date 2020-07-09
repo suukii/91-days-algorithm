@@ -24,6 +24,7 @@
 - [x] [【day-36】62.不同路径](./medium/day-36.md)
 - [x] [【day-37】有效括号系列](./medium/day-37.md)
 - [x] [【day-38】反转链表系列](./medium/day-38.md)
+- [x] [【day-39】前缀和系列](./medium/day-39.md)
 
 ### 基础篇
 
