@@ -68,8 +68,8 @@ var test = function (scores, mi) {
 
   // 计算前缀和
   // 下标是分数，值是“有多少人不超过这个分数 <=”
-  for (let i = 0; i < prefix.length; i++) {
-    prefix[i] = (prefix[i - 1] || 0) + prefix[i]
+  for (let i = 1; i < prefix.length; i++) {
+    prefix[i] += prefix[i - 1]
   }
 
   // 第 mi 个同学的分数
