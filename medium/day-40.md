@@ -8,6 +8,11 @@
 
 [102.二叉树的层序遍历](#102.二叉树的层序遍历)
 
+**扩展**
+
+- 多叉树的遍历，参考[图的遍历](https://github.com/suukii/Articles/blob/master/articles/dsa_graph.md)
+- O(1)空间的遍历，[Morris Traversal](https://github.com/suukii/Articles/blob/master/articles/dsa_binary_tree.md#morris-traversal)
+
 # 144.二叉树的前序遍历
 
 ## 递归

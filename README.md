@@ -12,7 +12,8 @@
 
 ## 个人笔记
 
-- [图](https://github.com/suukii/Articles/blob/master/articles/graph_data_structure.md)
+- [二叉树](https://github.com/suukii/Articles/blob/master/articles/dsa_binary_tree.md)
+- [图](https://github.com/suukii/Articles/blob/master/articles/dsa_graph.md)
 - [Big O 算法复杂度](https://github.com/suukii/Articles/blob/master/articles/big_O_complexity.md)
 
 ## 题目
