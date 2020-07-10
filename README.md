@@ -25,6 +25,7 @@
 - [x] [【day-37】有效括号系列](./medium/day-37.md)
 - [x] [【day-38】反转链表系列](./medium/day-38.md)
 - [x] [【day-39】前缀和系列](./medium/day-39.md)
+- [x] [【day-40】二叉树遍历系列](./medium/day-40.md)
 
 ### 基础篇
 
