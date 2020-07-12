@@ -28,6 +28,7 @@
 -   [x] [【day-39】前缀和系列](./medium/day-39.md)
 -   [x] [【day-40】二叉树遍历系列](./medium/day-40.md)
 -   [x] [【day-41】208.实现 Trie](./medium/day-41.md)
+-   [x] [【day-42】677.键值映射](./medium/day-42.md)
 
 ### 基础篇
 
