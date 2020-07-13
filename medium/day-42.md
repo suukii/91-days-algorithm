@@ -4,7 +4,9 @@ https://leetcode-cn.com/problems/map-sum-pairs
 
 -   HashMap
 -   Trie
+-   Trie (优化版)
 -   Trie + HashMap
+-   Trie + HashMap (优化版)
 
 ## 题目描述
 
@@ -167,6 +169,89 @@ class MapSum {
  */
 ```
 
+## Trie (优化版)
+
+在每个节点上存 `prefixSum`，可以把 `sum` 操作的时间复杂度降到 $O(1)$，代价是在 `insert` 的时候需要先检查 key 是否已经存在，存在的话要想从 `prefixSum` 中减去旧的 value，再加上新的 value。
+
+### 复杂度分析
+
+-   时间复杂度：`insert` 操作的时间复杂度是 $O(len(key))$，具体来说是 $O(2*len(key))$，一次查找 key 是否存在前缀树中，一次插入。`sum` 操作的时间复杂度是 $O(1)$。
+-   空间复杂度：$O(m^{n})$，m 是字符集中字符数量，n 是字符串长度。
+
+### 代码
+
+```ts
+class TrieNode {
+    value: number
+    prefixSum: number
+    children: Array<TrieNode>
+
+    constructor(value: number) {
+        this.value = value
+        this.prefixSum = 0
+        this.children = Array(26)
+    }
+}
+
+class MapSum {
+    private root: TrieNode
+
+    constructor() {
+        this.root = this._getTrieNode(0)
+    }
+
+    private _getTrieNode(value: number): TrieNode {
+        return new TrieNode(value)
+    }
+
+    private _char2Index(char: string): number {
+        return char.toLowerCase().charCodeAt(0) - 97
+    }
+
+    search(key: string): number {
+        let crawl: TrieNode = this.root
+        for (let char of key) {
+            const index: number = this._char2Index(char)
+            if (!crawl.children[index]) return 0
+            crawl = crawl.children[index]
+        }
+        return crawl.value
+    }
+
+    insert(key: string, val: number): void {
+        let crawl: TrieNode = this.root
+        const existedVal: number = this.search(key)
+        for (let char of key) {
+            const index: number = this._char2Index(char)
+            if (!crawl.children[index]) {
+                crawl.children[index] = this._getTrieNode(0)
+            }
+            crawl = crawl.children[index]
+            crawl.prefixSum = crawl.prefixSum - existedVal + val
+        }
+        crawl.value = val
+    }
+
+    sum(prefix: string): number {
+        let crawl: TrieNode = this.root
+
+        for (let char of prefix) {
+            const index: number = this._char2Index(char)
+            if (!crawl.children[index]) return 0
+            crawl = crawl.children[index]
+        }
+        return crawl.prefixSum
+    }
+}
+
+/**
+ * Your MapSum object will be instantiated and called as such:
+ * var obj = new MapSum()
+ * obj.insert(key,val)
+ * var param_2 = obj.sum(prefix)
+ */
+```
+
 ## Trie + HashMap
 
 ### 思路
@@ -267,4 +352,83 @@ class MapSum {
  */
 ```
 
+## Trie + HashMap (优化版 1)
+
+### 思路
+
+上一个方法中其实没有必要把 hashmap 放到每个节点中，只需要用一个全局的 hashmap 来记录前缀树已存在的 key 就好了。
+
+### 代码
+
+```ts
+class TrieNode {
+    value: number
+    prefixSum: number
+    children: Array<TrieNode>
+
+    constructor(value: number) {
+        this.value = value
+        this.prefixSum = 0
+        this.children = Array(26)
+    }
+}
+
+class MapSum {
+    private root: TrieNode
+    private existedWords: {
+        [key: string]: number
+    }
+
+    constructor() {
+        this.root = this._getTrieNode(0)
+        this.existedWords = {}
+    }
+
+    private _getTrieNode(value: number): TrieNode {
+        return new TrieNode(value)
+    }
+
+    private _char2Index(char: string): number {
+        return char.toLowerCase().charCodeAt(0) - 97
+    }
+
+    insert(key: string, val: number): void {
+        let crawl: TrieNode = this.root
+        for (let char of key) {
+            const index: number = this._char2Index(char)
+            if (!crawl.children[index]) {
+                crawl.children[index] = this._getTrieNode(0)
+            }
+            crawl = crawl.children[index]
+            if (key in this.existedWords) {
+                crawl.prefixSum -= this.existedWords[key]
+            }
+            crawl.prefixSum += val
+        }
+        this.existedWords[key] = val
+        crawl.value = val
+    }
+
+    sum(prefix: string): number {
+        let crawl: TrieNode = this.root
+
+        for (let char of prefix) {
+            const index: number = this._char2Index(char)
+            if (!crawl.children[index]) return 0
+            crawl = crawl.children[index]
+        }
+        return crawl.prefixSum
+    }
+}
+
+/**
+ * Your MapSum object will be instantiated and called as such:
+ * var obj = new MapSum()
+ * obj.insert(key,val)
+ * var param_2 = obj.sum(prefix)
+ */
+```
+
 **官方题解**
+
+https://github.com/leetcode-pp/91alg-1/issues/69#issuecomment-657210282

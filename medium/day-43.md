@@ -1,0 +1,145 @@
+# 面试题 17.17.多次搜索
+
+https://leetcode-cn.com/problems/multi-search-lcci
+
+-   Trie
+-   暴力
+
+## 题目描述
+
+```
+给定一个较长字符串big和一个包含较短字符串的数组smalls，设计一个方法，根据smalls中的每一个较短字符串，对big进行搜索。输出smalls中的字符串在big里出现的所有位置positions，其中positions[i]为smalls[i]出现的所有位置。
+
+示例：
+
+输入：
+big = "mississippi"
+smalls = ["is","ppi","hi","sis","i","ssippi"]
+输出： [[1,4],[8],[],[3],[1,4,7,10],[5]]
+提示：
+
+0 <= len(big) <= 1000
+0 <= len(smalls[i]) <= 1000
+smalls的总字符数不会超过 100000。
+你可以认为smalls中没有重复字符串。
+所有出现的字符均为英文小写字母。
+
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/multi-search-lcci
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+## Trie
+
+### 思路
+
+用 Trie 有两个思路方向，一个是把 `big` 存进 Trie 中，另一个是把 `smalls` 存进 Trie 中。
+
+但由于 Trie 这种数据结构非常消耗空间，所以，当我们要在一个长字符串中查找短字符串时，正确的直觉应该是把短字符串存到 Trie 中，保证 Trie 的高度要尽量的小。
+
+-   以 `smalls` 数组构建 Trie，并在结束节点记录每个短串在 `smalls` 数组中的下标；
+-   遍历 `big`，截取所有以 `longest` 为长度的子串(`longest` 是 `smalls` 中最长的单词长度)，拿到 Trie 中去寻找所有匹配的短串，返回所有匹配到的下标，根据下标把当前子串的位置更新到对应的结果数组中。
+
+> 截取 longest 长度的字符子串这步并不是必须，但 JS 中函数参数是按值传递的，所以如果每次都传整个 big 字符串，感觉是不是也有点消耗空间？
+
+### 复杂度分析
+
+-   时间复杂度：`insert` 是 $O(n*m)$，n 是 `smalls` 的长度，m 是短串的平均长度，`search`
+-   空间复杂度：
+
+### 代码
+
+Trie 的修改：
+
+-   `insert`: 把单词的下标存在最后的节点中
+-   `search`: 需要返回寻找路径中匹配到的所有单词的下标
+
+TypeScript Code
+
+```ts
+search(word: string): Array<number> {
+    let crawl: TrieNode = this.root
+
+    const res: Array<number> = []
+    for (let char of word) {
+        const index: number = this._char2Index(char)
+        if (!crawl.children[index]) return res
+        crawl = crawl.children[index]
+        if (crawl.pos > -1) res.push(crawl.pos)
+    }
+    return res
+}
+```
+
+TypeScript Code
+
+```ts
+function multiSearch(big: string, smalls: string[]): number[][] {
+    // 把短字符串存进 Trie
+    const trie: Trie = new Trie()
+    smalls.forEach((word: string, index: number): void => {
+        trie.insert(word, index)
+    })
+
+    const res: number[][] = Array(smalls.length)
+        .fill(0)
+        .map(() => [])
+
+    // 找到 smalls 中最长字符串长度
+    const longest: number = smalls.reduce(
+        (res: number, word: string): number => Math.max(res, word.length),
+        0,
+    )
+
+    // 遍历 big，将以 longest 为长度的子串拿到 Trie 中去找有没有匹配的短串
+    // 有的话，会返回那个短串在 smalls 中对应的下标，那就把子串对应的开始下标 i 存在对应的结果数组里好了
+    for (let i = 0; i < big.length; i++) {
+        const indices = trie.search(big.slice(i, i + longest))
+        indices.forEach(index => res[index].push(i))
+    }
+
+    return res
+}
+```
+
+## 暴力
+
+### 思路
+
+又写了下暴力法，先找出 `smalls` 中最长的单词长度 `longest`，遍历 `big`，然后在第二层循环中，枚举所有长度小于 `longest` 的子串，跟 `smalls` 中的词一一对比。
+
+### 代码
+
+JavaScript
+
+```js
+/**
+ * @param {string} big
+ * @param {string[]} smalls
+ * @return {number[][]}
+ */
+function multiSearch(big, smalls) {
+    const longest = smalls.reduce((res, w) => Math.max(res, w.length), 0)
+
+    const res = Array(smalls.length)
+        .fill(0)
+        .map(() => [])
+
+    for (let i = 0; i < big.length; i++) {
+        for (let j = i + 1; j <= i + longest && j <= big.length; j++) {
+            const subStr = big.slice(i, j)
+            for (let k = 0; k < smalls.length; k++) {
+                if (smalls[k] === subStr) {
+                    res[k].push(i)
+                }
+            }
+        }
+    }
+
+    return res
+}
+```
+
+**官方题解**
+
+https://github.com/leetcode-pp/91alg-1/issues/70#issuecomment-657434460
