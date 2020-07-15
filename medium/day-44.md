@@ -45,15 +45,15 @@ N 在[1,200]的范围内。
 
 ### 思路
 
-并查集 + 状态压缩 + Rank
+**前置知识**
 
-我学习并查集时看的两个入门资料：
+-   并查集
 
-https://www.topcoder.com/community/competitive-programming/tutorials/disjoint-set-data-structures/
+**入门学习资料**
 
-https://coderscat.com/using-disjoint-set-union-find-to-create-maze
-
-[个人笔记](https://github.com/suukii/Articles/blob/master/articles/dsa_union_find.md)
+-   [Using Disjoint Set (Union-Find) To Build A Maze Generator](https://coderscat.com/using-disjoint-set-union-find-to-create-maze)
+-   [Disjoint Set Data Structure](https://www.topcoder.com/community/competitive-programming/tutorials/disjoint-set-data-structures/)
+-   [个人笔记](https://github.com/suukii/Articles/blob/master/articles/dsa_union_find.md)
 
 ### 复杂度分析
 
@@ -168,34 +168,31 @@ function findCircleNum(M: number[][]): number {
 -   时间复杂度：$O(N)$，N 是学生数量。
 -   空间复杂度：$O(N)$，N 是学生数量。
 
-JavaScript Code
+TypeScript Code
 
-```js
-/**
- * @param {number[][]} M
- * @return {number}
- */
-var findCircleNum = function (M) {
-    let ans = 0
-    const visited = []
-    const stack = []
+```ts
+function findCircleNum(M: number[][]): number {
+    let ans: number = 0
+    const visited: Array<boolean> = Array(M.length)
+    const stack: Array<number> = []
+
     for (let i = 0; i < M.length; i++) {
-        if (!visited[i]) {
-            stack.push(i)
-            ans++
-            while (stack.length > 0) {
-                const cur = stack.pop()
-                if (!visited[cur]) {
-                    visited[cur] = true
-                    for (let j = 0; j < M[cur].length; j++) {
-                        if (!visited[j] && M[cur][j] == 1) {
-                            stack.push(j)
-                        }
-                    }
-                }
+        if (visited[i]) continue
+
+        stack.push(i)
+        ans++
+        while (stack.length) {
+            const cur: number = stack.pop() as number
+
+            visited[cur] = true
+            const friends: Array<number> = M[cur]
+            for (let j = 0; j < friends.length; j++) {
+                if (visited[j] || friends[j] === 0) continue
+                stack.push(j)
             }
         }
     }
+
     return ans
 }
 ```
