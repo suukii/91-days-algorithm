@@ -12,14 +12,15 @@
 
 **进阶篇**
 
--   [medium-01】01.并查集](https://github.com/leetcode-pp/91alg-1/blob/master/advanced-01.md)
--   [medium-02】02.前缀树](https://github.com/leetcode-pp/91alg-1/blob/master/Trie.md)
--   [medium-03】03.跳表](https://github.com/leetcode-pp/91alg-1/blob/master/advanced-skiplist.md)
--   [medium-04】04.剪枝](https://github.com/leetcode-pp/91alg-1/blob/master/advanced_prune.md)
--   [medium-05】05.高频面试题](https://github.com/leetcode-pp/91alg-1/blob/master/advanced-07.md)
+-   [【medium-01】01.并查集](https://github.com/leetcode-pp/91alg-1/blob/master/advanced-01.md)
+-   [【medium-02】02.前缀树](https://github.com/leetcode-pp/91alg-1/blob/master/Trie.md)
+-   [【medium-03】03.跳表](https://github.com/leetcode-pp/91alg-1/blob/master/advanced-skiplist.md)
+-   [【medium-04】04.剪枝](https://github.com/leetcode-pp/91alg-1/blob/master/advanced_prune.md)
+-   [【medium-05】05.高频面试题](https://github.com/leetcode-pp/91alg-1/blob/master/advanced-07.md)
 
 ## 个人笔记
 
+-   [并查集](https://github.com/suukii/Articles/blob/master/articles/dsa_union_find.md)
 -   [二叉树](https://github.com/suukii/Articles/blob/master/articles/dsa_binary_tree.md)
 -   [图](https://github.com/suukii/Articles/blob/master/articles/dsa_graph.md)
 -   [Big O 算法复杂度](https://github.com/suukii/Articles/blob/master/articles/big_O_complexity.md)
@@ -48,6 +49,7 @@
 
 -   [x] [【day-44】547.朋友圈](./medium/day-44.md)
 -   [x] [【day-45】924.尽量减少恶意软件的传播](./medium/day-45.md)
+-   [x] [【day-46】1319.连通网络的操作次数](./medium/day-46.md)
 
 ### 基础篇
 
