@@ -1,0 +1,95 @@
+# 814.二叉树剪枝
+
+https://leetcode-cn.com/problems/binary-tree-pruning
+
+## 题目描述
+
+```
+给定二叉树根结点 root ，此外树的每个结点的值要么是 0，要么是 1。
+
+返回移除了所有不包含 1 的子树的原二叉树。
+
+( 节点 X 的子树为 X 本身，以及所有 X 的后代。)
+
+示例1:
+输入: [1,null,0,0,1]
+输出: [1,null,0,null,1]
+
+示例2:
+输入: [1,0,1,0,0,0,1]
+输出: [1,null,1,null,1]
+
+示例3:
+输入: [1,1,0,1,1,0,1,0]
+输出: [1,1,0,1,1,null,1]
+
+说明:
+
+给定的二叉树最多有 100 个节点。
+每个节点的值只会为 0 或 1 。
+
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/binary-tree-pruning
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+## 思路
+
+本题解由 lucifer 著名的[产品经理法](https://github.com/leetcode-pp/91alg-1/issues/32#issuecomment-643620727)倾情支持。
+
+**产品**
+
+假设我们已经有了一个 `pruneTree` 方法，可以把一棵树中不包含 `1` 的枝节删掉。
+
+**子问题**
+
+明显就是 `pruneTree(root.left)` 和 `pruneTree(root.right)` 啦。
+
+**大小问题的关系**
+
+首先，我们用 `pruneTree(root.left)` 和 `pruneTree(root.right)` 的结果分别替换掉原本的左子树和右子树。接着，再决定这棵树要不要保留。
+
+-   如果此时左右子树有一个不为空的话，那说明这棵树是要保留的，直接返回 `root` 就行。
+-   如果左右子树都为空，那我们就判断 `root.val` 的值，等于 1 就返回 `root`，等于 0 就返回 `null` 把这棵树移除。
+
+**递归出口**
+
+空节点直接返回 `null` 就行。
+
+## 代码
+
+TypeScript Code
+
+```ts
+/**
+ * Definition for a binary tree node.
+ * class TreeNode {
+ *     val: number
+ *     left: TreeNode | null
+ *     right: TreeNode | null
+ *     constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
+ *         this.val = (val===undefined ? 0 : val)
+ *         this.left = (left===undefined ? null : left)
+ *         this.right = (right===undefined ? null : right)
+ *     }
+ * }
+ */
+
+function pruneTree(root: TreeNode | null): TreeNode | null {
+    if (!root) return null
+
+    root.left = pruneTree(root.left)
+    root.right = pruneTree(root.right)
+
+    return root.left || root.right || root.val === 1 ? root : null
+}
+```
+
+## 复杂度分析
+
+-   时间复杂度：$O(N)$，N 为二叉树节点数。
+-   空间复杂度：$O(H)$，H 为二叉树的高度，递归时调用栈占用的最大空间就是二叉树的最大深度。
+
+**参考题解**
+
+https://github.com/leetcode-pp/91alg-1/issues/75#issuecomment-660483924
