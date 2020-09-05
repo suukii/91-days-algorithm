@@ -18,12 +18,16 @@
 -   [【medium-04】04.剪枝](https://github.com/leetcode-pp/91alg-1/blob/master/advanced_prune.md)
 -   [【medium-05】05.高频面试题](https://github.com/leetcode-pp/91alg-1/blob/master/advanced-07.md)
 
+-   **[更多讲义](https://github.com/leetcode-pp/91alg-1#%E5%9F%BA%E7%A1%80%E7%AF%87)**
+
 ## 个人笔记
 
 -   [并查集](https://github.com/suukii/Articles/blob/master/articles/dsa_union_find.md)
 -   [二叉树](https://github.com/suukii/Articles/blob/master/articles/dsa_binary_tree.md)
 -   [图](https://github.com/suukii/Articles/blob/master/articles/dsa_graph.md)
 -   [Big O 算法复杂度](https://github.com/suukii/Articles/blob/master/articles/big_O_complexity.md)
+
+-   **[更多笔记](https://github.com/suukii/Articles)**
 
 ## 题目
 
@@ -61,12 +65,26 @@
 **背包问题**
 
 -   [x] [【day-80】322.零钱兑换](./topics/day-80.md)
+-   [x] [【day-81】416. 分割等和子集](./topics/day-81.md)
+-   [x] [【day-82】494. 目标和](./topics/day-82.md)
+-   [ ] [【day-83】474. 一和零](./topics/day-83.md)
 
 **动态规划**
 
+-   [ ] [【day-84】爬楼梯变种](./topics/day-84.md)
+-   [ ] [【day-85】铺地毯-2021 网易校招](./topics/day-85.md)
+-   [ ] [【day-86】935. 骑士拨号器](./topics/day-86.md)
+-   [ ] [【day-87】1458. 两个子序列的最大点积](./topics/day-87.md)
+
 **分治**
 
+-   [x] [【day-88】96. 不同的二叉搜索树](./topics/day-88.md)
+-   [ ] [【day-89】23. 合并 K 个升序链表](./topics/day-89.md)
+
 **贪心**
+
+-   [ ] [【day-90】765. 情侣牵手](./topics/day-90.md)
+-   [x] [【day-91】881. 救生艇](./topics/day-91.md)
 
 ### 进阶篇
 
@@ -165,3 +183,5 @@
 
 -   [x] [112.路径总和](./extensions/112.path-sum.md)
 -   [x] [257.二叉树的所有路径](./extensions/257.binary-tree-paths.md)
+
+## [全部参考答案](https://github.com/leetcode-pp/91alg-1#%E5%8F%82%E8%80%83%E7%AD%94%E6%A1%88)
