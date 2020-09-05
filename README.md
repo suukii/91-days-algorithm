@@ -41,7 +41,32 @@
 **滑动窗口**
 
 -   [x] [【day-68】1456.定长子串中元音的最大数目](./topics/day-68.md)
--   [x] [【day-69】438.找到字符串中所有字母异位词](./topics/day-69.md)
+-   [ ] [【day-70】76.最小覆盖子串](./topics/day-70.md)
+-   [ ] [【day-71】30.串联所有单词的子串](./topics/day-71.md)
+
+**位运算**
+
+-   [ ] [【day-72】268.缺失数字](./topics/day-72.md)
+-   [ ] [【day-73】78.子集](./topics/day-73.md)
+
+**搜索(BFS, DFS, 回溯)**
+
+-   [x] [【day-74】1254.统计封闭岛屿的数目](./topics/day-74.md)
+-   [ ] [【day-75】 51.N 皇后](./topics/day-75.md)
+-   [ ] [【day-76】 130.被围绕的区域](./topics/day-76.md)
+-   [ ] [【day-77】 827.最大人工岛](./topics/day-77.md)
+-   [ ] [【day-78】 89.格雷编码](./topics/day-78.md)
+-   [x] [【day-79】980.不同路径 III](./topics/day-79.md)
+
+**背包问题**
+
+-   [x] [【day-80】322.零钱兑换](./topics/day-80.md)
+
+**动态规划**
+
+**分治**
+
+**贪心**
 
 ### 进阶篇
 
@@ -138,4 +163,5 @@
 
 ## 其他
 
--   [112.路径总和](./extensions/112.path-sum.md)
+-   [x] [112.路径总和](./extensions/112.path-sum.md)
+-   [x] [257.二叉树的所有路径](./extensions/257.binary-tree-paths.md)
