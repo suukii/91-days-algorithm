@@ -125,4 +125,4 @@ class Solution(object):
 
 _Originally posted by @suukii in https://github.com/leetcode-pp/91alg-1/issues/15#issuecomment-637217774_
 
-**[官方题解](_Originally posted by @azl397985856 in https://github.com/leetcode-pp/91alg-1/issues/15#issuecomment-637651551_)**
+**[参考题解](_Originally posted by @azl397985856 in https://github.com/leetcode-pp/91alg-1/issues/15#issuecomment-637651551_)**

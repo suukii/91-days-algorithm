@@ -4,10 +4,15 @@
   - [讲义](#讲义)
     - [基础](#基础)
     - [进阶](#进阶)
-  - [笔记](#笔记)
-  - [题目](#题目)
+  - [个人 DSA 笔记](#个人-dsa-笔记httpsgithubcomsuukiiarticlese695b0e68daee7bb93e69e84e7ae97e6b395)
+  - [力扣题目](#力扣题目)
     - [基础篇](#基础篇)
       - [数组，栈，队列](#数组栈队列)
+        - [每日一题](#每日一题)
+        - [数组拓展题目](#数组拓展题目)
+        - [栈拓展题目](#栈拓展题目)
+        - [队列拓展题目](#队列拓展题目)
+        - [相关专题](#相关专题)
       - [链表](#链表)
       - [树](#树)
       - [哈希表](#哈希表)
@@ -34,44 +39,60 @@
 
 ### 基础
 
--   [【basic-01】01.数组，栈，队列](https://github.com/leetcode-pp/91alg-1/blob/master/basic-01.md)
--   [【basic-01】02.链表](https://github.com/leetcode-pp/91alg-1/blob/master/basic-02.md)
--   [【basic-01】03.树](https://github.com/leetcode-pp/91alg-1/blob/master/basic-03.md)
--   [【basic-04】04.哈希表](https://github.com/leetcode-pp/91alg-1/blob/master/basic-04.md)
--   [【basic-05】05.双指针](https://lucifer.ren/blog/2020/05/26/91algo-basic-05.two-pointer/)
+-   [01.数组，栈，队列](https://github.com/leetcode-pp/91alg-2/blob/master/lecture/basic-01.md)
+-   [02.链表](https://github.com/leetcode-pp/91alg-2/blob/master/lecture/basic-02.md)
+-   [03.树](https://github.com/leetcode-pp/91alg-1/blob/master/basic-03.md)
+-   [04.哈希表](https://github.com/leetcode-pp/91alg-1/blob/master/basic-04.md)
+-   [05.双指针](https://lucifer.ren/blog/2020/05/26/91algo-basic-05.two-pointer/)
 
 ### 进阶
 
--   [【medium-01】01.并查集](https://github.com/leetcode-pp/91alg-1/blob/master/advanced-01.md)
--   [【medium-02】02.前缀树](https://github.com/leetcode-pp/91alg-1/blob/master/Trie.md)
--   [【medium-03】03.跳表](https://github.com/leetcode-pp/91alg-1/blob/master/advanced-skiplist.md)
--   [【medium-04】04.剪枝](https://github.com/leetcode-pp/91alg-1/blob/master/advanced_prune.md)
--   [【medium-05】05.高频面试题](https://github.com/leetcode-pp/91alg-1/blob/master/advanced-07.md)
+-   [01.并查集](https://github.com/leetcode-pp/91alg-1/blob/master/advanced-01.md)
+-   [02.前缀树](https://github.com/leetcode-pp/91alg-1/blob/master/Trie.md)
+-   [03.跳表](https://github.com/leetcode-pp/91alg-1/blob/master/advanced-skiplist.md)
+-   [04.剪枝](https://github.com/leetcode-pp/91alg-1/blob/master/advanced_prune.md)
+-   [05.高频面试题](https://github.com/leetcode-pp/91alg-1/blob/master/advanced-07.md)
 
--   [更多讲义](https://github.com/leetcode-pp/91alg-1#%E5%9F%BA%E7%A1%80%E7%AF%87)
+## [个人 DSA 笔记](https://github.com/suukii/Articles#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95)
 
-## 笔记
-
--   [并查集](https://github.com/suukii/Articles/blob/master/articles/dsa_union_find.md)
--   [二叉树](https://github.com/suukii/Articles/blob/master/articles/dsa_binary_tree.md)
--   [图](https://github.com/suukii/Articles/blob/master/articles/dsa_graph.md)
--   [Big O 算法复杂度](https://github.com/suukii/Articles/blob/master/articles/big_O_complexity.md)
-
--   [更多笔记](https://github.com/suukii/Articles#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95)
-
-## 题目
+## 力扣题目
 
 ### 基础篇
 
 #### 数组，栈，队列
 
--   [x] [【day-01】66.加一](./basic/day-01.md)
--   [x] [【day-02-0】75.颜色分类](./basic/day-02-0.md)
--   [x] [【day-02-1】821.字符的最短距离](./basic/day-02-1.md)
--   [x] [【day-03】1381.设计一个支持增量操作的栈](./basic/day-03.md)
--   [x] [【day-04】394.字符串解码](./basic/day-04.md)
--   [x] [【day-05】232.用栈实现队列](./basic/day-05.md)
--   [x] [【day-06】380.常数时间插入、删除和获取随机元素](./basic/day-06.md)
+##### 每日一题
+
+-   [x] [【day-01】66.加一](./basic/array-stack-queue/01.plus-one.md)
+-   [x] [【day-02】821.字符的最短距离](./basic/array-stack-queue/02.shortest-distance-to-a-character.md)
+-   [x] [【day-05】232.用栈实现队列](./basic/array-stack-queue/day-05.md)
+
+##### 数组拓展题目
+
+-   [x] [75.颜色分类](./basic/array-stack-queue/ext-sort-colors.md)
+-   [ ] [28.实现 strStr()](https://leetcode-cn.com/problems/implement-strstr/)
+-   [x] [380.常数时间插入、删除和获取随机元素](./basic/array-stack-queue/ext-insert-delete-getrandom-o1.md)
+-   [ ] [59. 螺旋矩阵 II](https://leetcode-cn.com/problems/spiral-matrix-ii/)
+-   [ ] [859. 亲密字符串](https://leetcode-cn.com/problems/buddy-strings/)
+
+##### 栈拓展题目
+
+-   [x] [1381.设计一个支持增量操作的栈](./basic/array-stack-queue/ext-design-a-stack-with-increment-operation.md)
+-   [x] [394.字符串解码](./basic/array-stack-queue/ext-decode-string.md)
+-   [ ] [946. 验证栈序列](https://leetcode-cn.com/problems/validate-stack-sequences/)
+
+##### 队列拓展题目
+
+-   [ ] [155.最小栈](https://leetcode-cn.com/problems/min-stack/)
+-   [ ] [更多](https://github.com/leetcode-pp/91alg-2/blob/master/lecture/basic-01.md#%E6%8E%A8%E8%8D%90%E9%A2%98%E7%9B%AE)
+
+##### 相关专题
+
+-   [ ] [前缀和](https://lucifer.ren/blog/2020/09/27/atMostK/)
+-   [ ] [单调栈](https://github.com/leetcode-pp/91alg-2/blob/master/lecture/basic-01.md#%E5%8D%95%E8%B0%83%E6%A0%88)
+-   [ ] [栈匹配](https://github.com/leetcode-pp/91alg-2/blob/master/lecture/basic-01.md#%E6%A0%88%E5%8C%B9%E9%85%8D)
+-   [ ] [分桶](https://github.com/leetcode-pp/91alg-2/blob/master/lecture/basic-01.md#%E5%88%86%E6%A1%B6)
+-   [ ] [链表反转](https://github.com/leetcode-pp/91alg-2/blob/master/lecture/basic-01.md#%E9%93%BE%E8%A1%A8%E5%8F%8D%E8%BD%AC)
 
 #### 链表
 
