@@ -65,6 +65,7 @@
 
 -   [x] [【day-01】66.加一](./basic/array-stack-queue/01.plus-one.md)
 -   [x] [【day-02】821.字符的最短距离](./basic/array-stack-queue/02.shortest-distance-to-a-character.md)
+-   [x] [【day-03】1381.设计一个支持增量操作的栈](./basic/array-stack-queue/03.design-a-stack-with-increment-operation.md)
 -   [x] [【day-05】232.用栈实现队列](./basic/array-stack-queue/day-05.md)
 
 ##### 数组拓展题目
@@ -77,7 +78,6 @@
 
 ##### 栈拓展题目
 
--   [x] [1381.设计一个支持增量操作的栈](./basic/array-stack-queue/ext-design-a-stack-with-increment-operation.md)
 -   [x] [394.字符串解码](./basic/array-stack-queue/ext-decode-string.md)
 -   [ ] [946. 验证栈序列](https://leetcode-cn.com/problems/validate-stack-sequences/)
 
