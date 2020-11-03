@@ -1,11 +1,10 @@
 # LeetCode 题解
 
 - [LeetCode 题解](#leetcode-题解)
-  - [讲义](#讲义)
-    - [基础](#基础)
-    - [进阶](#进阶)
-  - [个人 DSA 笔记](#个人-dsa-笔记httpsgithubcomsuukiiarticlese695b0e68daee7bb93e69e84e7ae97e6b395)
-  - [力扣题目](#力扣题目)
+  - [DSA 讲义 - private repo](#dsa-讲义---private-repohttpsgithubcomleetcode-pp91alg-2e8aeb2e4b989)
+  - [参考题解 - private repo](#参考题解---private-repohttpsgithubcomleetcode-pp91alg-2e9a298e8a7a3)
+  - [笔记](#笔记httpsgithubcomsuukiiarticlese695b0e68daee7bb93e69e84e7ae97e6b395)
+  - [Leetcode 题目](#leetcode-题目)
     - [基础篇](#基础篇)
       - [数组，栈，队列](#数组栈队列)
         - [每日一题](#每日一题)
@@ -33,29 +32,14 @@
       - [分治](#分治)
       - [贪心](#贪心)
     - [其他](#其他)
-  - [全部参考题解](#全部参考题解)
 
-## 讲义
+## [DSA 讲义 - private repo](https://github.com/leetcode-pp/91alg-2#%E8%AE%B2%E4%B9%89)
 
-### 基础
+## [参考题解 - private repo](https://github.com/leetcode-pp/91alg-2#%E9%A2%98%E8%A7%A3)
 
--   [01.数组，栈，队列](https://github.com/leetcode-pp/91alg-2/blob/master/lecture/basic-01.md)
--   [02.链表](https://github.com/leetcode-pp/91alg-2/blob/master/lecture/basic-02.md)
--   [03.树](https://github.com/leetcode-pp/91alg-1/blob/master/basic-03.md)
--   [04.哈希表](https://github.com/leetcode-pp/91alg-1/blob/master/basic-04.md)
--   [05.双指针](https://lucifer.ren/blog/2020/05/26/91algo-basic-05.two-pointer/)
+## [笔记](https://github.com/suukii/Articles#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95)
 
-### 进阶
-
--   [01.并查集](https://github.com/leetcode-pp/91alg-1/blob/master/advanced-01.md)
--   [02.前缀树](https://github.com/leetcode-pp/91alg-1/blob/master/Trie.md)
--   [03.跳表](https://github.com/leetcode-pp/91alg-1/blob/master/advanced-skiplist.md)
--   [04.剪枝](https://github.com/leetcode-pp/91alg-1/blob/master/advanced_prune.md)
--   [05.高频面试题](https://github.com/leetcode-pp/91alg-1/blob/master/advanced-07.md)
-
-## [个人 DSA 笔记](https://github.com/suukii/Articles#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95)
-
-## 力扣题目
+## Leetcode 题目
 
 ### 基础篇
 
@@ -238,7 +222,3 @@
 -   [x] [112.路径总和](./extensions/112.path-sum.md)
 -   [x] [257.二叉树的所有路径](./extensions/257.binary-tree-paths.md)
 -   [ ] [面试题 04.09. 二叉搜索树序列](./extensions/04.09.bst-sequences-lcci.md)
-
-## 全部参考题解
-
-[链接](https://github.com/leetcode-pp/91alg-1#%E5%8F%82%E8%80%83%E7%AD%94%E6%A1%88)
