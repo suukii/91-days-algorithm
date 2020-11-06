@@ -52,6 +52,7 @@
 -   [x] [【day-03】1381.设计一个支持增量操作的栈](./basic/array-stack-queue/03.design-a-stack-with-increment-operation.md)
 -   [x] [【day-04】394.字符串解码](./basic/array-stack-queue/04.decode-string.md)
 -   [x] [【day-05】232.用栈实现队列](./basic/array-stack-queue/05.implement-queue-using-stacks.md)
+-   [x] [【day-06】768.最多能完成排序的块 II](./basic/array-stack-queue/06.max-chunks-to-make-sorted-ii.md)
 
 ##### 数组拓展题目
 
