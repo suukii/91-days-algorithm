@@ -81,7 +81,8 @@
 
 #### 链表
 
--   [x] [【day-07】206.反转链表](./basic/day-07.md)
+-   [x] [【day-07】24.两两交换链表中的节点](./basic/linked-list/07.swap-nodes-in-pairs.md)
+-   [x] [206.反转链表](./basic/day-07.md)
 -   [ ] 【day-08】430.扁平化多级双向链表
 -   [ ] 【day-09】109.有序链表转换二叉搜索树
 -   [x] [【day-10】160.相交链表](./basic/day-10.md)
