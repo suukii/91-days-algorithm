@@ -83,12 +83,12 @@
 #### 链表
 
 -   [x] [【day-07】24.两两交换链表中的节点](./basic/linked-list/07.swap-nodes-in-pairs.md)
--   [x] [206.反转链表](./basic/day-07.md)
--   [ ] 【day-08】430.扁平化多级双向链表
--   [ ] 【day-09】109.有序链表转换二叉搜索树
--   [x] [【day-10】160.相交链表](./basic/day-10.md)
+-   [ ] [【day-08】61. 旋转链表](./basic/linked-list/08.rotate-list.md)
+-   [ ] [【day-09】109.有序链表转换二叉搜索树](./basic/linked-list/09.convert-sorted-list-to-binary-search-tree.md)
+-   [x] [【day-10】160.相交链表](./basic/linked-list/09.convert-sorted-list-to-binary-search-tree.md)
 -   [x] [【day-11】142.环形链表 II](./basic/day-11.md)
 -   [x] [【day-12】146.LRU 缓存机制](./basic/day-12.md)
+-   [x] [206.反转链表](./basic/day-07.md)
 
 ##### 链表拓展题目
 
