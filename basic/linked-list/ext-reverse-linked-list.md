@@ -1,5 +1,18 @@
 # 206.反转链表
 
+https://leetcode-cn.com/problems/reverse-linked-list
+
+- [206.反转链表](#206dot反转链表)
+  - [题目描述](#题目描述)
+  - [循环](#循环)
+    - [思路](#思路)
+    - [图解](#图解)
+    - [代码](#代码)
+  - [递归](#递归)
+    - [思路](#思路-1)
+    - [图解](#图解-1)
+    - [代码](#代码-1)
+
 ## 题目描述
 
 ```
@@ -24,13 +37,13 @@
 1. 初始化一个 `prev` 指针为 null，一个 `cur` 指针为 head；
 2. 开始遍历链表，在每一次循环中：
 
-- 先保存 `cur.next`；
-- 把 `cur.next` 倒转方向指向 `prev`；
-- `prev` 和 `cur` 都分别往前一步；
+-   先保存 `cur.next`；
+-   把 `cur.next` 倒转方向指向 `prev`；
+-   `prev` 和 `cur` 都分别往前一步；
 
 ### 图解
 
-![reverse-a-linked-list-loop](../assets/reverse-a-linked-list-loop.png)
+![reverse-a-linked-list-loop](https://cdn.jsdelivr.net/gh/suukii/91-days-algorithm/assets/reverse-a-linked-list-loop.png)
 
 ### 代码
 
@@ -62,15 +75,15 @@ class Solution(object):
 
 我们可以把链表分成两个部分：
 
-- 第一个节点
-- 余下的部分
+-   第一个节点
+-   余下的部分
 
 假设余下的部分是已经反转好的链表，那我们就只需要把这部分的最后一个节点指向原本的第一个节点，然后返回余下部分的 head。
 
 而余下的部分也可以进一步分成两个部分：
 
-- 第一个节点
-- 余下的部分
+-   第一个节点
+-   余下的部分
 
 ......
 
@@ -80,7 +93,7 @@ class Solution(object):
 
 ### 图解
 
-![reverse-a-linked-list-recursive](../assets/reverse-a-linked-list-recursive.png)
+![reverse-a-linked-list-recursive](https://cdn.jsdelivr.net/gh/suukii/91-days-algorithm/assets/reverse-a-linked-list-recursive.png)
 
 ### 代码
 
