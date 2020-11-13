@@ -97,7 +97,7 @@
 #### 树
 
 -   [x] [【day-13】104.二叉树的最大深度](./basic/binary-tree/13.maximum-depth-of-binary-tree.md)
--   [x] [【day-14】100.相同的树](./basic/day-14.md)
+-   [x] [【day-14】100.相同的树](./basic/binary-tree/14.same-tree.md)
 -   [x] [【day-15】129.求根到叶子节点数字之和](./basic/day-15.md)
 -   [x] [【day-16】513.找树左下角的值](./basic/day-16.md)
 -   [x] [【day-17】105.从前序与中序遍历序列构造二叉树](./basic/day-17.md)
