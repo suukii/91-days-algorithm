@@ -15,6 +15,7 @@
       - [链表](#链表)
         - [链表拓展题目](#链表拓展题目)
       - [树](#树)
+        - [每日一题](#每日一题-1)
       - [哈希表](#哈希表)
       - [双指针](#双指针)
     - [进阶篇](#进阶篇)
@@ -95,6 +96,8 @@
 -   [x] [206.反转链表](./basic/linked-list/ext-reverse-linked-list.md)
 
 #### 树
+
+##### 每日一题
 
 -   [x] [【day-13】104.二叉树的最大深度](./basic/binary-tree/13.maximum-depth-of-binary-tree.md)
 -   [x] [【day-14】100.相同的树](./basic/binary-tree/14.same-tree.md)
