@@ -32,7 +32,7 @@ https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder
 
 中序遍历的顺序是 `left->root->right`，也就是说在中序遍历的结果数组中，`root` 的左边是它左子树的中序遍历结果，它的右边是右子树的中序遍历结果。
 
-![construct-binary-tree](../assets/construct_binary_tree.png)
+![construct-binary-tree](https://cdn.jsdelivr.net/gh/suukii/91-days-algorithm/assets/construct_binary_tree.png)
 
 结合以上两个知识点，我们可以从前序遍历结果中确定一棵二叉树的根节点，然后在中序遍历结果中找到根节点的位置(因为题目说了节点值是不重复的)，从而确定了左子树和右子树遍历结果的长度，也就能分别得到左子树和右子树的前/中序遍历结果。
 
@@ -59,8 +59,8 @@ buildTree(preorder, inorder):
 
 ## 复杂度分析
 
-- 时间复杂度：O(N)，N 为节点数（另外每次在中序遍历结果中查找根节点的时间复杂度不会算 🥺）
-- 空间复杂度：O(N)，返回的二叉树空间复杂度是 O(N)，递归中调用栈的空间复杂度是 O(h)，h 为树的高度，所以总的空间复杂度还是 O(N)。
+-   时间复杂度：O(N)，N 为节点数（另外每次在中序遍历结果中查找根节点的时间复杂度不会算 🥺）
+-   空间复杂度：O(N)，返回的二叉树空间复杂度是 O(N)，递归中调用栈的空间复杂度是 O(h)，h 为树的高度，所以总的空间复杂度还是 O(N)。
 
 ## 代码
 
@@ -107,23 +107,23 @@ JavaScript Code
  * @return {TreeNode}
  */
 var buildTree = function (preorder, inorder) {
-  if (preorder.length === 0) return null
-  if (preorder.length === 1) {
-    return new TreeNode(preorder[0])
-  }
-  const root = preorder[0]
-  const rootIndex = inorder.indexOf(root)
+    if (preorder.length === 0) return null;
+    if (preorder.length === 1) {
+        return new TreeNode(preorder[0]);
+    }
+    const root = preorder[0];
+    const rootIndex = inorder.indexOf(root);
 
-  const leftPreorder = preorder.slice(1, rootIndex + 1)
-  const rightPreorder = preorder.slice(rootIndex + 1)
-  const leftInorder = inorder.slice(0, rootIndex)
-  const rightInorder = inorder.slice(rootIndex + 1)
+    const leftPreorder = preorder.slice(1, rootIndex + 1);
+    const rightPreorder = preorder.slice(rootIndex + 1);
+    const leftInorder = inorder.slice(0, rootIndex);
+    const rightInorder = inorder.slice(rootIndex + 1);
 
-  const rootNode = new TreeNode(root)
-  rootNode.left = buildTree(leftPreorder, leftInorder)
-  rootNode.right = buildTree(rightPreorder, rightInorder)
-  return rootNode
-}
+    const rootNode = new TreeNode(root);
+    rootNode.left = buildTree(leftPreorder, leftInorder);
+    rootNode.right = buildTree(rightPreorder, rightInorder);
+    return rootNode;
+};
 ```
 
 _Originally posted by @suukii in https://github.com/leetcode-pp/91alg-1/issues/38#issuecomment-645428003_

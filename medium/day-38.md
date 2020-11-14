@@ -2,19 +2,19 @@
 
 **[206.反转链表](#206.反转链表)**
 
-- [方法 1:递归](#方法-1:递归)
-- [方法 2:循环](#方法-2:循环)
+-   [方法 1:递归](#方法-1:递归)
+-   [方法 2:循环](#方法-2:循环)
 
 **[92.反转链表 II](#92.反转链表II)**
 
-- [方法 1:两趟扫描](#方法-1:两趟扫描)
-- [方法 2:一趟扫描](#方法-2:一趟扫描)
+-   [方法 1:两趟扫描](#方法-1:两趟扫描)
+-   [方法 2:一趟扫描](#方法-2:一趟扫描)
 
 **[25.K 个一组翻转链表](#92.25.K个一组翻转链表)**
 
-- [原题](#原题)
-- [变形 1](#变形1)
-- [变形 2](#变形2)
+-   [原题](#原题)
+-   [变形 1](#变形1)
+-   [变形 2](#变形2)
 
 # 206.反转链表
 
@@ -63,10 +63,10 @@ https://leetcode-cn.com/problems/reverse-linked-list/
 
 **递归出口**
 
-- 链表最后一个节点：只剩一个节点，直接返回它就好了。
-- 空节点。
+-   链表最后一个节点：只剩一个节点，直接返回它就好了。
+-   空节点。
 
-![reverse-a-linked-list-recursive](../assets/reverse-a-linked-list-recursive.png)
+![reverse-a-linked-list-recursive](https://cdn.jsdelivr.net/gh/suukii/91-days-algorithm/assets/reverse-a-linked-list-recursive.png)
 
 ### 代码
 
@@ -85,24 +85,24 @@ JavaScript Code
  * @return {ListNode}
  */
 var reverseList = function (head) {
-  // 递归出口
-  if (!head || !head.next) return head
+    // 递归出口
+    if (!head || !head.next) return head;
 
-  // 进行反转下一段链表之前，
-  // 先把这段链表的第一个节点记录一下
-  // 链表反转结束后，这就变成最后一个节点了
-  const lastNode = head.next
+    // 进行反转下一段链表之前，
+    // 先把这段链表的第一个节点记录一下
+    // 链表反转结束后，这就变成最后一个节点了
+    const lastNode = head.next;
 
-  // 反转余下的链表
-  // reverseList 函数会返回反转后链表的头部
-  const newHead = reverseList(head.next)
+    // 反转余下的链表
+    // reverseList 函数会返回反转后链表的头部
+    const newHead = reverseList(head.next);
 
-  // 将反转后链表的尾部指向当前节点
-  lastNode.next = head
-  head.next = null
-  // 返回新头部
-  return newHead
-}
+    // 将反转后链表的尾部指向当前节点
+    lastNode.next = head;
+    head.next = null;
+    // 返回新头部
+    return newHead;
+};
 ```
 
 ## 方法 2:循环
@@ -112,13 +112,13 @@ var reverseList = function (head) {
 1. 初始化一个 `prev` 指针为 null，一个 `cur` 指针为 head；
 2. 开始遍历链表，在每一次循环中：
 
-- 先保存 `cur.next`；
-- 把 `cur.next` 倒转方向指向 `prev`；
-- `prev` 和 `cur` 都分别往前一步；
+-   先保存 `cur.next`；
+-   把 `cur.next` 倒转方向指向 `prev`；
+-   `prev` 和 `cur` 都分别往前一步；
 
 ### 图解
 
-![reverse-a-linked-list-loop](../assets/reverse-a-linked-list-loop.png)
+![reverse-a-linked-list-loop](https://cdn.jsdelivr.net/gh/suukii/91-days-algorithm/assets/reverse-a-linked-list-loop.png)
 
 ### 代码
 
@@ -172,9 +172,9 @@ https://leetcode-cn.com/problems/reverse-linked-list-ii/
 
 比较直白的思路：
 
-- 第一趟扫描先找到需要反转的链表片段的头尾，
-- 然后再扫描一遍将这个片段进行反转，
-- 最后将反转后的片段和原链表的头尾两段拼接起来就好。
+-   第一趟扫描先找到需要反转的链表片段的头尾，
+-   然后再扫描一遍将这个片段进行反转，
+-   最后将反转后的片段和原链表的头尾两段拼接起来就好。
 
 思路很简单，就是各种指针有点绕，具体看代码吧。
 
@@ -197,64 +197,64 @@ JavaScript Code
  * @return {ListNode}
  */
 var reverseBetween = function (head, m, n) {
-  if (!head || !head.next) return head
+    if (!head || !head.next) return head;
 
-  let startPrev = null, // 第 m-1 个节点
-    start = null, // 第 m 个节点
-    end = null, // 第 n 个节点
-    endNext = null, // 第 n+1 个节点
-    cur = head
+    let startPrev = null, // 第 m-1 个节点
+        start = null, // 第 m 个节点
+        end = null, // 第 n 个节点
+        endNext = null, // 第 n+1 个节点
+        cur = head;
 
-  // 第一趟扫描
-  // 分别找到上述节点
-  let i = 1
-  while (cur && i <= n) {
-    if (i < m) {
-      startPrev = cur
+    // 第一趟扫描
+    // 分别找到上述节点
+    let i = 1;
+    while (cur && i <= n) {
+        if (i < m) {
+            startPrev = cur;
+        }
+        if (i === m) {
+            start = cur;
+        }
+        if (i === n) {
+            end = cur;
+            endNext = cur.next;
+        }
+        cur = cur.next;
+        i++;
     }
-    if (i === m) {
-      start = cur
-    }
-    if (i === n) {
-      end = cur
-      endNext = cur.next
-    }
-    cur = cur.next
-    i++
-  }
 
-  // 将 m -> n 这段链表进行反转
-  // reverseList 可以用循环实现，具体看 206 题
-  end.next = null
-  end = reverseList(start)
+    // 将 m -> n 这段链表进行反转
+    // reverseList 可以用循环实现，具体看 206 题
+    end.next = null;
+    end = reverseList(start);
 
-  // 如果反转不是从第一个节点开始的话
-  // 将反转后的片段和原链表左边的那段拼接起来
-  if (startPrev) {
-    startPrev.next = end
-  }
-  // 如果反转是从第一个节点开始的话
-  // 把 head 指针指向反转后片段的第一个节点
-  else {
-    head = end
-  }
-  // 将反转后的片段和原链表右边的那段拼接起来
-  start.next = endNext
-  return head
-}
+    // 如果反转不是从第一个节点开始的话
+    // 将反转后的片段和原链表左边的那段拼接起来
+    if (startPrev) {
+        startPrev.next = end;
+    }
+    // 如果反转是从第一个节点开始的话
+    // 把 head 指针指向反转后片段的第一个节点
+    else {
+        head = end;
+    }
+    // 将反转后的片段和原链表右边的那段拼接起来
+    start.next = endNext;
+    return head;
+};
 
 /**
  * @param {ListNode} head
  * @return {ListNode}
  */
 var reverseList = function (head) {
-  if (!head || !head.next) return head
-  const lastNode = head.next
-  const newHead = reverseList(head.next)
-  lastNode.next = head
-  head.next = null
-  return newHead
-}
+    if (!head || !head.next) return head;
+    const lastNode = head.next;
+    const newHead = reverseList(head.next);
+    lastNode.next = head;
+    head.next = null;
+    return newHead;
+};
 ```
 
 ## 方法 2:一趟扫描
@@ -286,38 +286,38 @@ JavaScript Code
  * @return {ListNode}
  */
 var reverseBetween = function (head, m, n) {
-  if (!head || !head.next) return head
+    if (!head || !head.next) return head;
 
-  const dummy = new ListNode(null)
-  dummy.next = head
+    const dummy = new ListNode(null);
+    dummy.next = head;
 
-  let prev = dummy,
-    cur = prev.next
+    let prev = dummy,
+        cur = prev.next;
 
-  let i = 0
-  while (i < n - 1) {
-    i++
+    let i = 0;
+    while (i < n - 1) {
+        i++;
 
-    // prev 是反转片段前的一个节点
-    if (i === m - 1) {
-      prev = cur
+        // prev 是反转片段前的一个节点
+        if (i === m - 1) {
+            prev = cur;
+        }
+        if (i < m) {
+            cur = cur.next;
+        }
+
+        // 在 [m, n) 这段区间里
+        // 把 cur 的下一个节点从链表中删掉
+        // 再插入到 prev 后面去
+        if (i >= m) {
+            temp = cur.next;
+            cur.next = temp.next;
+            temp.next = prev.next;
+            prev.next = temp;
+        }
     }
-    if (i < m) {
-      cur = cur.next
-    }
-
-    // 在 [m, n) 这段区间里
-    // 把 cur 的下一个节点从链表中删掉
-    // 再插入到 prev 后面去
-    if (i >= m) {
-      temp = cur.next
-      cur.next = temp.next
-      temp.next = prev.next
-      prev.next = temp
-    }
-  }
-  return dummy.next
-}
+    return dummy.next;
+};
 ```
 
 # 25.K 个一组翻转链表
@@ -433,30 +433,30 @@ JavaScript Code
  * @return {ListNode}
  */
 var reverseKGroup = function (head, k) {
-  if (!head || !head.next || k <= 1) return head
+    if (!head || !head.next || k <= 1) return head;
 
-  const dummy = new ListNode(null)
-  dummy.next = head
+    const dummy = new ListNode(null);
+    dummy.next = head;
 
-  let prev = dummy,
-    cur = prev.next
+    let prev = dummy,
+        cur = prev.next;
 
-  let i = 0
-  while (cur) {
-    i++
-    if (i % k === 0) {
-      prev = cur
-      cur = prev.next
+    let i = 0;
+    while (cur) {
+        i++;
+        if (i % k === 0) {
+            prev = cur;
+            cur = prev.next;
+        }
+        if (!cur || !cur.next) break;
+
+        const temp = cur.next;
+        cur.next = temp.next;
+        temp.next = prev.next;
+        prev.next = temp;
     }
-    if (!cur || !cur.next) break
-
-    const temp = cur.next
-    cur.next = temp.next
-    temp.next = prev.next
-    prev.next = temp
-  }
-  return dummy.next
-}
+    return dummy.next;
+};
 ```
 
 **官方题解**

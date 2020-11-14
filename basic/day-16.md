@@ -48,7 +48,7 @@ https://leetcode-cn.com/problems/find-bottom-left-tree-value/submissions/
 
 一层层地遍历二叉树，遍历到最后一层的时候，返回第一个节点。
 
-![bfs](../assets/513_bfs.png)
+![bfs](https://cdn.jsdelivr.net/gh/suukii/91-days-algorithm/assets/513_bfs.png)
 
 ### 伪代码
 
@@ -87,19 +87,19 @@ JavaScript Code
  * @return {number}
  */
 var findBottomLeftValue = function (root) {
-  let curLevel = [root],
-    nextLevel = []
-  while (true) {
-    for (let node of curLevel) {
-      node.left && nextLevel.push(node.left)
-      node.right && nextLevel.push(node.right)
-    }
+    let curLevel = [root],
+        nextLevel = [];
+    while (true) {
+        for (let node of curLevel) {
+            node.left && nextLevel.push(node.left);
+            node.right && nextLevel.push(node.right);
+        }
 
-    if (!nextLevel.length) return curLevel[0].val
-    curLevel = nextLevel
-    nextLevel = []
-  }
-}
+        if (!nextLevel.length) return curLevel[0].val;
+        curLevel = nextLevel;
+        nextLevel = [];
+    }
+};
 ```
 
 Python Code
@@ -129,8 +129,8 @@ class Solution(object):
 
 **_复杂度分析_**
 
-- 时间复杂度：$O(N)$，其中 N 为节点数。
-- 空间复杂度：$O(b)$，其中 $b$ 为树的最大宽度。
+-   时间复杂度：$O(N)$，其中 N 为节点数。
+-   空间复杂度：$O(b)$，其中 $b$ 为树的最大宽度。
 
 ## 方法 2：DFS
 
@@ -179,23 +179,23 @@ JavaScript Code
  * @return {number}
  */
 var findBottomLeftValue = function (root) {
-  let maxDepth = 0
-  let ans = root.val
-  const dfs = (root, depth) => {
-    if (!root) return
-    if (!root.left && !root.right) {
-      if (depth > maxDepth) {
-        ans = root.val
-        maxDepth = Math.max(maxDepth, depth)
-      }
-      return
-    }
-    dfs(root.left, depth + 1)
-    dfs(root.right, depth + 1)
-  }
-  dfs(root, 0)
-  return ans
-}
+    let maxDepth = 0;
+    let ans = root.val;
+    const dfs = (root, depth) => {
+        if (!root) return;
+        if (!root.left && !root.right) {
+            if (depth > maxDepth) {
+                ans = root.val;
+                maxDepth = Math.max(maxDepth, depth);
+            }
+            return;
+        }
+        dfs(root.left, depth + 1);
+        dfs(root.right, depth + 1);
+    };
+    dfs(root, 0);
+    return ans;
+};
 ```
 
 Python Code
@@ -233,8 +233,8 @@ class Solution(object):
 
 **_复杂度分析_**
 
-- 时间复杂度：$O(N)$，其中 N 为节点数。
-- 空间复杂度：$O(h)$，其中 $h$ 为树的深度，最坏的情况 $h$ 等于 $N$，其中 N 为节点数，此时树退化到链表。
+-   时间复杂度：$O(N)$，其中 N 为节点数。
+-   空间复杂度：$O(h)$，其中 $h$ 为树的深度，最坏的情况 $h$ 等于 $N$，其中 N 为节点数，此时树退化到链表。
 
 **官方题解**
 
@@ -246,8 +246,8 @@ class Solution(object):
 
 问题再分解一下
 
-- 找到树的最后一行
-- 找到那一行的第一个节点
+-   找到树的最后一行
+-   找到那一行的第一个节点
 
 不用层序遍历简直对不起这个问题，这里贴一下层序遍历的流程
 
@@ -262,19 +262,19 @@ class Solution(object):
 
 ```js
 var findBottomLeftValue = function (root) {
-  let curLevel = [root]
-  let res = root.val
-  while (curLevel.length) {
-    let nextLevel = []
-    for (let i = 0; i < curLevel.length; i++) {
-      curLevel[i].left && nextLevel.push(curLevel[i].left)
-      curLevel[i].right && nextLevel.push(curLevel[i].right)
+    let curLevel = [root];
+    let res = root.val;
+    while (curLevel.length) {
+        let nextLevel = [];
+        for (let i = 0; i < curLevel.length; i++) {
+            curLevel[i].left && nextLevel.push(curLevel[i].left);
+            curLevel[i].right && nextLevel.push(curLevel[i].right);
+        }
+        res = curLevel[0].val;
+        curLevel = nextLevel;
     }
-    res = curLevel[0].val
-    curLevel = nextLevel
-  }
-  return res
-}
+    return res;
+};
 ```
 
 ### DFS
@@ -284,26 +284,26 @@ var findBottomLeftValue = function (root) {
 
 ```js
 function findBottomLeftValue(root) {
-  let maxDepth = 0
-  let res = root.val
+    let maxDepth = 0;
+    let res = root.val;
 
-  dfs(root.left, 0)
-  dfs(root.right, 0)
+    dfs(root.left, 0);
+    dfs(root.right, 0);
 
-  return res
+    return res;
 
-  function dfs(cur, depth) {
-    if (!cur) {
-      return
+    function dfs(cur, depth) {
+        if (!cur) {
+            return;
+        }
+        const curDepth = depth + 1;
+        if (curDepth > maxDepth) {
+            maxDepth = curDepth;
+            res = cur.val;
+        }
+        dfs(cur.left, curDepth);
+        dfs(cur.right, curDepth);
     }
-    const curDepth = depth + 1
-    if (curDepth > maxDepth) {
-      maxDepth = curDepth
-      res = cur.val
-    }
-    dfs(cur.left, curDepth)
-    dfs(cur.right, curDepth)
-  }
 }
 ```
 

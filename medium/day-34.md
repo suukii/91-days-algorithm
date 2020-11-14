@@ -28,11 +28,11 @@ https://leetcode-cn.com/problems/shortest-unsorted-continuous-subarray
 
 ## 思路
 
-- 先找出数组两端已经排好序的两个子数组，剩下的中间那段就是**可能的** `最短无序连续子数组`；
-- 但由于这个 `无序子数组` 中可能会出现需要插入 `有序子数组` 中的元素，比如图中的数字 4，
-- 我们可以把 `无序子数组` 看作一个滑动窗口，当出现了上面出现的这种元素时，就扩大窗口的范围；
+-   先找出数组两端已经排好序的两个子数组，剩下的中间那段就是**可能的** `最短无序连续子数组`；
+-   但由于这个 `无序子数组` 中可能会出现需要插入 `有序子数组` 中的元素，比如图中的数字 4，
+-   我们可以把 `无序子数组` 看作一个滑动窗口，当出现了上面出现的这种元素时，就扩大窗口的范围；
 
-![](../assets/581_0.png)
+![](https://cdn.jsdelivr.net/gh/suukii/91-days-algorithm/assets/581_0.png)
 
 ## 代码
 
@@ -44,23 +44,23 @@ JavaScript Code
  * @return {number}
  */
 var findUnsortedSubarray = function (nums) {
-  if (nums.length === 0) return 0
+    if (nums.length === 0) return 0;
 
-  let l = 0,
-    r = nums.length - 1
-  while (nums[l + 1] >= nums[l]) l++
-  while (nums[r - 1] <= nums[r]) r--
+    let l = 0,
+        r = nums.length - 1;
+    while (nums[l + 1] >= nums[l]) l++;
+    while (nums[r - 1] <= nums[r]) r--;
 
-  if (r <= l) return 0
+    if (r <= l) return 0;
 
-  const unsorted = nums.slice(l, r + 1),
-    min = Math.min(...unsorted),
-    max = Math.max(...unsorted)
+    const unsorted = nums.slice(l, r + 1),
+        min = Math.min(...unsorted),
+        max = Math.max(...unsorted);
 
-  while (nums[l - 1] > min) l--
-  while (nums[r + 1] < max) r++
-  return r - l + 1
-}
+    while (nums[l - 1] > min) l--;
+    while (nums[r + 1] < max) r++;
+    return r - l + 1;
+};
 ```
 
 JavaScript Code
@@ -71,24 +71,24 @@ JavaScript Code
  * @return {number}
  */
 var findUnsortedSubarray = function (nums) {
-  if (nums.length === 0) return 0
+    if (nums.length === 0) return 0;
 
-  let l = 0,
-    r = nums.length - 1
-  while (nums[l + 1] >= nums[l]) l++
-  while (nums[r - 1] <= nums[r]) r--
+    let l = 0,
+        r = nums.length - 1;
+    while (nums[l + 1] >= nums[l]) l++;
+    while (nums[r - 1] <= nums[r]) r--;
 
-  if (r <= l) return 0
+    if (r <= l) return 0;
 
-  let p = l,
-    end = r
-  while (p <= end) {
-    while (nums[p] < nums[l]) l--
-    while (nums[p] > nums[r]) r++
-    p++
-  }
-  return r - (l + 1)
-}
+    let p = l,
+        end = r;
+    while (p <= end) {
+        while (nums[p] < nums[l]) l--;
+        while (nums[p] > nums[r]) r++;
+        p++;
+    }
+    return r - (l + 1);
+};
 ```
 
 # 参考回答
@@ -102,7 +102,7 @@ var findUnsortedSubarray = function (nums) {
 你找到的子数组应是最短的，请输出它的长度。
 
 **示例:**
-  
+
 输入: [2, 6, 4, 8, 10, 9, 15]
 输出: 5
 解释: 你只需要对 [6, 4, 8, 10, 9] 进行升序排序，那么整个表都会变为升序排序。
@@ -114,8 +114,8 @@ var findUnsortedSubarray = function (nums) {
 
 ## 前置知识
 
-- 数组排序
-- 数组拷贝
+-   数组排序
+-   数组拷贝
 
 ## 思路
 
@@ -123,10 +123,10 @@ var findUnsortedSubarray = function (nums) {
 
 ## 解法
 
-- 将数组复制到一个新的数组并且将新数组进行排序
-- 从左到右遍历并对比新旧两个数组，得到第一个不同元素的下标
-- 从右到左遍历并对比新旧两个数组，得到第一个不同元素的下标
-- 计算两个下标的差值（记得要+1）
+-   将数组复制到一个新的数组并且将新数组进行排序
+-   从左到右遍历并对比新旧两个数组，得到第一个不同元素的下标
+-   从右到左遍历并对比新旧两个数组，得到第一个不同元素的下标
+-   计算两个下标的差值（记得要+1）
 
 这种思路的时间复杂度：$O(nlogn)$，因为最耗时的其实是排序方法。
 
@@ -136,25 +136,25 @@ var findUnsortedSubarray = function (nums) {
  * @return {number}
  */
 var findUnsortedSubarray = function (nums) {
-  var arr = nums.slice()
-  arr.sort((a, b) => a - b)
-  var len = arr.length
-  var left, right
-  for (var i = 0; i < len; i++) {
-    if (arr[i] !== nums[i]) {
-      left = i
-      break
+    var arr = nums.slice();
+    arr.sort((a, b) => a - b);
+    var len = arr.length;
+    var left, right;
+    for (var i = 0; i < len; i++) {
+        if (arr[i] !== nums[i]) {
+            left = i;
+            break;
+        }
     }
-  }
-  for (var i = len - 1; i > -1; i--) {
-    if (arr[i] !== nums[i]) {
-      right = i
-      break
+    for (var i = len - 1; i > -1; i--) {
+        if (arr[i] !== nums[i]) {
+            right = i;
+            break;
+        }
     }
-  }
 
-  return left === undefined ? 0 : right - left + 1
-}
+    return left === undefined ? 0 : right - left + 1;
+};
 ```
 
 更多题解可以访问我的 LeetCode 题解仓库：https://github.com/azl397985856/leetcode 。 目前已经 30K star 啦。

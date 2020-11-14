@@ -27,12 +27,12 @@ https://leetcode-cn.com/problems/binary-tree-maximum-path-sum
 
 如果一根柱子的左右两边有比它高的柱子的话，那这根柱子的位置就可以储存雨水，所以问题可以细化成，**每根柱子所在的位置可以储存多少雨水**。要求这个问题的答案，只需分别找到这根柱子左右两侧出现的最高的柱子，取两者中较短的那根，减去当前柱子的高度，就是这个位置所能储存的雨水量了。
 
-![](../assets/42_0.png)
+![](https://cdn.jsdelivr.net/gh/suukii/91-days-algorithm/assets/42_0.png)
 
 ### 复杂度分析
 
-- 时间复杂度：O(N^2)，N 为数组长度，遍历数组求每根柱子的位置所能储存的雨水量是 O(N)，对于每根柱子，要分别向左和向右遍历找出最高的柱子，时间复杂度是 O(N)，所以总的时间复杂度是 O(N^2)。
-- 空间复杂度：O(1)。
+-   时间复杂度：O(N^2)，N 为数组长度，遍历数组求每根柱子的位置所能储存的雨水量是 O(N)，对于每根柱子，要分别向左和向右遍历找出最高的柱子，时间复杂度是 O(N)，所以总的时间复杂度是 O(N^2)。
+-   空间复杂度：O(1)。
 
 ### 代码
 
@@ -44,26 +44,26 @@ JavaScript Code
  * @return {number}
  */
 var trap = function (heights) {
-  const findMax = (heights, left, right) => {
-    let max = 0
-    for (let i = left; i <= right; i++) {
-      heights[i] > max && (max = heights[i])
-    }
-    return max
-  }
+    const findMax = (heights, left, right) => {
+        let max = 0;
+        for (let i = left; i <= right; i++) {
+            heights[i] > max && (max = heights[i]);
+        }
+        return max;
+    };
 
-  let water = 0
-  for (let i = 1, len = heights.length; i < len - 1; i++) {
-    const maxL = findMax(heights, 0, i - 1)
-    const maxR = findMax(heights, i + 1, len - 1)
+    let water = 0;
+    for (let i = 1, len = heights.length; i < len - 1; i++) {
+        const maxL = findMax(heights, 0, i - 1);
+        const maxR = findMax(heights, i + 1, len - 1);
 
-    if (maxL > 0 && maxR > 0) {
-      const unit = Math.min(maxR, maxL) - heights[i]
-      water += unit > 0 ? unit : 0
+        if (maxL > 0 && maxR > 0) {
+            const unit = Math.min(maxR, maxL) - heights[i];
+            water += unit > 0 ? unit : 0;
+        }
     }
-  }
-  return water
-}
+    return water;
+};
 ```
 
 ## 方法 2
@@ -74,8 +74,8 @@ var trap = function (heights) {
 
 ### 复杂度分析
 
-- 时间复杂度：O(N)，N 为数组长度，遍历一遍记录每根柱子左侧的最高柱子为 O(N)，遍历一遍记录每根柱子右侧的最高柱子为 O(N)，遍历一遍计算每根柱子位置能储存的雨水量为 O(N)，即 O(3N)，忽略常数，也就是 O(N)。
-- 空间复杂度：O(N)，N 为数组长度，使用了两个数组来记录左右侧最高柱子，空间复杂度提高到了 O(N)。
+-   时间复杂度：O(N)，N 为数组长度，遍历一遍记录每根柱子左侧的最高柱子为 O(N)，遍历一遍记录每根柱子右侧的最高柱子为 O(N)，遍历一遍计算每根柱子位置能储存的雨水量为 O(N)，即 O(3N)，忽略常数，也就是 O(N)。
+-   空间复杂度：O(N)，N 为数组长度，使用了两个数组来记录左右侧最高柱子，空间复杂度提高到了 O(N)。
 
 ### 代码
 
@@ -85,27 +85,27 @@ var trap = function (heights) {
  * @return {number}
  */
 var trap = function (heights) {
-  const len = heights.length
-  const maxL = Array(len).fill(0)
-  const maxR = Array(len).fill(0)
+    const len = heights.length;
+    const maxL = Array(len).fill(0);
+    const maxR = Array(len).fill(0);
 
-  maxL[0] = heights[0]
-  for (let i = 1; i < len; i++) {
-    maxL[i] = Math.max(maxL[i - 1], heights[i])
-  }
+    maxL[0] = heights[0];
+    for (let i = 1; i < len; i++) {
+        maxL[i] = Math.max(maxL[i - 1], heights[i]);
+    }
 
-  maxR[len - 1] = heights[len - 1]
-  for (let i = len - 2; i > 0; i--) {
-    maxR[i] = Math.max(maxR[i + 1], heights[i])
-  }
+    maxR[len - 1] = heights[len - 1];
+    for (let i = len - 2; i > 0; i--) {
+        maxR[i] = Math.max(maxR[i + 1], heights[i]);
+    }
 
-  let water = 0
-  for (let i = 1; i < len - 1; i++) {
-    const unit = Math.min(maxR[i], maxL[i]) - heights[i]
-    unit > 0 && (water += unit)
-  }
-  return water
-}
+    let water = 0;
+    for (let i = 1; i < len - 1; i++) {
+        const unit = Math.min(maxR[i], maxL[i]) - heights[i];
+        unit > 0 && (water += unit);
+    }
+    return water;
+};
 ```
 
 ## 方法 3
@@ -141,8 +141,8 @@ return 雨水量
 
 ### 复杂度分析
 
-- 时间复杂度：O(N)，N 为数组长度。
-- 空间复杂度：O(1)。
+-   时间复杂度：O(N)，N 为数组长度。
+-   空间复杂度：O(1)。
 
 ### 代码
 
@@ -154,32 +154,32 @@ JavaScript Code
  * @return {number}
  */
 var trap = function (heights) {
-  let water = 0,
-    low = 0,
-    high = heights.length - 1,
-    maxL = 0,
-    maxR = 0
+    let water = 0,
+        low = 0,
+        high = heights.length - 1,
+        maxL = 0,
+        maxR = 0;
 
-  while (low <= high) {
-    if (heights[low] < heights[high]) {
-      if (heights[low] > maxL) {
-        maxL = heights[low]
-      } else {
-        water += maxL - heights[low]
-      }
-      low++
-    } else {
-      if (heights[high] > maxR) {
-        maxR = heights[high]
-      } else {
-        water += maxR - heights[high]
-      }
-      high--
+    while (low <= high) {
+        if (heights[low] < heights[high]) {
+            if (heights[low] > maxL) {
+                maxL = heights[low];
+            } else {
+                water += maxL - heights[low];
+            }
+            low++;
+        } else {
+            if (heights[high] > maxR) {
+                maxR = heights[high];
+            } else {
+                water += maxR - heights[high];
+            }
+            high--;
+        }
     }
-  }
 
-  return water
-}
+    return water;
+};
 ```
 
 **官方题解**
@@ -199,7 +199,7 @@ The above elevation map is represented by array [0,1,0,2,1,0,1,3,2,1,2,1]. In th
 
 ```
 
-![42.trapping-rain-water-1](../assets/problems/42.trapping-rain-water-1.png)
+![42.trapping-rain-water-1](https://cdn.jsdelivr.net/gh/suukii/91-days-algorithm/assets/problems/42.trapping-rain-water-1.png)
 
 ```
 Example:
@@ -211,9 +211,9 @@ Output: 6
 
 ## 前置知识
 
-- 空间换时间
-- 双指针
-- 单调栈
+-   空间换时间
+-   双指针
+-   单调栈
 
 ## 双数组
 
@@ -227,7 +227,7 @@ Output: 6
 
 ```js
 for (let i = 0; i < height.length; i++) {
-  area += (h[i] - height[i]) * 1 // h为下雨之后的水位
+    area += (h[i] - height[i]) * 1; // h为下雨之后的水位
 }
 ```
 
@@ -242,7 +242,7 @@ for (let i = 0; i < height.length; i++) {
 
 ### 关键点解析
 
-- 建模 `h[i] = Math.min(左边柱子最大值, 右边柱子最大值)`(h 为下雨之后的水位)
+-   建模 `h[i] = Math.min(左边柱子最大值, 右边柱子最大值)`(h 为下雨之后的水位)
 
 ### 代码
 
@@ -262,27 +262,27 @@ JavaScript Code:
  * @return {number}
  */
 var trap = function (height) {
-  let max = 0
-  let volumn = 0
-  const leftMax = []
-  const rightMax = []
+    let max = 0;
+    let volumn = 0;
+    const leftMax = [];
+    const rightMax = [];
 
-  for (let i = 0; i < height.length; i++) {
-    leftMax[i] = max = Math.max(height[i], max)
-  }
+    for (let i = 0; i < height.length; i++) {
+        leftMax[i] = max = Math.max(height[i], max);
+    }
 
-  max = 0
+    max = 0;
 
-  for (let i = height.length - 1; i >= 0; i--) {
-    rightMax[i] = max = Math.max(height[i], max)
-  }
+    for (let i = height.length - 1; i >= 0; i--) {
+        rightMax[i] = max = Math.max(height[i], max);
+    }
 
-  for (let i = 0; i < height.length; i++) {
-    volumn = volumn + Math.min(leftMax[i], rightMax[i]) - height[i]
-  }
+    for (let i = 0; i < height.length; i++) {
+        volumn = volumn + Math.min(leftMax[i], rightMax[i]) - height[i];
+    }
 
-  return volumn
-}
+    return volumn;
+};
 ```
 
 Python Code:
@@ -330,8 +330,8 @@ int trap(vector<int>& heights)
 
 **复杂度分析**
 
-- 时间复杂度：$O(N)$
-- 空间复杂度：$O(N)$
+-   时间复杂度：$O(N)$
+-   空间复杂度：$O(N)$
 
 ## 双指针
 
@@ -339,8 +339,8 @@ int trap(vector<int>& heights)
 
 上面代码比较好理解，但是需要额外的 \${N} 的空间。从上面解法可以看出，我们实际上只关心左右两侧较小的那一个，并不需要两者都计算出来。具体来说：
 
-- 如果 l[i + 1] < r[i] 那么 最终积水的高度由 i 的左侧最大值决定。
-- 如果 l[i + 1] >= r[i] 那么 最终积水的高度由 i 的右侧最大值决定。
+-   如果 l[i + 1] < r[i] 那么 最终积水的高度由 i 的左侧最大值决定。
+-   如果 l[i + 1] >= r[i] 那么 最终积水的高度由 i 的右侧最大值决定。
 
 因此我们不必维护完整的两个数组，而是可以只进行一次遍历，同时维护左侧最大值和右侧最大值，使用常数变量完成即可。这是一个典型的双指针问题，
 
@@ -350,15 +350,15 @@ int trap(vector<int>& heights)
 2. 初始化左侧和右侧最低的高度都为 0。
 3. 比较 height[left] 和 height[right]
 
-   - 3.1 如果 height[left] < height[right]
-     - 3.1.1 如果 height[left] >= left_max， 则当前格子积水面积为(left_max - height[left])
-     - 3.1.2 否则无法积水，即积水面积为 0
-   - 3.2 左指针右移一位
+    - 3.1 如果 height[left] < height[right]
+        - 3.1.1 如果 height[left] >= left_max， 则当前格子积水面积为(left_max - height[left])
+        - 3.1.2 否则无法积水，即积水面积为 0
+    - 3.2 左指针右移一位
 
-   - 3.3 如果 height[left] >= height[right]
-     - 3.3.1 如果 height[right] >= right_max， 则当前格子积水面积为(right_max - height[right])
-     - 3.3.2 否则无法积水，即积水面积为 0
-   - 3.4 右指针左移一位
+    - 3.3 如果 height[left] >= height[right]
+        - 3.3.1 如果 height[right] >= right_max， 则当前格子积水面积为(right_max - height[right])
+        - 3.3.2 否则无法积水，即积水面积为 0
+    - 3.4 右指针左移一位
 
 ### 代码
 
@@ -414,12 +414,12 @@ public:
 
 **复杂度分析**
 
-- 时间复杂度：$O(N)$
-- 空间复杂度：$O(1)$
+-   时间复杂度：$O(N)$
+-   空间复杂度：$O(1)$
 
 ## 相关题目
 
-- [84.largest-rectangle-in-histogram](https://github.com/azl397985856/leetcode/blob/master/problems/84.largest-rectangle-in-histogram.md)
+-   [84.largest-rectangle-in-histogram](https://github.com/azl397985856/leetcode/blob/master/problems/84.largest-rectangle-in-histogram.md)
 
 更多题解可以访问我的 LeetCode 题解仓库：https://github.com/azl397985856/leetcode 。 目前已经 30K star 啦。
 

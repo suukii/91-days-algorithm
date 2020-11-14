@@ -26,16 +26,16 @@ words.length <= 100000
 
 使用双指针去找目标词：
 
-- 当 `指针l` 找到 `word1` 时，`指针r` 从 `指针l` 的右边出发去找 `word1` 或者 `word2`；
-- 如果 `指针r` 找到了 `word2`，计算距离 `r - l`，同时记录一个最小的距离；
-- 如果 `指针r` 找到的还是 `word1`，更新 `指针l` 到 `指针r` 的位置，`指针r` 继续右移寻找；
+-   当 `指针l` 找到 `word1` 时，`指针r` 从 `指针l` 的右边出发去找 `word1` 或者 `word2`；
+-   如果 `指针r` 找到了 `word2`，计算距离 `r - l`，同时记录一个最小的距离；
+-   如果 `指针r` 找到的还是 `word1`，更新 `指针l` 到 `指针r` 的位置，`指针r` 继续右移寻找；
 
-![](../assets/17.11_0.png)
+![](https://cdn.jsdelivr.net/gh/suukii/91-days-algorithm/assets/17.11_0.png)
 
 ### 复杂度分析
 
-- 时间复杂度：O(N)，N 为数组长度。
-- 空间复杂度：O(1)。
+-   时间复杂度：O(N)，N 为数组长度。
+-   空间复杂度：O(1)。
 
 ### 代码
 
@@ -49,31 +49,31 @@ JavaScript Code
  * @return {number}
  */
 var findClosest = function (words, word1, word2) {
-  const len = words.length
-  const foundTarget = (word) => [word1, word2].includes(word)
-  const getNext = (cur) => (cur === word1 ? word2 : word1)
+    const len = words.length;
+    const foundTarget = word => [word1, word2].includes(word);
+    const getNext = cur => (cur === word1 ? word2 : word1);
 
-  let res = len
-  let l = -1,
-    r = -1,
-    next = ''
+    let res = len;
+    let l = -1,
+        r = -1,
+        next = '';
 
-  while (r < len) {
-    if (foundTarget(words[r])) {
-      if (!next) {
-        next = getNext(words[r])
-      } else if (words[r] === next) {
-        r - l < res && (res = r - l)
-        next = getNext(next)
-      }
-      l = r
-      r = l + 1
-    } else {
-      r++
+    while (r < len) {
+        if (foundTarget(words[r])) {
+            if (!next) {
+                next = getNext(words[r]);
+            } else if (words[r] === next) {
+                r - l < res && (res = r - l);
+                next = getNext(next);
+            }
+            l = r;
+            r = l + 1;
+        } else {
+            r++;
+        }
     }
-  }
-  return res
-}
+    return res;
+};
 ```
 
 ## 方法 2：哈希表
@@ -84,12 +84,12 @@ var findClosest = function (words, word1, word2) {
 
 > ps. 下图中 a 和 student 的坐标数组不是题目中的真实结果。
 
-![](../assets/17.11_1.png)
+![](https://cdn.jsdelivr.net/gh/suukii/91-days-algorithm/assets/17.11_1.png)
 
 ### 复杂度分析
 
-- 时间复杂度：O(N)，N 为数组长度，遍历一次数组记录单词出现位置的时间复杂度 O(N)，遍历两个目标单词的位置数组时间复杂度为 O(N)。
-- 空间复杂度：O(N)，N 为数组长度，用了一个哈希表来记录每个单词出现的所有位置。
+-   时间复杂度：O(N)，N 为数组长度，遍历一次数组记录单词出现位置的时间复杂度 O(N)，遍历两个目标单词的位置数组时间复杂度为 O(N)。
+-   空间复杂度：O(N)，N 为数组长度，用了一个哈希表来记录每个单词出现的所有位置。
 
 ### 代码
 
@@ -103,33 +103,33 @@ JavaScript Code
  * @return {number}
  */
 var findClosest = function (words, word1, word2) {
-  const dict = {}
-  words.forEach((w, i) => {
-    dict[w] || (dict[w] = [])
-    dict[w].push(i)
-  })
+    const dict = {};
+    words.forEach((w, i) => {
+        dict[w] || (dict[w] = []);
+        dict[w].push(i);
+    });
 
-  const indices1 = dict[word1],
-    indices2 = dict[word2]
-  let p1 = 0,
-    p2 = 0,
-    res = words.length
+    const indices1 = dict[word1],
+        indices2 = dict[word2];
+    let p1 = 0,
+        p2 = 0,
+        res = words.length;
 
-  while (p1 < indices1.length && p2 < indices2.length) {
-    res = Math.min(Math.abs(indices2[p2] - indices1[p1]), res)
-    indices2[p2] > indices1[p1] ? p1++ : p2++
-  }
-  return res
-}
+    while (p1 < indices1.length && p2 < indices2.length) {
+        res = Math.min(Math.abs(indices2[p2] - indices1[p1]), res);
+        indices2[p2] > indices1[p1] ? p1++ : p2++;
+    }
+    return res;
+};
 ```
 
 **官方题解**
 
 ## 前置知识
 
-- 哈希
-- 空间换时间
-- 双指针
+-   哈希
+-   空间换时间
+-   双指针
 
 ## 两个数组
 
@@ -171,8 +171,8 @@ class Solution:
 
 **复杂度分析**
 
-- 时间复杂度：$O(N)$，其中 N 为 words 的长度。
-- 空间复杂度：$O(N)$，其中 N 为 words 的长度。
+-   时间复杂度：$O(N)$，其中 N 为 words 的长度。
+-   空间复杂度：$O(N)$，其中 N 为 words 的长度。
 
 ## 双指针
 
@@ -226,8 +226,8 @@ class Solution {
 
 **复杂度分析**
 
-- 时间复杂度：$O(N)$，其中 N 为 words 的长度。
-- 空间复杂度：$O(1)$
+-   时间复杂度：$O(N)$，其中 N 为 words 的长度。
+-   空间复杂度：$O(1)$
 
 更多题解可以访问我的 LeetCode 题解仓库：https://github.com/azl397985856/leetcode 。 目前已经 30K star 啦。
 
