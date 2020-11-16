@@ -1,9 +1,9 @@
 # LeetCode 题解
 
 - [LeetCode 题解](#leetcode-题解)
-  - [DSA 讲义 - private repo](#dsa-讲义---private-repohttpsgithubcomleetcode-pp91alg-2e8aeb2e4b989)
-  - [参考题解 - private repo](#参考题解---private-repohttpsgithubcomleetcode-pp91alg-2e9a298e8a7a3)
-  - [笔记](#笔记httpsgithubcomsuukiiarticlese695b0e68daee7bb93e69e84e7ae97e6b395)
+  - [DSA 讲义 - private repo](#dsa-讲义---private-repo)
+  - [参考题解 - private repo](#参考题解---private-repo)
+  - [笔记](#笔记)
   - [Leetcode 题目](#leetcode-题目)
     - [基础篇](#基础篇)
       - [数组，栈，队列](#数组栈队列)
@@ -101,8 +101,8 @@
 
 -   [x] [【day-13】104.二叉树的最大深度](./basic/binary-tree/13.maximum-depth-of-binary-tree.md)
 -   [x] [【day-14】100.相同的树](./basic/binary-tree/14.same-tree.md)
--   [x] [【day-15】129.求根到叶子节点数字之和](./basic/day-15.md)
--   [x] [【day-16】513.找树左下角的值](./basic/day-16.md)
+-   [x] [【day-15】129.求根到叶子节点数字之和](./basic/binary-tree/15.sum-root-to-leaf-numbers.md)
+-   [x] [【day-16】513.找树左下角的值](./basic/binary-tree/16.find-bottom-left-tree-value.md)
 -   [x] [【day-17】105.从前序与中序遍历序列构造二叉树](./basic/day-17.md)
 -   [ ] 【day-18】124.二叉树中的最大路径和
 
