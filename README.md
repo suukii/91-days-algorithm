@@ -16,6 +16,7 @@
         - [链表拓展题目](#链表拓展题目)
       - [树](#树)
         - [每日一题](#每日一题-1)
+        - [树拓展题目](#树拓展题目)
       - [哈希表](#哈希表)
       - [双指针](#双指针)
     - [进阶篇](#进阶篇)
@@ -103,8 +104,11 @@
 -   [x] [【day-14】100.相同的树](./basic/binary-tree/14.same-tree.md)
 -   [x] [【day-15】129.求根到叶子节点数字之和](./basic/binary-tree/15.sum-root-to-leaf-numbers.md)
 -   [x] [【day-16】513.找树左下角的值](./basic/binary-tree/16.find-bottom-left-tree-value.md)
--   [x] [【day-17】105.从前序与中序遍历序列构造二叉树](./basic/day-17.md)
--   [ ] 【day-18】124.二叉树中的最大路径和
+-   [x] [【day-17】297.二叉树的序列化与反序列化](./basic/binary-tree/17.serialize-and-deserialize-binary-tree.md)
+
+##### 树拓展题目
+
+-   [x] [105.从前序与中序遍历序列构造二叉树](./basic/binary-tree/ext-construct-binary-tree-from-preorder-and-inorder-traversal.md)
 
 #### 哈希表
 

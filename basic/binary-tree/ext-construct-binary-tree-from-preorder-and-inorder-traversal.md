@@ -125,7 +125,3 @@ var buildTree = function (preorder, inorder) {
     return rootNode;
 };
 ```
-
-_Originally posted by @suukii in https://github.com/leetcode-pp/91alg-1/issues/38#issuecomment-645428003_
-
-**官方题解**
