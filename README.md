@@ -60,7 +60,7 @@
 ##### 数组拓展题目
 
 -   [x] [75.颜色分类](./basic/array-stack-queue/ext-sort-colors.md)
--   [ ] [28.实现 strStr()](https://leetcode-cn.com/problems/implement-strstr/)
+-   [x] [28.实现 strStr()](./basic/array-stack-queue/ext-implement-strstr.md)
 -   [x] [380.常数时间插入、删除和获取随机元素](./basic/array-stack-queue/ext-insert-delete-getrandom-o1.md)
 -   [ ] [59. 螺旋矩阵 II](https://leetcode-cn.com/problems/spiral-matrix-ii/)
 -   [ ] [859. 亲密字符串](https://leetcode-cn.com/problems/buddy-strings/)
