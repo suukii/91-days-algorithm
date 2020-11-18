@@ -105,6 +105,7 @@
 -   [x] [【day-15】129.求根到叶子节点数字之和](./basic/binary-tree/15.sum-root-to-leaf-numbers.md)
 -   [x] [【day-16】513.找树左下角的值](./basic/binary-tree/16.find-bottom-left-tree-value.md)
 -   [x] [【day-17】297.二叉树的序列化与反序列化](./basic/binary-tree/17.serialize-and-deserialize-binary-tree.md)
+-   [x] [【day-18】987.二叉树的垂序遍历](./basic/binary-tree/18.vertical-order-traversal-of-a-binary-tree.md)
 
 ##### 树拓展题目
 
