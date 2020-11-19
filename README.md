@@ -112,6 +112,8 @@
 ### 哈希表
 
 -   [x] [【day-19】1.两数之和](./basic/hashmap/19.two-sum.md)
+-   [x] [【day-20】347.前 K 个高频元素](./basic/hashmap/20.top-k-frequent-elements.md)
+
 -   [x] [【day-20】447.回旋镖的数量](./basic/day-20.md)
 -   [ ] 【day-21】36.有效的数独
 -   [x] [【day-22】645.错误的集合](./basic/day-22.md)
