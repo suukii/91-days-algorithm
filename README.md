@@ -120,6 +120,7 @@
 -   [x] [【day-21】447.回旋镖的数量](./basic/hashmap/21.number-of-boomerangs.md)
 -   [x] [【day-22】3.无重复字符的最长子串](./basic/hashmap/22.longest-substring-without-repeating-characters.md)
 -   [x] [【day-23】30.串联所有单词的子串](./basic/hashmap/23.substring-with-concatenation-of-all-words.md)
+-   [x] [【day-24】37.解数独](./basic/hashmap/24.sudoku-solver.md)
 
 #### 哈希表拓展题目
 
