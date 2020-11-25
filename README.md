@@ -138,11 +138,11 @@
 
 -   [x] [【day-25】35.搜索插入位置](./basic/search/25.search-insert-position.md)
 -   [x] [【day-26】74.搜索二维矩阵](./basic/search/26.search-a-2d-matrix.md)
+-   [x] [【day-27】26.删除排序数组中的重复项](./basic/search/27.remove-duplicates-from-sorted-array.md)
 
 #### 双指针拓展题目
 
 -   [x] [875.爱吃香蕉的珂珂](./basic/day-26.md)
--   [x] [26.删除排序数组中的重复项](./basic/day-27.md)
 -   [x] [167.两数之和 II - 输入有序数组](./basic/day-28.md)
 -   [x] [42.接雨水](./basic/day-29.md)
 -   [x] [面试题 17.11.单词距离](./basic/day-30.md)
