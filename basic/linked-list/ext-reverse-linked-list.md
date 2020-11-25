@@ -2,7 +2,7 @@
 
 https://leetcode-cn.com/problems/reverse-linked-list
 
-- [206.反转链表](#206dot反转链表)
+- [206.反转链表](#206反转链表)
   - [题目描述](#题目描述)
   - [循环](#循环)
     - [思路](#思路)
@@ -116,9 +116,3 @@ class Solution(object):
         head.next = None
         return newHead
 ```
-
-_Originally posted by @suukii in https://github.com/leetcode-pp/91alg-1/issues/24#issuecomment-640582158_
-
-**官方题解**
-
-https://github.com/azl397985856/leetcode/blob/master/problems/206.reverse-linked-list.md
