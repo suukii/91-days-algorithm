@@ -125,14 +125,14 @@
 #### 哈希表拓展题目
 
 -   [x] [215.数组中的第 K 个最大元素](./basic/hashmap/ext-kth-largest-element-in-an-array.md)
--   [ ] 36.有效的数独
--   [x] [645.错误的集合](./basic/day-22.md)
--   [x] [面试题 04.01.节点间通路](./basic/day-23.md)
--   [ ] 149.直线上最多的点数
+-   [x] [645.错误的集合](./basic/hashmap/ext-set-mismatch.md)
+-   [x] [面试题 04.01.节点间通路](./basic/hashmap/ext-route-between-nodes-lcci.md)
+-   [ ] [36.有效的数独](https://leetcode-cn.com/problems/valid-sudoku)
+-   [ ] [149.直线上最多的点数](/)
 
 ### 双指针
 
--   [ ] 【day-25】11.盛最多水的容器
+-   [x] [【day-25】35.搜索插入位置](./basic/search/25.search-insert-position.md)
 -   [x] [【day-26】875.爱吃香蕉的珂珂](./basic/day-26.md)
 -   [x] [【day-27】26.删除排序数组中的重复项](./basic/day-27.md)
 -   [x] [【day-28】167.两数之和 II - 输入有序数组](./basic/day-28.md)
