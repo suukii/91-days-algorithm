@@ -136,10 +136,10 @@
 
 #### 每日一题
 
--   [x] [【day-25】35.搜索插入位置](./basic/search/25.search-insert-position.md)
--   [x] [【day-26】74.搜索二维矩阵](./basic/search/26.search-a-2d-matrix.md)
--   [x] [【day-27】26.删除排序数组中的重复项](./basic/search/27.remove-duplicates-from-sorted-array.md)
--   [x] [【day-29】1052.爱生气的书店老板](./basic/search/29.grumpy-bookstore-owner.md)
+-   [x] [【day-25】35.搜索插入位置](./basic/two-pointers/25.search-insert-position.md)
+-   [x] [【day-26】74.搜索二维矩阵](./basic/two-pointers/26.search-a-2d-matrix.md)
+-   [x] [【day-27】26.删除排序数组中的重复项](./basic/two-pointers/27.remove-duplicates-from-sorted-array.md)
+-   [x] [【day-29】1052.爱生气的书店老板](./basic/two-pointers/29.grumpy-bookstore-owner.md)
 
 #### 双指针拓展题目
 
