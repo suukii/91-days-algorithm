@@ -35,6 +35,8 @@
     - [动态规划](#动态规划)
     - [分治](#分治)
     - [贪心](#贪心)
+      - [每日一题](#每日一题-5)
+      - [贪心拓展题目](#贪心拓展题目)
   - [其他](#其他)
 
 > [DSA 讲义 - private repo](https://github.com/leetcode-pp/91alg-2#%E8%AE%B2%E4%B9%89)
@@ -238,18 +240,24 @@
 
 -   [ ] [【day-84】爬楼梯变种](./topics/day-84.md)
 -   [ ] [【day-85】铺地毯-2021 网易校招](./topics/day-85.md)
--   [ ] [【day-86】935. 骑士拨号器](./topics/day-86.md)
--   [ ] [【day-87】1458. 两个子序列的最大点积](./topics/day-87.md)
+-   [ ] [【day-86】935.骑士拨号器](./topics/day-86.md)
+-   [ ] [【day-87】1458.两个子序列的最大点积](./topics/day-87.md)
 
 ### 分治
 
--   [x] [【day-88】96. 不同的二叉搜索树](./topics/day-88.md)
--   [ ] [【day-89】23. 合并 K 个升序链表](./topics/day-89.md)
+-   [x] [【day-88】96.不同的二叉搜索树](./topics/day-88.md)
+-   [ ] [【day-89】23.合并 K 个升序链表](./topics/day-89.md)
 
 ### 贪心
 
--   [ ] [【day-90】765. 情侣牵手](./topics/day-90.md)
--   [x] [【day-91】881. 救生艇](./topics/day-91.md)
+#### 每日一题
+
+-   [ ] [【day-90】765.情侣牵手](./topics/day-90.md)
+-   [x] [【day-91】881.救生艇](./topics/day-91.md)
+
+#### 贪心拓展题目
+
+-   [x] [455.分发饼干](./topics/greedy/ext-assign-cookies.md)
 
 ## 其他
 
