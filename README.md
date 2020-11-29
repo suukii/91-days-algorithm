@@ -257,6 +257,7 @@
 
 #### 贪心拓展题目
 
+-   [x] [135.分发糖果](./topics/greedy/ext-candy.md)
 -   [x] [455.分发饼干](./topics/greedy/ext-assign-cookies.md)
 
 ## 其他
