@@ -114,6 +114,7 @@
 #### 树拓展题目
 
 -   [x] [105.从前序与中序遍历序列构造二叉树](./basic/binary-tree/ext-construct-binary-tree-from-preorder-and-inorder-traversal.md)
+-   [x] [404.左叶子之和](./basic/binary-tree/ext-sum-of-left-leaves.md)
 
 ### 哈希表
 
@@ -264,7 +265,6 @@
 ## 其他
 
 -   [x] [77.组合](./extensions/77.combination.md)
--   [x] [404.左叶子之和](./extensions/404.sum-of-left-leaves.md)
 -   [x] [112.路径总和](./extensions/112.path-sum.md)
 -   [x] [257.二叉树的所有路径](./extensions/257.binary-tree-paths.md)
 -   [ ] [面试题 04.09. 二叉搜索树序列](./extensions/04.09.bst-sequences-lcci.md)
