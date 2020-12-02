@@ -2,6 +2,17 @@
 
 https://leetcode-cn.com/problems/path-sum/
 
+- [112.路径总和](#112路径总和)
+  - [题目描述](#题目描述)
+  - [方法 1：递归](#方法-1递归)
+    - [思路](#思路)
+    - [复杂度分析](#复杂度分析)
+    - [代码](#代码)
+  - [迭代+队列](#迭代队列)
+    - [思路](#思路-1)
+    - [复杂度分析](#复杂度分析-1)
+    - [代码](#代码-1)
+
 ## 题目描述
 
 ```
@@ -26,7 +37,7 @@ https://leetcode-cn.com/problems/path-sum/
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 ```
 
-## 递归
+## 方法 1：递归
 
 ### 思路
 
@@ -76,12 +87,12 @@ TypeScript Code
  */
 
 function hasPathSum(root: TreeNode | null, sum: number): boolean {
-    if (!root) return false
-    if (!root.left && !root.right) return root.val === sum
+    if (!root) return false;
+    if (!root.left && !root.right) return root.val === sum;
     return (
         hasPathSum(root.left, sum - root.val) ||
         hasPathSum(root.right, sum - root.val)
-    )
+    );
 }
 ```
 
@@ -116,33 +127,33 @@ TypeScript Code
  */
 
 function hasPathSum(root: TreeNode | null, sum: number): boolean {
-    if (!root) return false
+    if (!root) return false;
 
-    const queue: TreeNode[] = [root]
-    const sums: number[] = [root.val]
+    const queue: TreeNode[] = [root];
+    const sums: number[] = [root.val];
 
     while (true) {
-        let len: number = queue.length
-        if (len === 0) break
+        let len: number = queue.length;
+        if (len === 0) break;
         while (len > 0) {
-            len--
-            const node: TreeNode = queue.shift() as TreeNode
-            const temp: number = sums.shift() as number
+            len--;
+            const node: TreeNode = queue.shift() as TreeNode;
+            const temp: number = sums.shift() as number;
 
             if (!node.left && !node.right) {
-                if (temp === sum) return true
-                continue
+                if (temp === sum) return true;
+                continue;
             }
             if (node.left) {
-                queue.push(node.left)
-                sums.push(node.left.val + temp)
+                queue.push(node.left);
+                sums.push(node.left.val + temp);
             }
             if (node.right) {
-                queue.push(node.right)
-                sums.push(node.right.val + temp)
+                queue.push(node.right);
+                sums.push(node.right.val + temp);
             }
         }
     }
-    return false
+    return false;
 }
 ```

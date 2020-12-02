@@ -39,6 +39,8 @@
       - [贪心拓展题目](#贪心拓展题目)
   - [其他](#其他)
 
+> [在线电子书](https://app.gitbook.com/@suki/s/91-days-algorithm/)
+>
 > [DSA 讲义 - private repo](https://github.com/leetcode-pp/91alg-2#%E8%AE%B2%E4%B9%89)
 >
 > [参考题解 - private repo](https://github.com/leetcode-pp/91alg-2#%E9%A2%98%E8%A7%A3)
@@ -115,6 +117,8 @@
 
 -   [x] [105.从前序与中序遍历序列构造二叉树](./basic/binary-tree/ext-construct-binary-tree-from-preorder-and-inorder-traversal.md)
 -   [x] [404.左叶子之和](./basic/binary-tree/ext-sum-of-left-leaves.md)
+-   [x] [257.二叉树的所有路径](./basic/binary-tree/ext-binary-tree-paths.md)
+-   [x] [112.路径总和](./basic/binary-tree/ext-path-sum.md)
 
 ### 哈希表
 
@@ -133,7 +137,7 @@
 -   [x] [645.错误的集合](./basic/hashmap/ext-set-mismatch.md)
 -   [x] [面试题 04.01.节点间通路](./basic/hashmap/ext-route-between-nodes-lcci.md)
 -   [ ] [36.有效的数独](https://leetcode-cn.com/problems/valid-sudoku)
--   [ ] [149.直线上最多的点数](/)
+-   [ ] [149.直线上最多的点数](https://leetcode-cn.com/problems/max-points-on-a-line)
 
 ### 双指针
 
@@ -148,10 +152,11 @@
 
 #### 双指针拓展题目
 
--   [x] [875.爱吃香蕉的珂珂](./basic/day-26.md)
--   [x] [167.两数之和 II - 输入有序数组](./basic/day-28.md)
--   [x] [42.接雨水](./basic/day-29.md)
--   [x] [面试题 17.11.单词距离](./basic/day-30.md)
+-   [x] [875.爱吃香蕉的珂珂](./basic/two-pointers/ext-koko-eating-bananas.md)
+-   [x] [167.两数之和 II - 输入有序数组](./basic/two-pointers/ext-two-sum-ii-input-array-is-sorted.md)
+-   [x] [42.接雨水](./basic/two-pointers/ext-trapping-rain-water.md)
+-   [x] [面试题 17.11.单词距离](./basic/two-pointers/ext-find-closest-lcci.md)
+-   [ ] [11.盛最多水的容器](https://leetcode-cn.com/problems/container-with-most-water)
 
 ## 进阶篇
 
@@ -265,6 +270,4 @@
 ## 其他
 
 -   [x] [77.组合](./extensions/77.combination.md)
--   [x] [112.路径总和](./extensions/112.path-sum.md)
--   [x] [257.二叉树的所有路径](./extensions/257.binary-tree-paths.md)
 -   [ ] [面试题 04.09. 二叉搜索树序列](./extensions/04.09.bst-sequences-lcci.md)

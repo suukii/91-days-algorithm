@@ -2,6 +2,13 @@
 
 https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted
 
+- [167.两数之和 II - 输入有序数组](#167两数之和-ii---输入有序数组)
+  - [题目描述](#题目描述)
+  - [方法 1：双指针](#方法-1双指针)
+    - [思路](#思路)
+    - [复杂度分析](#复杂度分析)
+    - [代码](#代码)
+
 ## 题目描述
 
 ```
@@ -24,17 +31,20 @@ https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 ```
 
+## 方法 1：双指针
+
 ### 思路
 
-- 使用 `left` 和 `right` 两个指针分别从数组的两端开始遍历数组；因为数组是升序排序的，所以：
-- 当两指针的数字相加小于 `target` 时，我们要把两数中较小的数字换成一个更大的数字，所以 `left` 指针需要 右移一步；
-- 当两指针的数字相加大于 `target` 时，我们要把两数中较大的数字换成一个更小的数字，所以 `right` 指针需要左移一步；
-- 当两指针的数字相加等于 `target` 时，返回两指针下标加一。
+使用 `left` 和 `right` 两个指针分别从数组的两端开始遍历数组；因为数组是升序排序的，所以：
+
+-   当两指针的数字相加小于 `target` 时，我们要把两数中较小的数字换成一个更大的数字，`left` 指针右移一步；
+-   当两指针的数字相加大于 `target` 时，我们要把两数中较大的数字换成一个更小的数字，`right` 指针需要左移一步；
+-   当两指针的数字相加等于 `target` 时，返回两指针下标加一。
 
 ### 复杂度分析
 
-- 时间复杂度：O(N)，N 为数组长度。
-- 空间复杂度：O(1)。
+-   时间复杂度：$O(N)$，N 为数组长度。
+-   空间复杂度：$O(1)$。
 
 ### 代码
 
@@ -47,17 +57,20 @@ JavaScript Code
  * @return {number[]}
  */
 var twoSum = function (numbers, target) {
-  let left = 0,
-    right = numbers.length - 1,
-    sum = 0
-  while (left < right) {
-    sum = numbers[left] + numbers[right]
-    if (sum === target) {
-      return [left + 1, right + 1]
+    let l = 0,
+        r = numbers.length - 1,
+        sum = 0;
+
+    while (l < r) {
+        sum = numbers[l] + numbers[r];
+
+        if (sum === target) {
+            return [l + 1, r + 1];
+        }
+
+        sum < target ? l++ : r--;
     }
-    sum < target ? left++ : right--
-  }
-}
+};
 ```
 
 Python Code
@@ -77,9 +90,3 @@ class Solution(object):
             elif s > target: r -= 1
             else: return [l + 1, r + 1]
 ```
-
-_Originally posted by @suukii in https://github.com/leetcode-pp/91alg-1/issues/56#issuecomment-650560949_
-
-**官方题解**
-
-https://github.com/azl397985856/leetcode/blob/master/problems/167.two-sum-ii-input-array-is-sorted.md
