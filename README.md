@@ -162,13 +162,13 @@
 
 ### 高频面试题
 
+-   [x] [【day-34】二叉树遍历系列](./medium/hot/34.traversal-of-binary-tree.md)
 -   [x] [【day-34】581.最短无序连续子数组](./medium/day-34.md)
 -   [x] [【day-35】78.子集](./medium/day-35.md)
 -   [x] [【day-36】62.不同路径](./medium/day-36.md)
 -   [x] [【day-37】有效括号系列](./medium/day-37.md)
 -   [x] [【day-38】反转链表系列](./medium/day-38.md)
 -   [x] [【day-39】前缀和系列](./medium/day-39.md)
--   [x] [【day-40】二叉树遍历系列](./medium/day-40.md)
 
 ### 前缀树
 
