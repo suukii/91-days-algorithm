@@ -166,6 +166,12 @@
 
 -   [x] [【day-34】二叉树遍历系列](./medium/hot/34.traversal-of-binary-tree.md)
 
+**反转链表系列**
+
+-   [x] [【day-35】206.反转链表](./medium/hot/35.reverse-linked-list.md)
+-   [x] [【day-35】92.反转链表 II](./medium/hot/35.reverse-linked-list-ii.md)
+-   [x] [【day-35】25.K 个一组翻转链表](./medium/hot/35.reverse-nodes-in-k-group.md)
+
 **位运算系列**
 
 -   [ ] [【day-36】78.子集](./medium/hot/36.subsets.md)
@@ -173,9 +179,16 @@
 **动态规划系列**
 
 -   [x] [【day-37】62.不同路径](./medium/hot/37.unique-paths.md)
+-   [ ] [70. 爬楼梯](./)
+-   [ ] [121. 买卖股票的最佳时机](./)
+-   [ ] [122. 买卖股票的最佳时机 II](./)
+-   [ ] [123. 买卖股票的最佳时机 III](./)
+-   [ ] [188. 买卖股票的最佳时机 IV](./)
+-   [ ] [309. 最佳买卖股票时机含冷冻期](./)
+-   [ ] [714. 买卖股票的最佳时机含手续费](./)
 
 -   [x] [【day-37】有效括号系列](./medium/day-37.md)
--   [x] [【day-38】反转链表系列](./medium/day-38.md)
+
 -   [x] [【day-39】前缀和系列](./medium/day-39.md)
 -   [x] [581.最短无序连续子数组](./medium/day-34.md)
 
