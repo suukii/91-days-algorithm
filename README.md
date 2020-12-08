@@ -187,9 +187,13 @@
 -   [ ] [309. 最佳买卖股票时机含冷冻期](./)
 -   [ ] [714. 买卖股票的最佳时机含手续费](./)
 
+**有效括号系列**
+
+-   [x] [【day-38】20.有效括号](./medium/hot/38.valid-parentheses.md)
+-   [x] [【day-38】32.最长有效括号](./medium/hot/38.longest-valid-parentheses.md)
+
 **其他**
 
--   [x] [有效括号系列](./medium/day-37.md)
 -   [x] [前缀和系列](./medium/day-39.md)
 -   [x] [581.最短无序连续子数组](./medium/day-34.md)
 
