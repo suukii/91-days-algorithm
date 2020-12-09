@@ -293,6 +293,7 @@
 -   [x] [135.分发糖果](./topics/greedy/ext-candy.md)
 -   [x] [455.分发饼干](./topics/greedy/ext-assign-cookies.md)
 -   [x] [976.三角形的最大周长](./topics/greedy/ext-largest-perimeter-triangle.md)
+-   [x] [435.无重叠区间](./topics/greedy/ext-non-overlapping-intervals.md)
 
 ## 其他
 
