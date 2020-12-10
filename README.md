@@ -29,13 +29,15 @@
   - [专题篇](#专题篇)
     - [二分法](#二分法)
     - [滑动窗口](#滑动窗口)
+      - [每日一题](#每日一题-5)
+      - [拓展题目](#拓展题目)
     - [位运算](#位运算)
     - [搜索(BFS, DFS, 回溯)](#搜索bfs-dfs-回溯)
     - [背包问题](#背包问题)
     - [动态规划](#动态规划)
     - [分治](#分治)
     - [贪心](#贪心)
-      - [每日一题](#每日一题-5)
+      - [每日一题](#每日一题-6)
       - [贪心拓展题目](#贪心拓展题目)
   - [其他](#其他)
 
@@ -192,10 +194,18 @@
 -   [x] [【day-38】20.有效括号](./medium/hot/38.valid-parentheses.md)
 -   [x] [【day-38】32.最长有效括号](./medium/hot/38.longest-valid-parentheses.md)
 
-**其他**
+**设计系列**
 
--   [x] [前缀和系列](./medium/day-39.md)
--   [x] [581.最短无序连续子数组](./medium/day-34.md)
+-   [ ] [【day-39】剑指 Offer09.用两个栈实现队列](./)
+-   [ ] [【day-39】641.设计循环双端队列](./)
+-   [x] [【day-39】146.LRU 缓存机制](./basic/linked-list/12.lru-cache.md)
+-   [ ] [【day-39】1206.设计跳表](./)
+
+**前缀和系列**
+
+-   [x] [【day-40】网易面试题](./medium/hot/40.netease.md)
+-   [x] [【day-40】560.和为 K 的子数组](./medium/hot/40.subarray-sum-equals-k.md)
+-   [x] [【day-40】1371.每个元音包含偶数次的最长子字符串](./medium/hot/40.find-the-longest-substring-containing-vowels-in-even-counts.md)
 
 ### 前缀树
 
@@ -244,9 +254,15 @@
 
 ### 滑动窗口
 
+#### 每日一题
+
 -   [x] [【day-68】1456.定长子串中元音的最大数目](./topics/day-68.md)
 -   [ ] [【day-70】76.最小覆盖子串](./topics/day-70.md)
 -   [ ] [【day-71】30.串联所有单词的子串](./topics/day-71.md)
+
+#### 拓展题目
+
+-   [x] [581.最短无序连续子数组](./topics/sliding-window/ext-shortest-unsorted-continuous-subarray.md)
 
 ### 位运算
 

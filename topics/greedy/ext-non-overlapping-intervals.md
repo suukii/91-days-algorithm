@@ -2,6 +2,13 @@
 
 https://leetcode-cn.com/problems/non-overlapping-intervals/
 
+- [435. 无重叠区间](#435-无重叠区间)
+  - [题目描述](#题目描述)
+  - [方法 1: 贪心](#方法-1-贪心)
+    - [思路](#思路)
+    - [复杂度分析](#复杂度分析)
+    - [代码](#代码)
+
 ## 题目描述
 
 ```
@@ -47,6 +54,9 @@ https://leetcode-cn.com/problems/non-overlapping-intervals/
 具体实现就是要按区间结束时间升序排序。
 
 > 注意：需要根据实际情况判断按区间开头还是按区间结尾排序。
+
+<!-- > 对于合并问题，可以考虑按区间开头排序。
+> 对于覆盖问题，可以考虑按区间结尾排序。 -->
 
 ![](https://cdn.jsdelivr.net/gh/suukii/91-days-algorithm/assets/435_0.png)
 
