@@ -209,9 +209,9 @@
 
 ### 前缀树
 
--   [x] [【day-41】208.实现 Trie](./medium/day-41.md)
--   [x] [【day-42】677.键值映射](./medium/day-42.md)
--   [x] [【day-43】面试题 17.17.多次搜索](./medium/day-43.md)
+-   [x] [【day-41】208.实现 Trie](./medium/trie/41.implement-trie-prefix-tree.md)
+-   [x] [【day-42】677.键值映射](./medium/trie/42.map-sum-pairs.md)
+-   [x] [【day-43】面试题 17.17.多次搜索](./medium/trie/43.multi-search-lcci.md)
 
 ### 并查集
 
