@@ -215,9 +215,9 @@
 
 ### 并查集
 
--   [x] [【day-44】547.朋友圈](./medium/day-44.md)
--   [x] [【day-45】924.尽量减少恶意软件的传播](./medium/day-45.md)
--   [x] [【day-46】1319.连通网络的操作次数](./medium/day-46.md)
+-   [x] [【day-44】547.朋友圈](./medium/union-find/44.friend-circles.md)
+-   [x] [【day-45】924.尽量减少恶意软件的传播](./medium/union-find/45.minimize-malware-spread.md)
+-   [x] [【day-46】1319.连通网络的操作次数](./medium/union-find/46.number-of-operations-to-make-network-connected.md)
 
 ### 跳表
 
