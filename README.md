@@ -43,10 +43,6 @@
 
 > [在线电子书](https://app.gitbook.com/@suki/s/91-days-algorithm/)
 >
-> [DSA 讲义 - private repo](https://github.com/leetcode-pp/91alg-2#%E8%AE%B2%E4%B9%89)
->
-> [参考题解 - private repo](https://github.com/leetcode-pp/91alg-2#%E9%A2%98%E8%A7%A3)
->
 > [笔记](https://github.com/suukii/Articles#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95)
 
 ## 基础篇
