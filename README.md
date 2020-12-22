@@ -222,7 +222,7 @@
 ### 剪枝
 
 -   [x] [【day-48】814.二叉树剪枝](./medium/prune/48.binary-tree-pruning.md)
--   [x] [【day-49】39.组合总和](./medium/day-49.md)
+-   [x] [【day-49】39.组合总和](./medium/prune/49.combination-sum.md)
 -   [x] [【day-49】39.组合总和](./medium/day-49.md)
 -   [x] [【day-50】40.组合总和 II](./medium/day-50.md)
 -   [ ] [【day-51】47.全排列 II](./medium/day-51.md)
