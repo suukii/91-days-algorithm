@@ -26,10 +26,13 @@
     - [并查集](#并查集)
     - [跳表](#跳表)
     - [剪枝](#剪枝)
+      - [每日一题](#每日一题-5)
+    - [字符串匹配](#字符串匹配)
+    - [堆](#堆)
   - [专题篇](#专题篇)
     - [二分法](#二分法)
     - [滑动窗口](#滑动窗口)
-      - [每日一题](#每日一题-5)
+      - [每日一题](#每日一题-6)
       - [拓展题目](#拓展题目)
     - [位运算](#位运算)
     - [搜索(BFS, DFS, 回溯)](#搜索bfs-dfs-回溯)
@@ -37,7 +40,7 @@
     - [动态规划](#动态规划)
     - [分治](#分治)
     - [贪心](#贪心)
-      - [每日一题](#每日一题-6)
+      - [每日一题](#每日一题-7)
       - [贪心拓展题目](#贪心拓展题目)
   - [其他](#其他)
 
@@ -131,7 +134,6 @@
 
 #### 哈希表拓展题目
 
--   [x] [215.数组中的第 K 个最大元素](./basic/hashmap/ext-kth-largest-element-in-an-array.md)
 -   [x] [645.错误的集合](./basic/hashmap/ext-set-mismatch.md)
 -   [x] [面试题 04.01.节点间通路](./basic/hashmap/ext-route-between-nodes-lcci.md)
 -   [ ] [36.有效的数独](https://leetcode-cn.com/problems/valid-sudoku)
@@ -221,21 +223,30 @@
 
 ### 剪枝
 
+#### 每日一题
+
 -   [x] [【day-48】814.二叉树剪枝](./medium/prune/48.binary-tree-pruning.md)
 -   [x] [【day-49】39.组合总和](./medium/prune/49.combination-sum.md)
--   [x] [【day-49】39.组合总和](./medium/day-49.md)
--   [x] [【day-50】40.组合总和 II](./medium/day-50.md)
--   [ ] [【day-51】47.全排列 II](./medium/day-51.md)
+-   [x] [【day-50】40.组合总和 II](./medium/prune/50.combination-sum-ii.md)
+-   [ ] [【day-51】47.全排列 II](./medium/prune/51.permutations-ii.md)
+
+### 字符串匹配
+
+-   [ ] [【day-52】28.实现 strStr()](./medium/rk-kpm/52.implement-strstr.md)
+
 -   [ ] [【day-52】1371.每个元音包含偶数次的最长子字符串](./medium/day-52.md)
 -   [ ] [【day-53】面试题 17.13.恢复空格](./medium/day-53.md)
 -   [ ] [【day-54】1316.不同的循环子字符串](./)
--   [ ] [【day-55】28.实现 strStr()](./)
 -   [ ] [【day-56】215.数组中的第 K 个最大元素](./)
 -   [ ] [【day-57】451.根据字符出现频率排序](./)
 -   [ ] [【day-58】295.数据流的中位数](./)
 -   [ ] [【day-59】378.有序矩阵中第 K 小的元素](./)
 -   [ ] [【day-60】1054.距离相等的条形码](./)
 -   [ ] [【day-61】面试题 17.09.第 k 个数](./)
+
+### 堆
+
+-   [x] [【day-54】215.数组中的第 K 个最大元素](./medium/heap/kth-largest-element-in-an-array.md)
 
 ## 专题篇
 
@@ -273,6 +284,9 @@
 -   [ ] [【day-77】 827.最大人工岛](./topics/day-77.md)
 -   [ ] [【day-78】 89.格雷编码](./topics/day-78.md)
 -   [x] [【day-79】980.不同路径 III](./topics/day-79.md)
+
+
+-   [x] [5210.球会落何处](./topics/searching/ext-where-will-the-ball-fall.md)
 
 ### 背包问题
 
