@@ -247,6 +247,7 @@
 ### 堆
 
 -   [x] [【day-54】215.数组中的第 K 个最大元素](./medium/heap/54.kth-largest-element-in-an-array.md)
+-   [x] [【day-55】1046.最后一块石头的重量](./medium/heap/55.last-stone-weight.md)
 -   [x] [【day-56】23.合并K个升序链表](./medium/heap/56.merge-k-sorted-lists.md)
 -   [x] [【day-57】451.根据字符出现频率排序](./medium/heap/57.sort-characters-by-frequency.md)
 -   [x] [【day-58】378. 有序矩阵中第K小的元素](./medium/heap/58.kth-smallest-element-in-a-sorted-matrix.md)
