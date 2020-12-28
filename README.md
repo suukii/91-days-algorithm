@@ -327,4 +327,5 @@
 ## 其他
 
 -   [x] [77.组合](./extensions/77.combination.md)
+-   [x] [5.最长回文子串](./extensions/5.longest-palindromic-substring.md)
 -   [ ] [面试题 04.09. 二叉搜索树序列](./extensions/04.09.bst-sequences-lcci.md)
