@@ -246,7 +246,9 @@
 
 ### 堆
 
--   [x] [【day-54】215.数组中的第 K 个最大元素](./medium/heap/kth-largest-element-in-an-array.md)
+-   [x] [【day-54】215.数组中的第 K 个最大元素](./medium/heap/54.kth-largest-element-in-an-array.md)
+-   [x] [【day-56】23.合并K个升序链表](./medium/heap/56.merge-k-sorted-lists.md)
+-   [x] [【day-58】378. 有序矩阵中第K小的元素](./medium/heap/58.kth-smallest-element-in-a-sorted-matrix.md)
 
 ## 专题篇
 
