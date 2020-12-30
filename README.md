@@ -120,6 +120,7 @@
 -   [x] [404.左叶子之和](./basic/binary-tree/ext-sum-of-left-leaves.md)
 -   [x] [257.二叉树的所有路径](./basic/binary-tree/ext-binary-tree-paths.md)
 -   [x] [112.路径总和](./basic/binary-tree/ext-path-sum.md)
+-   [x] [543.二叉树的直径](./basic/binary-tree/ext-diameter-of-binary-tree.md)
 
 ### 哈希表
 
