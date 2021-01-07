@@ -4,7 +4,7 @@ https://leetcode-cn.com/problems/search-in-rotated-sorted-array/
 
 - [33. 搜索旋转排序数组](#33-搜索旋转排序数组)
   - [题目描述](#题目描述)
-  - [方法1: 二分法](#方法1-二分法)
+  - [方法 1: 二分法](#方法-1-二分法)
     - [思路](#思路)
     - [复杂度分析](#复杂度分析)
     - [代码](#代码)
@@ -45,7 +45,7 @@ nums 肯定会在某个点上旋转
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 ```
 
-## 方法1: 二分法
+## 方法 1: 二分法
 
 ### 思路
 
@@ -56,12 +56,12 @@ nums 肯定会在某个点上旋转
 
 也就是说我们选定一个中点之后，数组总会被分为有序和无序两个部分，对于有序部分，我们很容易能判断是否需要继续搜索，如果有序部分不满足搜索条件，那我们就将搜索区间缩小为数组无序部分。
 
-![](https://cdn.jsdelivr.net/gh/suukii/Articles/assets/33_0.png)
+![](https://cdn.jsdelivr.net/gh/suukii/91-days-algorithm/assets/33_0.png)
 
 ### 复杂度分析
 
--   时间复杂度：$O(logn)$，n 为数组长度。
--   空间复杂度：$O(1)$。
+- 时间复杂度：$O(logn)$，n 为数组长度。
+- 空间复杂度：$O(1)$。
 
 ### 代码
 
@@ -73,26 +73,27 @@ JavaScript Code
  * @param {number} target
  * @return {number}
  */
-var search = function(nums, target) {
-    let l = 0, r = nums.length - 1
-    while (l <= r) {
-        const m = l + ((r - l) >> 1)
-        if (nums[m] === target) return m
+var search = function (nums, target) {
+  let l = 0,
+    r = nums.length - 1;
+  while (l <= r) {
+    const m = l + ((r - l) >> 1);
+    if (nums[m] === target) return m;
 
-        // m 位于左侧有序部分
-        if (nums[l] <= nums[m]) {
-            // m 大于 target，并且 target 大于左侧最小值，才缩小右边界
-            if (nums[m] > target && target >= nums[l]) r = m - 1
-            else l = m + 1;
-        }
-        // m 位于右侧有序部分
-        else {
-            // m 小于 target，并且 target 小于右侧最大值，才缩小左边界
-            if (nums[m] < target && target <= nums[r]) l = m + 1;
-            else r = m - 1;
-        }
+    // m 位于左侧有序部分
+    if (nums[l] <= nums[m]) {
+      // m 大于 target，并且 target 大于左侧最小值，才缩小右边界
+      if (nums[m] > target && target >= nums[l]) r = m - 1;
+      else l = m + 1;
     }
-    return -1
+    // m 位于右侧有序部分
+    else {
+      // m 小于 target，并且 target 小于右侧最大值，才缩小左边界
+      if (nums[m] < target && target <= nums[r]) l = m + 1;
+      else r = m - 1;
+    }
+  }
+  return -1;
 };
 ```
 
