@@ -287,7 +287,7 @@
 
 #### 每日一题
 
-- [x] [【day-68】1456.定长子串中元音的最大数目](./topics/day-68.md)
+- [x] [【day-67】1456.定长子串中元音的最大数目](./topics/sliding-window/67.maximum-number-of-vowels-in-a-substring-of-given-length.md)
 - [ ] [【day-70】76.最小覆盖子串](./topics/day-70.md)
 - [ ] [【day-71】30.串联所有单词的子串](./topics/day-71.md)
 
