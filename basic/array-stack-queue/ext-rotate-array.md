@@ -93,7 +93,7 @@ var rotate = function (nums, k) {
 
 ### 思路
 
-![](https://cdn.jsdelivr.net/gh/suukii/Articles/assets/189_1.png)
+![](https://cdn.jsdelivr.net/gh/suukii/91-days-algorithm/assets/189_1.png)
 
 ### 复杂度分析
 
