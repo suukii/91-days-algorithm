@@ -146,7 +146,7 @@
 - [x] [645.错误的集合](./basic/hashmap/ext-set-mismatch.md)
 - [x] [面试题 04.01.节点间通路](./basic/hashmap/ext-route-between-nodes-lcci.md)
 - [ ] [36.有效的数独](https://leetcode-cn.com/problems/valid-sudoku)
-- [ ] [149.直线上最多的点数](https://leetcode-cn.com/problems/max-points-on-a-line)
+- [x] [149.直线上最多的点数](./basic/hashmap/ext-max-points-on-a-line.md)
 
 ### 双指针
 
@@ -188,6 +188,7 @@
 **动态规划系列**
 
 - [x] [【day-37】62.不同路径](./medium/hot/37.unique-paths.md)
+- [x] [673. 最长递增子序列的个数](./medium/dp/number-of-longest-increasing-subsequence.md)
 - [ ] [70. 爬楼梯](./)
 - [ ] [121. 买卖股票的最佳时机](./)
 - [ ] [122. 买卖股票的最佳时机 II](./)
