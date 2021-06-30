@@ -129,6 +129,7 @@
 - [x] [257.二叉树的所有路径](./basic/binary-tree/ext-binary-tree-paths.md)
 - [x] [112.路径总和](./basic/binary-tree/ext-path-sum.md)
 - [x] [543.二叉树的直径](./basic/binary-tree/ext-diameter-of-binary-tree.md)
+- [x] [98.验证二叉搜索树](./basic/binary-tree/ext-validate-binary-search-tree.md)
 
 ### 哈希表
 
