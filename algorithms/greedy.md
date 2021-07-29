@@ -19,12 +19,12 @@
 
 ### 分配问题
 
--   [455.分发饼干](https://github.com/suukii/91-days-algorithm/blob/master/topics/greedy/ext-assign-cookies.md)
--   [135.分发糖果](https://github.com/suukii/91-days-algorithm/blob/master/topics/greedy/ext-candy.md)
+-   [455.分发饼干](../topics/greedy/ext-assign-cookies.md)
+-   [135.分发糖果](../topics/greedy/ext-candy.md)
 
 ### 区间问题
 
--   [435.无重叠区间](https://github.com/suukii/91-days-algorithm/blob/master/topics/greedy/ext-non-overlapping-intervals.md)
+-   [435.无重叠区间](../topics/greedy/ext-non-overlapping-intervals.md)
 
 TODO
 
