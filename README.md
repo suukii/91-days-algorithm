@@ -107,6 +107,7 @@
 
 #### 链表拓展题目
 
+- [x] [2.两数相加](./problems/2.add-two-numbers.md)
 - [x] [21.合并两个有序链表](./basic/linked-list/ext-merge-two-sorted-lists.md)
 - [x] [83.删除排序链表中的重复元素](./basic/linked-list/ext-remove-duplicates-from-sorted-list.md)
 - [x] [206.反转链表](./basic/linked-list/ext-reverse-linked-list.md)
